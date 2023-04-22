@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="119dd4c8e1d8436dbc4f825b04bd8007" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Account" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Brand" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Category" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Customer" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Item" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Order" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.OrderDetail" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Shift" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCuaHangDienThoaiModel.Staff" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_Account_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_Category_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_Item_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_A_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_OrderDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_Order_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCuaHangDienThoaiModel.Staff_Shift" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
