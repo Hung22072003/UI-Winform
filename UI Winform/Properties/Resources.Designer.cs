@@ -63,9 +63,9 @@ namespace UI_Winform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Bitmap lock_open_solid {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                object obj = ResourceManager.GetObject("lock-open-solid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,49 +73,9 @@ namespace UI_Winform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo1 {
+        internal static System.Drawing.Bitmap lock_solid {
             get {
-                object obj = ResourceManager.GetObject("logo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap revenue {
-            get {
-                object obj = ResourceManager.GetObject("revenue", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap staffmanagement {
-            get {
-                object obj = ResourceManager.GetObject("staffmanagement", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap storage {
-            get {
-                object obj = ResourceManager.GetObject("storage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap trade_history {
-            get {
-                object obj = ResourceManager.GetObject("trade history", resourceCulture);
+                object obj = ResourceManager.GetObject("lock-solid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

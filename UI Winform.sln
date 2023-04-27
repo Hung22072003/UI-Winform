@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI Winform", "UI Winform\UI Winform.csproj", "{E19C082A-BF02-474A-B9BD-B560BBBAFC35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneManagementSystem", "UI Winform\PhoneManagementSystem.csproj", "{E19C082A-BF02-474A-B9BD-B560BBBAFC35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
