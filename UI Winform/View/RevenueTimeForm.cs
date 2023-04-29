@@ -29,7 +29,7 @@ namespace UI_Winform
         }
         private void LoadTheme()
         {
-            foreach (Control btns in this.Controls)
+            foreach (Control btns in MainPanel.Controls)
             {
                 if (btns.GetType() == typeof(Button))
                 {
@@ -69,11 +69,11 @@ namespace UI_Winform
                     chartRevenue.Series["Sản phẩm"].YValueMembers = "Tổng tiền";
                     chartRevenue.Series["Sản phẩm"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
                     chartRevenue.Titles.Add(new Title(Text = "Doanh thu theo sản phẩm"));
-                    chartRevenue.Size = new System.Drawing.Size(900, 300);
+                    chartRevenue.Size = new System.Drawing.Size(400, 300);
+                    chartRevenue.Location = new System.Drawing.Point(12, 0);
                     PanelChart.Controls.Add(chartRevenue);
                 }
             }
         }
-
     }
 }

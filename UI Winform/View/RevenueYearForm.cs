@@ -18,7 +18,24 @@ namespace UI_Winform.View
         {
             InitializeComponent();
         }
-
+        private void RevenueYearForm_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+        }
+        private void LoadTheme()
+        {
+            foreach (Control btns in MainPanel.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ThemeColor.PrimaryColor;
+                    btn.ForeColor = Color.Black;
+                    btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
+                    btn.FlatStyle = FlatStyle.Flat;
+                }
+            }
+        }
         private void Btn_Statistic_Click(object sender, EventArgs e)
         {
             if (CbbYear.Text == "")
@@ -31,14 +48,15 @@ namespace UI_Winform.View
                 ManageRevenueBLL mrb = new ManageRevenueBLL();
                 Dgv_Statistic.DataSource = mrb.getOrderToDRV(startDate, endDate);
 
+                PanelChart.Controls.Clear();
                 if (Dgv_Statistic.Rows.Count > 1)
                 {
-                    PanelChart.Controls.Clear();
                     Chart chartRevenue = new Chart();
                     chartRevenue.ChartAreas.Add(new ChartArea("Doanh thu trong năm " + CbbYear.Text));
-                    chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.IntervalType = DateTimeIntervalType.Number;
+                   
+                    /*chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.IntervalType = DateTimeIntervalType.Number;
                     chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.Minimum = 1;
-                    chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.Maximum = 12;
+                    chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.Maximum = 12;*/
                     Series seri = new Series();
                     seri.Name = "Năm";
                     seri.ChartType = SeriesChartType.Column;
@@ -51,22 +69,17 @@ namespace UI_Winform.View
                     chartRevenue.Series["Năm"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
                     chartRevenue.Series["Năm"].YValueMembers = "Tổng tiền";
                     chartRevenue.Series["Năm"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+
                     chartRevenue.Titles.Add(new Title(Text = "Doanh thu trong năm " + CbbYear.Text));
-                    chartRevenue.Size = new System.Drawing.Size(400, 300);
+                    chartRevenue.Size = new System.Drawing.Size(600, 300);
+                    chartRevenue.Location = new System.Drawing.Point(12, 0);
                     PanelChart.Controls.Add(chartRevenue);
+
                 }
             }
            
         }
 
-        private void CbbYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

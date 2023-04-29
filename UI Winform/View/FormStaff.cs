@@ -7,20 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Winform.BLL;
+using UI_Winform.View;
+using UI_Winform.DTO;
 
 namespace UI_Winform
 {
     public partial class FormStaff : Form
     {
         private Form activeForm;
+        public static int check;
         public FormStaff()
         {
             InitializeComponent();
-            
+
+            LoadInfor();
+
+            cbb_Sort.Items.Add("Lương");
+            cbb_Sort.Items.Add("Ngày Sinh");
+            cbb_Sort.Items.Add("Tên");
+
         }
-
-
-
         private void LoadTheme()
         {
             foreach (Control btns in MainPanel.Controls)
@@ -41,6 +48,14 @@ namespace UI_Winform
         private void FormStaff_Load(object sender, EventArgs e)
         {
             LoadTheme();
+            dataGridView1.Columns[0].HeaderText = "Mã Nhân viên";
+            dataGridView1.Columns[1].HeaderText = "Tên nhân viên";
+            dataGridView1.Columns[2].HeaderText = "Số điện thoại";
+            dataGridView1.Columns[3].HeaderText = "Ngày Sinh";
+            dataGridView1.Columns[4].HeaderText = "Địa chỉ";
+            dataGridView1.Columns[5].HeaderText = "Lương";
+            dataGridView1.Columns[6].HeaderText = "Email";
+            dataGridView1.Columns[7].HeaderText = "Ảnh";
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -59,7 +74,74 @@ namespace UI_Winform
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
+            check = 0;
             OpenChildForm(new InfoStaff(), sender);
+
+        }
+
+        public void LoadInfor()
+        {
+            ManageStaffBLL mnb = new ManageStaffBLL();
+
+            dataGridView1.DataSource = mnb.GetAllStaffBLL();
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            ManageStaffBLL mnb = new ManageStaffBLL();
+
+            dataGridView1.DataSource = mnb.GetAllStafByNamefBLL(Txb_Search.Text);
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                ManageStaffBLL mnb = new ManageStaffBLL();
+                ManageAccountBLL mab = new ManageAccountBLL();
+                ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
+
+
+                List<CheckBoxShift> li = new List<CheckBoxShift>();
+                ManageShiftBLL msb = new ManageShiftBLL();
+                li = msb.SetCheckBoxShiftBLL();
+
+                foreach (DataGridViewRow i in dataGridView1.SelectedRows)
+                {
+
+                    mssb.DeleteByID_StaffBLL(i.Cells["ID_Staff"].Value.ToString(), li);
+
+                    mab.DeleteAccountById_StaffBLL(i.Cells["ID_Staff"].Value.ToString());
+                    mnb.DeleteStaffByIDBLL(i.Cells["ID_Staff"].Value.ToString());
+
+                }
+
+                LoadInfor();
+
+            }
+
+        }
+
+        private void Btn_Sort_Click(object sender, EventArgs e)
+        {
+
+            ManageStaffBLL mnb = new ManageStaffBLL();
+            dataGridView1.DataSource = mnb.SortStaffBLL(cbb_Sort.Text);
+
+
+        }
+
+        private void Btn_Update_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                check = 1;
+                OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()), sender);
+            }
+
         }
     }
 }

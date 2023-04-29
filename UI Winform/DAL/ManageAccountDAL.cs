@@ -35,5 +35,56 @@ namespace UI_Winform.DAL
             }
         }
 
+        public Account GetAccountByIDDAL(string id)
+        {
+
+            using (DBPM db = new DBPM())
+            {
+                Account s = db.Accounts.Where(p => p.ID_Staff == id).FirstOrDefault();
+                return s;
+            }
+
+        }
+
+        public void DeleteAccountById_StaffDAL(String id)
+        {
+
+            using (DBPM db = new DBPM())
+            {
+                var s = db.Accounts.Where(p => p.ID_Staff == id).FirstOrDefault();
+                db.Accounts.Remove(s);
+                db.SaveChanges();
+            }
+
+        }
+
+        public void UpdateAccountDAL(Account temp)
+        {
+            using (DBPM db = new DBPM())
+            {
+                var a = db.Accounts.Find(temp.UserName);
+
+                a.UserName = temp.UserName;
+
+
+                a.PassWord = temp.PassWord;
+                a.TypeAccount = temp.TypeAccount;
+
+                db.SaveChanges();
+            }
+        }
+
+        public void AddAccountDAL(Account temp)
+        {
+
+            using (DBPM db = new DBPM())
+            {
+                db.Accounts.Add(temp);
+                db.SaveChanges();
+
+            }
+
+        }
+
     }
 }

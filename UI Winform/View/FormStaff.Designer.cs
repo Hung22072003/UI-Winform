@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbb_Sort = new System.Windows.Forms.ComboBox();
             this.Btn_Sort = new System.Windows.Forms.Button();
             this.Btn_Delete = new System.Windows.Forms.Button();
             this.Btn_Update = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.comboBox1);
+            this.MainPanel.Controls.Add(this.cbb_Sort);
             this.MainPanel.Controls.Add(this.Btn_Sort);
             this.MainPanel.Controls.Add(this.Btn_Delete);
             this.MainPanel.Controls.Add(this.Btn_Update);
@@ -60,14 +60,14 @@
             this.MainPanel.Size = new System.Drawing.Size(1082, 380);
             this.MainPanel.TabIndex = 0;
             // 
-            // comboBox1
+            // cbb_Sort
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(620, 325);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 19;
+            this.cbb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_Sort.FormattingEnabled = true;
+            this.cbb_Sort.Location = new System.Drawing.Point(620, 325);
+            this.cbb_Sort.Name = "cbb_Sort";
+            this.cbb_Sort.Size = new System.Drawing.Size(121, 28);
+            this.cbb_Sort.TabIndex = 19;
             // 
             // Btn_Sort
             // 
@@ -79,6 +79,7 @@
             this.Btn_Sort.TabIndex = 17;
             this.Btn_Sort.Text = "Sắp xếp";
             this.Btn_Sort.UseVisualStyleBackColor = true;
+            this.Btn_Sort.Click += new System.EventHandler(this.Btn_Sort_Click);
             // 
             // Btn_Delete
             // 
@@ -90,6 +91,7 @@
             this.Btn_Delete.TabIndex = 16;
             this.Btn_Delete.Text = "Xóa";
             this.Btn_Delete.UseVisualStyleBackColor = true;
+            this.Btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
             // Btn_Update
             // 
@@ -101,6 +103,7 @@
             this.Btn_Update.TabIndex = 15;
             this.Btn_Update.Text = "Sửa";
             this.Btn_Update.UseVisualStyleBackColor = true;
+            this.Btn_Update.Click += new System.EventHandler(this.Btn_Update_Click);
             // 
             // Btn_Add
             // 
@@ -143,17 +146,19 @@
             this.Btn_Search.TabIndex = 11;
             this.Btn_Search.Text = "Tìm kiếm";
             this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(23, 105);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1032, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(1047, 198);
             this.dataGridView1.TabIndex = 10;
             // 
             // ChildPanel
@@ -192,7 +197,7 @@
         private System.Windows.Forms.TextBox Txb_Search;
         private System.Windows.Forms.Button Btn_Search;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbb_Sort;
         private System.Windows.Forms.Panel ChildPanel;
     }
 }

@@ -18,22 +18,6 @@ namespace UI_Winform.View
             InitializeComponent();
         }
 
-        private void Btn_OK_Click(object sender, EventArgs e)
-        {
-            if (Cbb_Choice.Text == "Khoảng thời gian")
-            {
-                OpenChildForm(new RevenueTimeForm(), sender);
-            } else if (Cbb_Choice.Text == "Năm")
-            {
-                OpenChildForm(new RevenueYearForm(), sender);
-            }
-        }
-
-        private void FormRevenue_Load(object sender, EventArgs e)
-        {
-            LoadTheme();
-        }
-
         private void LoadTheme()
         {
             foreach (Control btns in MainPanel.Controls)
@@ -47,7 +31,9 @@ namespace UI_Winform.View
                     btn.FlatStyle = FlatStyle.Flat;
                 }
             }
+            Lb_Title.ForeColor = ThemeColor.SecondaryColor;
         }
+
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
@@ -60,6 +46,23 @@ namespace UI_Winform.View
             this.ChildPanel.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void Btn_OK_Click(object sender, EventArgs e)
+        {
+            if (Cbb_Choice.Text == "Khoảng thời gian")
+            {
+                OpenChildForm(new RevenueTimeForm(), sender);
+            }
+            else if (Cbb_Choice.Text == "Năm")
+            {
+                OpenChildForm(new RevenueYearForm(), sender);
+            }
+        }
+
+        private void FormRevenue_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
         }
     }
 }

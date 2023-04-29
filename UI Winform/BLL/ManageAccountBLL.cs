@@ -21,5 +21,47 @@ namespace UI_Winform.BLL
             }
             return -1;
         }
+
+        public Account GetAccountByID(string id)
+        {
+
+            ManageAccountDAL mad = new ManageAccountDAL();
+            return mad.GetAccountByIDDAL(id);
+
+        }
+
+        public void DeleteAccountById_StaffBLL(string id)
+        {
+            ManageAccountDAL mad = new ManageAccountDAL();
+            mad.DeleteAccountById_StaffDAL(id);
+
+        }
+
+        public void UpdateAccountBLL(string ID_Staff, string UserName, string Password, bool TypeAccount)
+        {
+            Account temp = new Account();
+
+            temp.ID_Staff = ID_Staff;
+            temp.UserName = UserName;
+            temp.PassWord = Password;
+            temp.TypeAccount = Convert.ToInt32(TypeAccount);
+
+            ManageAccountDAL mad = new ManageAccountDAL();
+            mad.UpdateAccountDAL(temp);
+        }
+
+        public void AddAccountBLL(string ID_Staff, string DisplayName, string UserName, string Password, bool TypeAccount)
+        {
+            Account temp = new Account();
+
+            temp.ID_Staff = ID_Staff;
+            temp.UserName = UserName;
+            temp.PassWord = Password;
+            temp.DisplayName = DisplayName;
+            temp.TypeAccount = Convert.ToInt32(TypeAccount);
+
+            ManageAccountDAL mad = new ManageAccountDAL();
+            mad.AddAccountDAL(temp);
+        }
     }
 }

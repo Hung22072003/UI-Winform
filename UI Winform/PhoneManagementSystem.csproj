@@ -71,6 +71,12 @@
   <ItemGroup>
     <Compile Include="BLL\ManageAccountBLL.cs" />
     <Compile Include="BLL\ManageRevenueBLL.cs" />
+    <Compile Include="BLL\ManageShiftBLL.cs" />
+    <Compile Include="BLL\ManageStaffBLL.cs" />
+    <Compile Include="BLL\ManageStaff_ShiftBLL.cs" />
+    <Compile Include="DAL\ManageShiftDAL.cs" />
+    <Compile Include="DAL\ManageStaffDAL.cs" />
+    <Compile Include="DAL\ManageStaff_ShiftDAL.cs" />
     <Compile Include="DTO\Account.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
@@ -80,6 +86,7 @@
     <Compile Include="DTO\Category.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\CheckBoxShift.cs" />
     <Compile Include="DTO\Customer.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
