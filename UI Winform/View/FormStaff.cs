@@ -56,6 +56,7 @@ namespace UI_Winform
             dataGridView1.Columns[5].HeaderText = "Lương";
             dataGridView1.Columns[6].HeaderText = "Email";
             dataGridView1.Columns[7].HeaderText = "Ảnh";
+            dataGridView1.Columns[7].Visible = false;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -76,7 +77,6 @@ namespace UI_Winform
         {
             check = 0;
             OpenChildForm(new InfoStaff(), sender);
-
         }
 
         public void LoadInfor()
@@ -142,6 +142,18 @@ namespace UI_Winform
                 OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()), sender);
             }
 
+        }
+
+        private void Btn_View_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                check = 2;
+                InfoStaff inf = new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString());
+
+                inf.Show();
+
+            }
         }
     }
 }

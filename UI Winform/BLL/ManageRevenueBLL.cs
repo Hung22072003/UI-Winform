@@ -24,8 +24,8 @@ namespace UI_Winform.BLL
                 new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
             });
             List<OrderDGV> listOrder = new List<OrderDGV>();
-            ManageRevenueDAL mrd = new ManageRevenueDAL();
-            List<Order> orders = mrd.getAllOrder(startDate, endDate);
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<Order> orders = mod.getAllOrder(startDate, endDate);
             foreach (Order order in orders)
             {
                 decimal? total = 0;
@@ -42,14 +42,9 @@ namespace UI_Winform.BLL
                 };
                 listOrder.Add(orderDGV);    
             }
-
-            decimal? totalRevenue = 0;
-            int totalOrder = 0;
             listOrder.ForEach(p =>
             {
                 dt.Rows.Add(p.ID_Order, p.NameStaff, p.OrderDate, p.Total);
-                totalRevenue += p.Total;
-                totalOrder++;
             });
             return dt;
         }
@@ -63,8 +58,8 @@ namespace UI_Winform.BLL
                 new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
             });
 
-            ManageRevenueDAL mrd = new ManageRevenueDAL();
-            List<Order> orders = mrd.getAllOrder(startDate, endDate);
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<Order> orders = mod.getAllOrder(startDate, endDate);
             orders.ForEach(p =>
             {
                 var RevenueCategorys = p.OrderDetails.Select(q => new { q.Item.Category.NameCategory, q.AmountPrice }).ToList();
@@ -104,8 +99,8 @@ namespace UI_Winform.BLL
                 dt.Rows.Add(i.ToString(), 0);
             }
 
-            ManageRevenueDAL mrd = new ManageRevenueDAL();
-            List<Order> orders = mrd.getAllOrder(year);
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<Order> orders = mod.getAllOrder(year);
             orders.ForEach(order =>
             {
                 decimal? total = order.OrderDetails.Sum(p => p.AmountPrice);

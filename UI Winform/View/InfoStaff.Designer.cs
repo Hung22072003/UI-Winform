@@ -210,6 +210,7 @@
             // 
             // dtp_DateOfBirth
             // 
+            this.dtp_DateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_DateOfBirth.Location = new System.Drawing.Point(559, 67);
             this.dtp_DateOfBirth.Name = "dtp_DateOfBirth";
             this.dtp_DateOfBirth.Size = new System.Drawing.Size(215, 22);
@@ -398,6 +399,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Lb_Title);
             this.Name = "InfoStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InfoStaff";
             this.Load += new System.EventHandler(this.InfoStaff_Load);
             this.groupBox1.ResumeLayout(false);

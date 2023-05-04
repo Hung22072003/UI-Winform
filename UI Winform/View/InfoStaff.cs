@@ -39,8 +39,37 @@ namespace UI_Winform
 
             SetGroupBoxShift();
 
+            if (FormStaff.check == 2)
+            {
+                ViewStaff();
+                btn_Ok.Visible = false;
+                btn_AddImage.Visible = false;
+            }
         }
+        public void ViewStaff()
+        {
 
+            txb_IDStaff.Enabled = false;
+            txb_Name.Enabled = false;
+            txb_Address.Enabled = false;
+            txb_Email.Enabled = false;
+            txb_Salary.Enabled = false;
+            dtp_DateOfBirth.Enabled = false;
+            txb_PhoneNumber.Enabled = false;
+
+            rbtn_Manager.Enabled = false;
+            rbtn_Staff.Enabled = false;
+
+            txb_Account.Enabled = false;
+            txb_PassWord.Enabled = false;
+
+            foreach (CheckBox i in grb_Shift.Controls)
+            {
+                i.Enabled = false;
+            }
+
+            Lb_Title.Visible = false;
+        }
         private void InfoStaff_Load(object sender, EventArgs e)
         {
             LoadTheme();
@@ -112,7 +141,7 @@ namespace UI_Winform
                 {
                     if (Convert.ToInt32(i[1]) == j.value)
                     {
-                        j.check = true;
+                        j.check = true; 
                     }
                 }
             }
@@ -164,7 +193,6 @@ namespace UI_Winform
 
                 //Update Staff_Shift
 
-
                 mssb.DeleteByID_StaffBLL(id, li);
 
                 GetCheckBoxShiftFromUI(); //Cập nhật lại li
@@ -192,7 +220,6 @@ namespace UI_Winform
 
         public void SetGroupBoxShift()
         {
-            ManageShiftBLL msb = new ManageShiftBLL();
             int x = 12, y = 38;
 
             foreach (CheckBoxShift i in li)
@@ -205,15 +232,12 @@ namespace UI_Winform
                 temp.Location = new System.Drawing.Point(x, y * i.value);
                 temp.AutoSize = true;
                 grb_Shift.Controls.Add(temp);
-
             }
-
         }
 
 
         public void GetCheckBoxShiftFromUI()
         {
-            List<CheckBox> list = new List<CheckBox>();
             foreach (CheckBox checkbox in grb_Shift.Controls)
             {
                 foreach (CheckBoxShift i in li)
@@ -224,8 +248,9 @@ namespace UI_Winform
                     }
                 }
             }
-
         }
+
+
         //public void SetGroupBoxShift(bool check1, bool check2, bool check3, bool check4)
         //{
         //    ManageShiftBLL msb = new ManageShiftBLL();

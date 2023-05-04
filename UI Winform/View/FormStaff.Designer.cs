@@ -39,12 +39,14 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
+            this.Btn_View = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_View);
             this.MainPanel.Controls.Add(this.cbb_Sort);
             this.MainPanel.Controls.Add(this.Btn_Sort);
             this.MainPanel.Controls.Add(this.Btn_Delete);
@@ -169,6 +171,18 @@
             this.ChildPanel.Size = new System.Drawing.Size(1082, 253);
             this.ChildPanel.TabIndex = 1;
             // 
+            // Btn_View
+            // 
+            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_View.Location = new System.Drawing.Point(821, 323);
+            this.Btn_View.Name = "Btn_View";
+            this.Btn_View.Size = new System.Drawing.Size(190, 31);
+            this.Btn_View.TabIndex = 20;
+            this.Btn_View.Text = "Xem thông tin chi tiết";
+            this.Btn_View.UseVisualStyleBackColor = true;
+            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
+            // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -199,5 +213,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cbb_Sort;
         private System.Windows.Forms.Panel ChildPanel;
+        private System.Windows.Forms.Button Btn_View;
     }
 }

@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Cbb_Type = new System.Windows.Forms.ComboBox();
+            this.Cbb_Category = new System.Windows.Forms.ComboBox();
+            this.Btn_View = new System.Windows.Forms.Button();
+            this.Btn_Import = new System.Windows.Forms.Button();
             this.Cbb_Brand = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cbb_Sort = new System.Windows.Forms.ComboBox();
             this.Btn_Sort = new System.Windows.Forms.Button();
             this.Btn_Delete = new System.Windows.Forms.Button();
             this.Btn_Update = new System.Windows.Forms.Button();
@@ -40,18 +44,18 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.button2);
-            this.MainPanel.Controls.Add(this.button1);
+            this.MainPanel.Controls.Add(this.Cbb_Type);
+            this.MainPanel.Controls.Add(this.Cbb_Category);
+            this.MainPanel.Controls.Add(this.Btn_View);
+            this.MainPanel.Controls.Add(this.Btn_Import);
             this.MainPanel.Controls.Add(this.Cbb_Brand);
-            this.MainPanel.Controls.Add(this.comboBox1);
+            this.MainPanel.Controls.Add(this.Cbb_Sort);
             this.MainPanel.Controls.Add(this.Btn_Sort);
             this.MainPanel.Controls.Add(this.Btn_Delete);
             this.MainPanel.Controls.Add(this.Btn_Update);
@@ -63,26 +67,74 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1082, 380);
+            this.MainPanel.Size = new System.Drawing.Size(1179, 380);
             this.MainPanel.TabIndex = 0;
+            // 
+            // Cbb_Type
+            // 
+            this.Cbb_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbb_Type.FormattingEnabled = true;
+            this.Cbb_Type.Items.AddRange(new object[] {
+            "Tăng dần",
+            "Giảm dần"});
+            this.Cbb_Type.Location = new System.Drawing.Point(756, 338);
+            this.Cbb_Type.Name = "Cbb_Type";
+            this.Cbb_Type.Size = new System.Drawing.Size(103, 28);
+            this.Cbb_Type.TabIndex = 42;
+            // 
+            // Cbb_Category
+            // 
+            this.Cbb_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbb_Category.FormattingEnabled = true;
+            this.Cbb_Category.Location = new System.Drawing.Point(247, 14);
+            this.Cbb_Category.Name = "Cbb_Category";
+            this.Cbb_Category.Size = new System.Drawing.Size(170, 33);
+            this.Cbb_Category.TabIndex = 41;
+            // 
+            // Btn_View
+            // 
+            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_View.Location = new System.Drawing.Point(1061, 336);
+            this.Btn_View.Name = "Btn_View";
+            this.Btn_View.Size = new System.Drawing.Size(106, 31);
+            this.Btn_View.TabIndex = 40;
+            this.Btn_View.Text = "Xem";
+            this.Btn_View.UseVisualStyleBackColor = true;
+            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
+            // 
+            // Btn_Import
+            // 
+            this.Btn_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Import.Location = new System.Drawing.Point(921, 336);
+            this.Btn_Import.Name = "Btn_Import";
+            this.Btn_Import.Size = new System.Drawing.Size(106, 31);
+            this.Btn_Import.TabIndex = 39;
+            this.Btn_Import.Text = "Nhập hàng";
+            this.Btn_Import.UseVisualStyleBackColor = true;
+            this.Btn_Import.Click += new System.EventHandler(this.Btn_Import_Click);
             // 
             // Cbb_Brand
             // 
             this.Cbb_Brand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbb_Brand.FormattingEnabled = true;
-            this.Cbb_Brand.Location = new System.Drawing.Point(296, 14);
+            this.Cbb_Brand.Location = new System.Drawing.Point(446, 14);
             this.Cbb_Brand.Name = "Cbb_Brand";
             this.Cbb_Brand.Size = new System.Drawing.Size(121, 33);
             this.Cbb_Brand.TabIndex = 38;
             // 
-            // comboBox1
+            // Cbb_Sort
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(614, 338);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 37;
+            this.Cbb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbb_Sort.FormattingEnabled = true;
+            this.Cbb_Sort.Items.AddRange(new object[] {
+            "Mã sản phẩm",
+            "Số lượng"});
+            this.Cbb_Sort.Location = new System.Drawing.Point(597, 338);
+            this.Cbb_Sort.Name = "Cbb_Sort";
+            this.Cbb_Sort.Size = new System.Drawing.Size(121, 28);
+            this.Cbb_Sort.TabIndex = 37;
             // 
             // Btn_Sort
             // 
@@ -94,6 +146,7 @@
             this.Btn_Sort.TabIndex = 36;
             this.Btn_Sort.Text = "Sắp xếp";
             this.Btn_Sort.UseVisualStyleBackColor = true;
+            this.Btn_Sort.Click += new System.EventHandler(this.Btn_Sort_Click);
             // 
             // Btn_Delete
             // 
@@ -117,6 +170,7 @@
             this.Btn_Update.TabIndex = 34;
             this.Btn_Update.Text = "Sửa";
             this.Btn_Update.UseVisualStyleBackColor = true;
+            this.Btn_Update.Click += new System.EventHandler(this.Btn_Update_Click);
             // 
             // Btn_Add
             // 
@@ -153,9 +207,9 @@
             // 
             this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search.Location = new System.Drawing.Point(492, 14);
+            this.Btn_Search.Location = new System.Drawing.Point(629, 14);
             this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(106, 31);
+            this.Btn_Search.Size = new System.Drawing.Size(106, 33);
             this.Btn_Search.TabIndex = 30;
             this.Btn_Search.Text = "Tìm kiếm";
             this.Btn_Search.UseVisualStyleBackColor = true;
@@ -163,16 +217,19 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(16, 113);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1054, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(1151, 198);
             this.dataGridView1.TabIndex = 29;
             // 
             // ChildPanel
@@ -180,37 +237,15 @@
             this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildPanel.Location = new System.Drawing.Point(0, 380);
             this.ChildPanel.Name = "ChildPanel";
-            this.ChildPanel.Size = new System.Drawing.Size(1082, 253);
+            this.ChildPanel.Size = new System.Drawing.Size(1179, 253);
             this.ChildPanel.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(794, 335);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 31);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Nhập hàng";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(964, 335);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 31);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "Xem";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // FormStorage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1082, 633);
+            this.ClientSize = new System.Drawing.Size(1179, 633);
             this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Name = "FormStorage";
@@ -226,8 +261,6 @@
         #endregion
 
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button Btn_Sort;
         private System.Windows.Forms.Button Btn_Delete;
         private System.Windows.Forms.Button Btn_Update;
         private System.Windows.Forms.Button Btn_Add;
@@ -237,7 +270,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel ChildPanel;
         private System.Windows.Forms.ComboBox Cbb_Brand;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Btn_Import;
+        private System.Windows.Forms.Button Btn_View;
+        private System.Windows.Forms.ComboBox Cbb_Category;
+        private System.Windows.Forms.ComboBox Cbb_Sort;
+        private System.Windows.Forms.Button Btn_Sort;
+        private System.Windows.Forms.ComboBox Cbb_Type;
     }
 }

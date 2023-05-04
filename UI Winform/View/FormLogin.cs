@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,7 +57,7 @@ namespace UI_Winform
             } else
             {
                 ManageAccountBLL mab = new ManageAccountBLL();
-                int result = mab.getTypeAccount(Txb_UserName.Text, Txb_PassWord.Text);
+                int result = mab.getTypeAccount(Txb_UserName.Text.Replace(" ", ""), Txb_PassWord.Text);
                 if (result == -1)
                 {
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
@@ -69,8 +69,10 @@ namespace UI_Winform
                 }
                 if (result == 1)
                 {
-                    UserForm uf = new UserForm();
+                    UserForm uf = new UserForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text));
+                    this.Hide();
                     uf.ShowDialog();
+                    this.Show();
                 }
             }
             

@@ -111,7 +111,7 @@ namespace UI_Winform
 
         private void Btn_TradeHistory_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormTradeHistory(), sender);
+            OpenChildForm(new Btn_Report(), sender);
         }
 
         private void Btn_Setting_Click(object sender, EventArgs e)

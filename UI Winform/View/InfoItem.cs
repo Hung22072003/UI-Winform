@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Winform.BLL;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
 namespace UI_Winform
 {
     public partial class InfoItem : Form
     {
-        public delegate void MyDel(string s1, string s2);
+        private string ID_Item;
+        public delegate void MyDel(string s1, string s2, string s3);
         public MyDel d { get; set; }
-        public InfoItem()
+        public InfoItem(string iD_Item)
         {
+            ID_Item = iD_Item;
             InitializeComponent();
             SetCbbBrand();
+            SetCbbCategory();
+            SetGUI();
         }
 
         private void InfoItem_Load(object sender, EventArgs e)
@@ -43,49 +49,62 @@ namespace UI_Winform
 
         public void SetCbbBrand()
         {
-            Cbb_Brand.Items.Clear();
-            using(DBPM db = new DBPM())
+            ManageBrandBLL mbb = new ManageBrandBLL();
+            Cbb_Brand.Items.AddRange(mbb.getCBBBrand().ToArray());
+        }
+
+        public void SetCbbCategory()
+        {
+            ManageCategoryBLL mcb = new ManageCategoryBLL();
+            Cbb_Category.Items.AddRange(mcb.getCBBCategory().ToArray());
+        }
+
+        public void SetGUI()
+        {
+            if (this.ID_Item != "")
             {
-                var s = db.Brands.Select(p => new {p.BrandName});
-                s.ToList().ForEach(p =>
+                Lb_Quantity.Visible = true;
+                Txb_Quantity.Visible = true;
+                ManageItemBLL mib = new ManageItemBLL();
+                Item item = mib.getItemByID(ID_Item);
+                if (item != null)
                 {
-                    Cbb_Brand.Items.Add(p.BrandName);
-                });
-            };
+                    Txb_ID.Text = item.IDItem;
+                    Txb_Name.Text = item.ItemName;
+                    Txb_Detail.Text = item.ItemDetail;
+                    Txb_InitialPrice.Text = item.InitialPrice.ToString();
+                    Txb_SellPrice.Text = item.SellPrice.ToString();
+                    Txb_Waranty.Text = item.Warranty.ToString();
+                    Cbb_Brand.Text = item.Brand.BrandName;
+                    Cbb_Category.Text = item.Category.NameCategory;
+                    Txb_Quantity.Text = item.Quantity.ToString();
+
+                    if (item.Picture != null)
+                    {
+                        MemoryStream memory = new MemoryStream(item.Picture);
+                        Picture.Image = Image.FromStream(memory);
+                    }
+                }
+            }else
+            {
+                Txb_Quantity.Text = "0";
+            }
+            
         }
 
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            using(DBPM db = new DBPM())
-            {
-                /*Item i = new Item();
-                i.IDItem = Txb_ID.Text;
-                i.ItemName = Txb_Name.Text;
-                i.SellPrice = Convert.ToDecimal(Txb_SellPrice.Text);
-                i.InitialPrice = Convert.ToDecimal(Txb_InitialPrice.Text);
-                i.Discount = Math.Round(Convert.ToDouble((i.SellPrice - i.InitialPrice) / i.InitialPrice), 2);
-                var s = db.Brands.Where(p => p.BrandName == Cbb_Brand.Text).Select(p => new {p.BrandID}).FirstOrDefault();
-                if (s != null)
-                {
-                    i.ID_Brand = s.BrandID;
-                }
-                i.Warranty = Convert.ToInt32(Txb_Waranty.Text);
-                i.Status = Cbb_Status.Text;
-                i.ItemDetail = Txb_Detail.Text;
-                
-
-                db.Items.Add(i);
-                db.SaveChanges();
-               
-                d("", "All");*/
-            };
-
+            ManageItemBLL mib = new ManageItemBLL();
+            decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text) / Convert.ToDecimal(Txb_InitialPrice.Text))), 2);
+            mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text), Convert.ToDecimal(Txb_InitialPrice.Text), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));
+            d("", "", "");
             this.Close();
         }
 
         public void Reset()
         {
-            Txb_ID.Text = Txb_Detail.Text = Txb_InitialPrice.Text = Txb_Name.Text = Txb_SellPrice.Text = Txb_Waranty.Text = Cbb_Brand.Text = Cbb_Status.Text = "";
+            Txb_ID.Text = Txb_Detail.Text = Txb_InitialPrice.Text = Txb_Name.Text = Txb_SellPrice.Text = Txb_Waranty.Text = Cbb_Category.Text = Cbb_Brand.Text = "";
+            Picture.Image = null;
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
@@ -96,6 +115,22 @@ namespace UI_Winform
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        private void Btn_AddPicture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";
+                ofd_OpenFile.ShowDialog();
+                string file = ofd_OpenFile.FileName; //lấy đường dẫn đến file mà mình đã chọn
+                Image image = Image.FromFile(file); //Tạo ra một đối tượng image thông qua đường dẫn
+                Picture.Image = image;
+            } catch (Exception ex)
+            {
+
+            }
+            
         }
     }
 }

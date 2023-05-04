@@ -59,7 +59,7 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 679);
+            this.panelMenu.Size = new System.Drawing.Size(220, 680);
             this.panelMenu.TabIndex = 0;
             // 
             // Btn_Setting
@@ -76,7 +76,7 @@
             this.Btn_Setting.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.Btn_Setting.Size = new System.Drawing.Size(220, 60);
             this.Btn_Setting.TabIndex = 5;
-            this.Btn_Setting.Text = " Cài đặt";
+            this.Btn_Setting.Text = "  Cài đặt";
             this.Btn_Setting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_Setting.UseVisualStyleBackColor = true;
@@ -93,10 +93,10 @@
             this.Btn_TradeHistory.Location = new System.Drawing.Point(0, 260);
             this.Btn_TradeHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_TradeHistory.Name = "Btn_TradeHistory";
-            this.Btn_TradeHistory.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.Btn_TradeHistory.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.Btn_TradeHistory.Size = new System.Drawing.Size(220, 60);
             this.Btn_TradeHistory.TabIndex = 4;
-            this.Btn_TradeHistory.Text = " Xem lịch sử giao dịch";
+            this.Btn_TradeHistory.Text = "   Quản lý chi tiêu";
             this.Btn_TradeHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_TradeHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_TradeHistory.UseVisualStyleBackColor = true;
@@ -263,19 +263,20 @@
             // 
             // panelDesktopPane
             // 
+            this.panelDesktopPane.AutoScroll = true;
             this.panelDesktopPane.BackColor = System.Drawing.SystemColors.Control;
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
             this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(880, 599);
+            this.panelDesktopPane.Size = new System.Drawing.Size(880, 600);
             this.panelDesktopPane.TabIndex = 2;
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 679);
+            this.ClientSize = new System.Drawing.Size(1100, 680);
             this.ControlBox = false;
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitle);

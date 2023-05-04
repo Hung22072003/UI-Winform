@@ -45,16 +45,27 @@
     <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1577.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1577.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -70,10 +81,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ManageAccountBLL.cs" />
+    <Compile Include="BLL\ManageBrandBLL.cs" />
+    <Compile Include="BLL\ManageCategoryBLL.cs" />
+    <Compile Include="BLL\ManageCustomerBLL.cs" />
+    <Compile Include="BLL\ManageExpenditureBLL.cs" />
+    <Compile Include="BLL\ManageItemBLL.cs" />
+    <Compile Include="BLL\ManageOrderBLL.cs" />
+    <Compile Include="BLL\ManageOrderDetailBLL.cs" />
     <Compile Include="BLL\ManageRevenueBLL.cs" />
     <Compile Include="BLL\ManageShiftBLL.cs" />
     <Compile Include="BLL\ManageStaffBLL.cs" />
     <Compile Include="BLL\ManageStaff_ShiftBLL.cs" />
+    <Compile Include="DAL\ManageBrandDAL.cs" />
+    <Compile Include="DAL\ManageCategoryDAL.cs" />
+    <Compile Include="DAL\ManageCustomerDAL.cs" />
+    <Compile Include="DAL\ManageExpenditureDAL.cs" />
+    <Compile Include="DAL\ManageItemDAL.cs" />
+    <Compile Include="DAL\ManageOrderDAL.cs" />
+    <Compile Include="DAL\ManageOrderDetailDAL.cs" />
     <Compile Include="DAL\ManageShiftDAL.cs" />
     <Compile Include="DAL\ManageStaffDAL.cs" />
     <Compile Include="DAL\ManageStaff_ShiftDAL.cs" />
@@ -86,7 +111,11 @@
     <Compile Include="DTO\Category.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\CbbBrand.cs" />
+    <Compile Include="DTO\CbbCategory.cs" />
     <Compile Include="DTO\CheckBoxShift.cs" />
+    <Compile Include="DAL\ManageAccountDAL.cs" />
+    <Compile Include="DTO\ViewOrderDetail.cs" />
     <Compile Include="DTO\Customer.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
@@ -108,32 +137,34 @@
     <Compile Include="DTO\Item.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\ManageAccountDAL.cs" />
-    <Compile Include="DAL\ManageRevenueDAL.cs" />
     <Compile Include="DTO\Order.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\OrderDetail.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\OrderDGV.cs" />
     <Compile Include="DTO\Shift.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Staff.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\OrderDGV.cs" />
+    <Compile Include="DTO\Storage.cs">
+      <DependentUpon>DBPM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="View\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form2.cs">
+    <Compile Include="View\FormImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="View\FormImport.Designer.cs">
+      <DependentUpon>FormImport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormLogin.cs">
       <SubType>Form</SubType>
@@ -141,11 +172,35 @@
     <Compile Include="View\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormOrder.Designer.cs">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormRevenue.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormRevenue.Designer.cs">
       <DependentUpon>FormRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSettingUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSettingUser.Designer.cs">
+      <DependentUpon>FormSettingUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTradeHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTradeHistory.Designer.cs">
+      <DependentUpon>FormTradeHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RevenueTimeForm.cs">
       <SubType>Form</SubType>
@@ -165,11 +220,11 @@
     <Compile Include="View\FormStorage.Designer.cs">
       <DependentUpon>FormStorage.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormTradeHistory.cs">
+    <Compile Include="View\FormExpenditure.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormTradeHistory.Designer.cs">
-      <DependentUpon>FormTradeHistory.cs</DependentUpon>
+    <Compile Include="View\FormExpenditure.Designer.cs">
+      <DependentUpon>FormExpenditure.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InfoItem.cs">
       <SubType>Form</SubType>
@@ -198,17 +253,36 @@
     <Compile Include="View\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewInfoItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewInfoItem.Designer.cs">
+      <DependentUpon>ViewInfoItem.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Report\ReportOrder.rdlc" />
     <EmbeddedResource Include="View\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormImport.resx">
+      <DependentUpon>FormImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormOrder.resx">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormRevenue.resx">
       <DependentUpon>FormRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSettingUser.resx">
+      <DependentUpon>FormSettingUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTradeHistory.resx">
+      <DependentUpon>FormTradeHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RevenueTimeForm.resx">
       <DependentUpon>RevenueTimeForm.cs</DependentUpon>
@@ -219,8 +293,8 @@
     <EmbeddedResource Include="View\FormStorage.resx">
       <DependentUpon>FormStorage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormTradeHistory.resx">
-      <DependentUpon>FormTradeHistory.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormExpenditure.resx">
+      <DependentUpon>FormExpenditure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InfoItem.resx">
       <DependentUpon>InfoItem.cs</DependentUpon>
@@ -236,6 +310,12 @@
     <EmbeddedResource Include="View\RevenueYearForm.resx">
       <DependentUpon>RevenueYearForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewInfoItem.resx">
+      <DependentUpon>ViewInfoItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="DTO\DBPM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBPM.Designer.cs</LastGenOutput>
@@ -244,6 +324,7 @@
       <DependentUpon>DBPM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\UI_Winform.DTO.ViewOrderDetail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,7 +350,6 @@
     <None Include="Resources\lock-open-solid.png" />
     <None Include="Resources\lock-solid.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DTO\DBPM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -281,6 +361,22 @@
       <DependentUpon>DBPM.edmx</DependentUpon>
       <LastGenOutput>DBPM.cs</LastGenOutput>
     </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

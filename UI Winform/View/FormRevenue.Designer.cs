@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.Lb_Title = new System.Windows.Forms.Label();
-            this.Cbb_Choice = new System.Windows.Forms.ComboBox();
             this.Btn_OK = new System.Windows.Forms.Button();
+            this.Cbb_Choice = new System.Windows.Forms.ComboBox();
+            this.Lb_Title = new System.Windows.Forms.Label();
             this.ChildPanel = new System.Windows.Forms.Panel();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -47,15 +47,17 @@
             this.MainPanel.Size = new System.Drawing.Size(1082, 85);
             this.MainPanel.TabIndex = 0;
             // 
-            // Lb_Title
+            // Btn_OK
             // 
-            this.Lb_Title.AutoSize = true;
-            this.Lb_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_Title.Location = new System.Drawing.Point(12, 28);
-            this.Lb_Title.Name = "Lb_Title";
-            this.Lb_Title.Size = new System.Drawing.Size(119, 20);
-            this.Lb_Title.TabIndex = 0;
-            this.Lb_Title.Text = "Thống kê theo:";
+            this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_OK.Location = new System.Drawing.Point(363, 21);
+            this.Btn_OK.Name = "Btn_OK";
+            this.Btn_OK.Size = new System.Drawing.Size(106, 34);
+            this.Btn_OK.TabIndex = 2;
+            this.Btn_OK.Text = "Xác nhận";
+            this.Btn_OK.UseVisualStyleBackColor = true;
+            this.Btn_OK.Click += new System.EventHandler(this.Btn_OK_Click);
             // 
             // Cbb_Choice
             // 
@@ -69,17 +71,15 @@
             this.Cbb_Choice.Size = new System.Drawing.Size(166, 26);
             this.Cbb_Choice.TabIndex = 1;
             // 
-            // Btn_OK
+            // Lb_Title
             // 
-            this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_OK.Location = new System.Drawing.Point(363, 21);
-            this.Btn_OK.Name = "Btn_OK";
-            this.Btn_OK.Size = new System.Drawing.Size(106, 34);
-            this.Btn_OK.TabIndex = 2;
-            this.Btn_OK.Text = "Xác nhận";
-            this.Btn_OK.UseVisualStyleBackColor = true;
-            this.Btn_OK.Click += new System.EventHandler(this.Btn_OK_Click);
+            this.Lb_Title.AutoSize = true;
+            this.Lb_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Title.Location = new System.Drawing.Point(12, 28);
+            this.Lb_Title.Name = "Lb_Title";
+            this.Lb_Title.Size = new System.Drawing.Size(119, 20);
+            this.Lb_Title.TabIndex = 0;
+            this.Lb_Title.Text = "Thống kê theo:";
             // 
             // ChildPanel
             // 
@@ -97,7 +97,7 @@
             this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Name = "FormRevenue";
-            this.Text = "FormRevenue";
+            this.Text = "Doanh thu";
             this.Load += new System.EventHandler(this.FormRevenue_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();

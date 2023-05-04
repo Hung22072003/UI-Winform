@@ -29,17 +29,27 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Btn_View = new System.Windows.Forms.Button();
+            this.Txb_TotalRevenue = new System.Windows.Forms.TextBox();
+            this.Lb_TotalRevenue = new System.Windows.Forms.Label();
+            this.Txb_TotalOrders = new System.Windows.Forms.TextBox();
+            this.Lb_TotalOrders = new System.Windows.Forms.Label();
             this.Btn_Statistic = new System.Windows.Forms.Button();
             this.CbbYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
-            this.PanelChart = new System.Windows.Forms.Panel();
+            this.ChildPanel = new System.Windows.Forms.Panel();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_View);
+            this.MainPanel.Controls.Add(this.Txb_TotalRevenue);
+            this.MainPanel.Controls.Add(this.Lb_TotalRevenue);
+            this.MainPanel.Controls.Add(this.Txb_TotalOrders);
+            this.MainPanel.Controls.Add(this.Lb_TotalOrders);
             this.MainPanel.Controls.Add(this.Btn_Statistic);
             this.MainPanel.Controls.Add(this.CbbYear);
             this.MainPanel.Controls.Add(this.label1);
@@ -48,8 +58,64 @@
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(4);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1076, 367);
+            this.MainPanel.Size = new System.Drawing.Size(1076, 410);
             this.MainPanel.TabIndex = 0;
+            // 
+            // Btn_View
+            // 
+            this.Btn_View.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_View.Location = new System.Drawing.Point(923, 361);
+            this.Btn_View.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_View.Name = "Btn_View";
+            this.Btn_View.Size = new System.Drawing.Size(138, 34);
+            this.Btn_View.TabIndex = 47;
+            this.Btn_View.Text = "Xem chi tiết";
+            this.Btn_View.UseVisualStyleBackColor = true;
+            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
+            // 
+            // Txb_TotalRevenue
+            // 
+            this.Txb_TotalRevenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txb_TotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_TotalRevenue.Location = new System.Drawing.Point(533, 368);
+            this.Txb_TotalRevenue.Name = "Txb_TotalRevenue";
+            this.Txb_TotalRevenue.ReadOnly = true;
+            this.Txb_TotalRevenue.Size = new System.Drawing.Size(177, 20);
+            this.Txb_TotalRevenue.TabIndex = 46;
+            // 
+            // Lb_TotalRevenue
+            // 
+            this.Lb_TotalRevenue.AutoSize = true;
+            this.Lb_TotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_TotalRevenue.Location = new System.Drawing.Point(383, 368);
+            this.Lb_TotalRevenue.Name = "Lb_TotalRevenue";
+            this.Lb_TotalRevenue.Size = new System.Drawing.Size(129, 20);
+            this.Lb_TotalRevenue.TabIndex = 45;
+            this.Lb_TotalRevenue.Text = "Tổng doanh thu:";
+            this.Lb_TotalRevenue.Visible = false;
+            // 
+            // Txb_TotalOrders
+            // 
+            this.Txb_TotalOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txb_TotalOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_TotalOrders.Location = new System.Drawing.Point(150, 371);
+            this.Txb_TotalOrders.Name = "Txb_TotalOrders";
+            this.Txb_TotalOrders.ReadOnly = true;
+            this.Txb_TotalOrders.Size = new System.Drawing.Size(100, 20);
+            this.Txb_TotalOrders.TabIndex = 44;
+            // 
+            // Lb_TotalOrders
+            // 
+            this.Lb_TotalOrders.AutoSize = true;
+            this.Lb_TotalOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_TotalOrders.Location = new System.Drawing.Point(14, 371);
+            this.Lb_TotalOrders.Name = "Lb_TotalOrders";
+            this.Lb_TotalOrders.Size = new System.Drawing.Size(115, 20);
+            this.Lb_TotalOrders.TabIndex = 43;
+            this.Lb_TotalOrders.Text = "Tổng hóa đơn:";
+            this.Lb_TotalOrders.Visible = false;
             // 
             // Btn_Statistic
             // 
@@ -90,6 +156,7 @@
             // 
             // Dgv_Statistic
             // 
+            this.Dgv_Statistic.AllowUserToAddRows = false;
             this.Dgv_Statistic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_Statistic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -103,14 +170,14 @@
             this.Dgv_Statistic.Size = new System.Drawing.Size(1045, 277);
             this.Dgv_Statistic.TabIndex = 39;
             // 
-            // PanelChart
+            // ChildPanel
             // 
-            this.PanelChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelChart.Location = new System.Drawing.Point(0, 367);
-            this.PanelChart.Margin = new System.Windows.Forms.Padding(4);
-            this.PanelChart.Name = "PanelChart";
-            this.PanelChart.Size = new System.Drawing.Size(1076, 434);
-            this.PanelChart.TabIndex = 1;
+            this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ChildPanel.Location = new System.Drawing.Point(0, 410);
+            this.ChildPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.ChildPanel.Name = "ChildPanel";
+            this.ChildPanel.Size = new System.Drawing.Size(1076, 391);
+            this.ChildPanel.TabIndex = 1;
             // 
             // RevenueYearForm
             // 
@@ -118,7 +185,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1076, 801);
-            this.Controls.Add(this.PanelChart);
+            this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RevenueYearForm";
@@ -137,7 +204,12 @@
         private System.Windows.Forms.Button Btn_Statistic;
         private System.Windows.Forms.ComboBox CbbYear;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel PanelChart;
+        private System.Windows.Forms.Panel ChildPanel;
         private System.Windows.Forms.DataGridView Dgv_Statistic;
+        private System.Windows.Forms.TextBox Txb_TotalRevenue;
+        private System.Windows.Forms.Label Lb_TotalRevenue;
+        private System.Windows.Forms.TextBox Txb_TotalOrders;
+        private System.Windows.Forms.Label Lb_TotalOrders;
+        private System.Windows.Forms.Button Btn_View;
     }
 }

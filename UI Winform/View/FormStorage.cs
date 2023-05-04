@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Winform.BLL;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
+using UI_Winform.View;
+
 namespace UI_Winform
 {
     public partial class FormStorage : Form
@@ -33,11 +36,14 @@ namespace UI_Winform
                 new DataColumn {ColumnName = "Thông số kỹ thuật", DataType = typeof(string)}
             });
             SetCbbBrand();
+            SetCbbCategory();
         }
 
         private void FormStorage_Load(object sender, EventArgs e)
         {
             LoadTheme();
+            ManageItemBLL mib = new ManageItemBLL();
+            dataGridView1.DataSource = mib.getAllItemDGV();
         }
         private void LoadTheme()
         {
@@ -70,51 +76,33 @@ namespace UI_Winform
             
         }
 
-        public void ShowDRV(string searchName, string searchBrand)
+        public void ShowDRV(string searchName, string searchBrand, string searchCategory)
         {
-            dt.Rows.Clear();
-            using (DBPM db = new DBPM())
-            {
-                if (searchBrand == "All")
-                {
-                    var s = db.Items.Where(p => p.ItemName.Contains(searchName)).Select(p => new { p.IDItem, p.ItemName, p.Category.NameCategory, p.Quantity, p.SellPrice, p.InitialPrice, p.Discount, p.Warranty, p.Status, p.ItemDetail });
-                    s.ToList().ForEach(p => {
-                        dt.Rows.Add(p.IDItem, p.ItemName, p.NameCategory, p.Quantity, p.SellPrice, p.InitialPrice, p.Discount, p.Warranty, p.Status, p.ItemDetail);
-                    });
-                } else
-                {
-                    var s = db.Items.Where(p => p.ItemName.Contains(searchName) && p.Category.NameCategory == searchBrand).Select(p => new { p.IDItem, p.ItemName, p.Category.NameCategory, p.Quantity, p.SellPrice, p.InitialPrice, p.Discount, p.Warranty, p.Status, p.ItemDetail });
-                    s.ToList().ForEach(p => {
-                        dt.Rows.Add(p.IDItem, p.ItemName, p.NameCategory, p.Quantity, p.SellPrice, p.InitialPrice, p.Discount, p.Warranty, p.Status, p.ItemDetail);
-                    });
-                }
-                dataGridView1.DataSource = dt;
-            }
+            ManageItemBLL mib = new ManageItemBLL();
+            dataGridView1.DataSource = mib.getItemsBySearch(searchName, searchBrand, searchCategory);
         }
 
         public void SetCbbBrand()
         {
-            Cbb_Brand.Items.Clear();
-            Cbb_Brand.Items.Add("All");
-            using (DBPM db = new DBPM())
-            {
-                var s = db.Brands.Select(p => new { p.BrandName });
-                s.ToList().ForEach(p =>
-                {
-                    Cbb_Brand.Items.Add(p.BrandName);
-                });
-            };
+            ManageBrandBLL mbb = new ManageBrandBLL();
+            Cbb_Brand.Items.AddRange(mbb.getCBBBrand().ToArray());
+        }
+
+        public void SetCbbCategory()
+        {
+            ManageCategoryBLL mcb = new ManageCategoryBLL();
+            Cbb_Category.Items.AddRange(mcb.getCBBCategory().ToArray());
         }
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            InfoItem f = new InfoItem();
+            InfoItem f = new InfoItem("") ;
             OpenChildForm(f, sender);
             f.d += new InfoItem.MyDel(ShowDRV);
         }
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            ShowDRV(Txb_Search.Text, Cbb_Brand.Text);
+            ShowDRV(Txb_Search.Text, Cbb_Brand.Text, Cbb_Category.Text);
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)
@@ -123,15 +111,52 @@ namespace UI_Winform
             {
                 foreach(DataGridViewRow i in dataGridView1.SelectedRows)
                 {
-                    string Id = i.Cells[0].Value.ToString();
-                    using (DBPM db = new DBPM()) {
-                        var s = db.Items.Where(p => p.IDItem == Id).Select(p => p).FirstOrDefault();
-                        db.Items.Remove(s);
-                        db.SaveChanges();
-                    }
+                   ManageItemBLL mib = new ManageItemBLL();
+                    mib.RemoveItem(i.Cells[0].Value.ToString());
                 }
             }
-            ShowDRV(Txb_Search.Text, Cbb_Brand.Text);
+            ShowDRV(Txb_Search.Text, Cbb_Brand.Text, Cbb_Category.Text);
+        }
+
+        private void Btn_Update_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                InfoItem f = new InfoItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                OpenChildForm(f, sender);
+                f.d += new InfoItem.MyDel(ShowDRV);
+            }
+        }
+
+        private void Btn_Import_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                FormImport f = new FormImport(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                OpenChildForm(f, sender);
+            }
+        }
+
+        private void Btn_Sort_Click(object sender, EventArgs e)
+        {
+            List<string> li = new List<string>();
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value != null)
+                {
+                    li.Add(dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value.ToString());
+                }
+            }
+
+            ManageItemBLL mib = new ManageItemBLL();
+            dataGridView1.DataSource = mib.SortBy(li, Cbb_Sort.Text, Cbb_Type.Text);
+        }
+
+        private void Btn_View_Click(object sender, EventArgs e)
+        {
+            ViewInfoItem f = new ViewInfoItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            f.ShowDialog();
         }
     }
 }

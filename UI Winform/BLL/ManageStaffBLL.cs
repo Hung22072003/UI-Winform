@@ -33,8 +33,6 @@ namespace UI_Winform.BLL
 
             ManageStaffDAL mnd = new ManageStaffDAL();
             mnd.DeleteStaffByIDDAL(id);
-
-
         }
 
         public dynamic SortStaffBLL(String KeyWord)

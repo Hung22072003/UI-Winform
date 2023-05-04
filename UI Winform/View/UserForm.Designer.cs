@@ -29,11 +29,321 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
+            this.panelTitle = new System.Windows.Forms.Panel();
+            this.Btn_Maximize = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.Lb_Title = new System.Windows.Forms.Label();
+            this.Btn_Close = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.Btn_Minimize = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.Btn_Setting = new System.Windows.Forms.Button();
+            this.Btn_TradeHistory = new System.Windows.Forms.Button();
+            this.Btn_Storage = new System.Windows.Forms.Button();
+            this.Btn_Order = new System.Windows.Forms.Button();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.PanelTime = new System.Windows.Forms.Panel();
+            this.Lb_Date = new System.Windows.Forms.Label();
+            this.Lb_Time = new System.Windows.Forms.Label();
+            this.Lb_Name = new System.Windows.Forms.Label();
+            this.panelTitle.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            this.panelDesktopPane.SuspendLayout();
+            this.PanelTime.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelTitle.Controls.Add(this.Btn_Maximize);
+            this.panelTitle.Controls.Add(this.Lb_Title);
+            this.panelTitle.Controls.Add(this.Btn_Close);
+            this.panelTitle.Controls.Add(this.Btn_Minimize);
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.Location = new System.Drawing.Point(220, 0);
+            this.panelTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(862, 80);
+            this.panelTitle.TabIndex = 4;
+            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
+            // 
+            // Btn_Maximize
+            // 
+            this.Btn_Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Maximize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Maximize.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Maximize.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_Maximize.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_Maximize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(190)))), ((int)(((byte)(5)))));
+            this.Btn_Maximize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_Maximize.ForeColor = System.Drawing.Color.White;
+            this.Btn_Maximize.Location = new System.Drawing.Point(803, 12);
+            this.Btn_Maximize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Maximize.Name = "Btn_Maximize";
+            this.Btn_Maximize.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.Btn_Maximize.Size = new System.Drawing.Size(20, 20);
+            this.Btn_Maximize.TabIndex = 2;
+            this.Btn_Maximize.Text = "guna2CircleButton3";
+            this.Btn_Maximize.Click += new System.EventHandler(this.Btn_Maximize_Click);
+            // 
+            // Lb_Title
+            // 
+            this.Lb_Title.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Lb_Title.AutoSize = true;
+            this.Lb_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.Lb_Title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Lb_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Title.Location = new System.Drawing.Point(364, 30);
+            this.Lb_Title.Name = "Lb_Title";
+            this.Lb_Title.Size = new System.Drawing.Size(63, 22);
+            this.Lb_Title.TabIndex = 0;
+            this.Lb_Title.Text = "HOME";
+            this.Lb_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Btn_Close
+            // 
+            this.Btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_Close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(96)))), ((int)(((byte)(82)))));
+            this.Btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_Close.ForeColor = System.Drawing.Color.White;
+            this.Btn_Close.Location = new System.Drawing.Point(830, 12);
+            this.Btn_Close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Close.Name = "Btn_Close";
+            this.Btn_Close.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.Btn_Close.Size = new System.Drawing.Size(20, 20);
+            this.Btn_Close.TabIndex = 1;
+            this.Btn_Close.Text = "guna2CircleButton2";
+            this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
+            // 
+            // Btn_Minimize
+            // 
+            this.Btn_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Minimize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Minimize.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_Minimize.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_Minimize.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_Minimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(204)))), ((int)(((byte)(55)))));
+            this.Btn_Minimize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_Minimize.ForeColor = System.Drawing.Color.White;
+            this.Btn_Minimize.Location = new System.Drawing.Point(778, 12);
+            this.Btn_Minimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Minimize.Name = "Btn_Minimize";
+            this.Btn_Minimize.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.Btn_Minimize.Size = new System.Drawing.Size(20, 20);
+            this.Btn_Minimize.TabIndex = 0;
+            this.Btn_Minimize.Text = "guna2CircleButton1";
+            this.Btn_Minimize.Click += new System.EventHandler(this.Btn_Minimize_Click);
+            // 
+            // panelMenu
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelMenu.Controls.Add(this.Btn_Setting);
+            this.panelMenu.Controls.Add(this.Btn_TradeHistory);
+            this.panelMenu.Controls.Add(this.Btn_Storage);
+            this.panelMenu.Controls.Add(this.Btn_Order);
+            this.panelMenu.Controls.Add(this.panelLogo);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(220, 633);
+            this.panelMenu.TabIndex = 3;
+            // 
+            // Btn_Setting
+            // 
+            this.Btn_Setting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Setting.FlatAppearance.BorderSize = 0;
+            this.Btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Setting.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Setting.Image")));
+            this.Btn_Setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Setting.Location = new System.Drawing.Point(0, 260);
+            this.Btn_Setting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Setting.Name = "Btn_Setting";
+            this.Btn_Setting.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.Btn_Setting.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Setting.TabIndex = 5;
+            this.Btn_Setting.Text = " Cài đặt";
+            this.Btn_Setting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Setting.UseVisualStyleBackColor = true;
+            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
+            // 
+            // Btn_TradeHistory
+            // 
+            this.Btn_TradeHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_TradeHistory.FlatAppearance.BorderSize = 0;
+            this.Btn_TradeHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TradeHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_TradeHistory.Image = ((System.Drawing.Image)(resources.GetObject("Btn_TradeHistory.Image")));
+            this.Btn_TradeHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_TradeHistory.Location = new System.Drawing.Point(0, 200);
+            this.Btn_TradeHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_TradeHistory.Name = "Btn_TradeHistory";
+            this.Btn_TradeHistory.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.Btn_TradeHistory.Size = new System.Drawing.Size(220, 60);
+            this.Btn_TradeHistory.TabIndex = 3;
+            this.Btn_TradeHistory.Text = " Xem lịch sử giao dịch";
+            this.Btn_TradeHistory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_TradeHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_TradeHistory.UseVisualStyleBackColor = true;
+            this.Btn_TradeHistory.Click += new System.EventHandler(this.Btn_TradeHistory_Click);
+            // 
+            // Btn_Storage
+            // 
+            this.Btn_Storage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Storage.FlatAppearance.BorderSize = 0;
+            this.Btn_Storage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Storage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Storage.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Storage.Image")));
+            this.Btn_Storage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Storage.Location = new System.Drawing.Point(0, 140);
+            this.Btn_Storage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Storage.Name = "Btn_Storage";
+            this.Btn_Storage.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.Btn_Storage.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Storage.TabIndex = 2;
+            this.Btn_Storage.Text = " Kho hàng";
+            this.Btn_Storage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Storage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Storage.UseVisualStyleBackColor = true;
+            this.Btn_Storage.Click += new System.EventHandler(this.Btn_Storage_Click);
+            // 
+            // Btn_Order
+            // 
+            this.Btn_Order.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Order.FlatAppearance.BorderSize = 0;
+            this.Btn_Order.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Order.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Order.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Order.Image")));
+            this.Btn_Order.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Order.Location = new System.Drawing.Point(0, 80);
+            this.Btn_Order.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Order.Name = "Btn_Order";
+            this.Btn_Order.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.Btn_Order.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Order.TabIndex = 0;
+            this.Btn_Order.Text = " Tạo hóa đơn";
+            this.Btn_Order.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Order.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Order.UseVisualStyleBackColor = true;
+            this.Btn_Order.Click += new System.EventHandler(this.Btn_Order_Click);
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLogo.BackgroundImage")));
+            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(220, 80);
+            this.panelLogo.TabIndex = 1;
+            this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
+            // 
+            // Timer
+            // 
+            this.Timer.Enabled = true;
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+            // 
+            // panelDesktopPane
+            // 
+            this.panelDesktopPane.Controls.Add(this.PanelTime);
+            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
+            this.panelDesktopPane.Name = "panelDesktopPane";
+            this.panelDesktopPane.Size = new System.Drawing.Size(862, 553);
+            this.panelDesktopPane.TabIndex = 5;
+            // 
+            // PanelTime
+            // 
+            this.PanelTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelTime.Controls.Add(this.Lb_Date);
+            this.PanelTime.Controls.Add(this.Lb_Time);
+            this.PanelTime.Controls.Add(this.Lb_Name);
+            this.PanelTime.Location = new System.Drawing.Point(280, 194);
+            this.PanelTime.Name = "PanelTime";
+            this.PanelTime.Size = new System.Drawing.Size(290, 135);
+            this.PanelTime.TabIndex = 82;
+            // 
+            // Lb_Date
+            // 
+            this.Lb_Date.AutoSize = true;
+            this.Lb_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Date.Location = new System.Drawing.Point(14, 90);
+            this.Lb_Date.Name = "Lb_Date";
+            this.Lb_Date.Size = new System.Drawing.Size(52, 20);
+            this.Lb_Date.TabIndex = 2;
+            this.Lb_Date.Text = "Ngày:";
+            // 
+            // Lb_Time
+            // 
+            this.Lb_Time.AutoSize = true;
+            this.Lb_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Time.Location = new System.Drawing.Point(14, 52);
+            this.Lb_Time.Name = "Lb_Time";
+            this.Lb_Time.Size = new System.Drawing.Size(40, 20);
+            this.Lb_Time.TabIndex = 1;
+            this.Lb_Time.Text = "Giờ:";
+            // 
+            // Lb_Name
+            // 
+            this.Lb_Name.AutoSize = true;
+            this.Lb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lb_Name.Location = new System.Drawing.Point(14, 16);
+            this.Lb_Name.Name = "Lb_Name";
+            this.Lb_Name.Size = new System.Drawing.Size(123, 20);
+            this.Lb_Name.TabIndex = 0;
+            this.Lb_Name.Text = "Tên nhân viên: ";
+            // 
+            // UserForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1082, 633);
+            this.ControlBox = false;
+            this.Controls.Add(this.panelDesktopPane);
+            this.Controls.Add(this.panelTitle);
+            this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "UserForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserForm";
+            this.panelTitle.ResumeLayout(false);
+            this.panelTitle.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            this.panelDesktopPane.ResumeLayout(false);
+            this.PanelTime.ResumeLayout(false);
+            this.PanelTime.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panelLogo;
+        private System.Windows.Forms.Panel panelTitle;
+        private Guna.UI2.WinForms.Guna2CircleButton Btn_Maximize;
+        private System.Windows.Forms.Label Lb_Title;
+        private Guna.UI2.WinForms.Guna2CircleButton Btn_Close;
+        private Guna.UI2.WinForms.Guna2CircleButton Btn_Minimize;
+        private System.Windows.Forms.Button Btn_Storage;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button Btn_Setting;
+        private System.Windows.Forms.Button Btn_TradeHistory;
+        private System.Windows.Forms.Button Btn_Order;
+        private System.Windows.Forms.Timer Timer;
+        private System.Windows.Forms.Panel panelDesktopPane;
+        private System.Windows.Forms.Panel PanelTime;
+        private System.Windows.Forms.Label Lb_Date;
+        private System.Windows.Forms.Label Lb_Time;
+        private System.Windows.Forms.Label Lb_Name;
     }
 }

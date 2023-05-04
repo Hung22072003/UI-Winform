@@ -22,12 +22,24 @@ namespace UI_Winform.BLL
             return -1;
         }
 
+        public string getIDUserByAccount(string UserName, string PassWord)
+        {
+            ManageAccountDAL mad = new ManageAccountDAL();
+            foreach (Account i in mad.getAllAccounts())
+            {
+                if (i.UserName == UserName && i.PassWord == PassWord)
+                {
+                    return i.ID_Staff;
+                }
+            }
+            return null;
+        }
+
         public Account GetAccountByID(string id)
         {
 
             ManageAccountDAL mad = new ManageAccountDAL();
             return mad.GetAccountByIDDAL(id);
-
         }
 
         public void DeleteAccountById_StaffBLL(string id)

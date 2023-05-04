@@ -34,5 +34,6 @@ namespace UI_Winform.DTO
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Storage> Storages { get; set; }
     }
 }

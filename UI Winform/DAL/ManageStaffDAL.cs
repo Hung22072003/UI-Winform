@@ -76,17 +76,7 @@ namespace UI_Winform.DAL
 
             using (DBPM db = new DBPM())
             {
-                var s = db.Staffs.Where(p => p.ID_Staff == id).Select(p => new
-                {
-                    p.ID_Staff,
-                    p.Name,
-                    p.PhoneNumber,
-                    p.DateOfBirth,
-                    p.Address,
-                    p.Salary,
-                    p.Email,
-                    p.Picture
-                }).FirstOrDefault();
+                var s = db.Staffs.Where(p => p.ID_Staff == id).Select(p => p).FirstOrDefault();
                 return s;
             }
         }
@@ -104,9 +94,6 @@ namespace UI_Winform.DAL
                 s.Salary = temp.Salary;
                 s.Email = temp.Email;
                 s.Picture = temp.Picture;
-
-
-
                 db.SaveChanges();
 
             }
@@ -120,7 +107,6 @@ namespace UI_Winform.DAL
             {
                 try
                 {
-
                     db.Staffs.Add(temp);
                     db.SaveChanges();
                 }
