@@ -63,6 +63,8 @@ namespace UI_Winform
         {
             if (this.ID_Item != "")
             {
+                Txb_ID.Enabled = false;
+                Txb_ID.TextChanged -= Txb_ID_TextChanged;
                 Lb_Quantity.Visible = true;
                 Txb_Quantity.Visible = true;
                 ManageItemBLL mib = new ManageItemBLL();
@@ -92,13 +94,39 @@ namespace UI_Winform
             
         }
 
+        public bool CheckCbbCategory(string text)
+        {
+            for (int i = 0; i < Cbb_Category.Items.Count; i++)
+            {
+                if (Cbb_Category.Items[i].ToString() == text) return true;
+            }
+            return false;
+        }
+
+        public bool CheckCbbBrand(string text)
+        {
+            for (int i = 0; i < Cbb_Brand.Items.Count; i++)
+            {
+                if (Cbb_Brand.Items[i].ToString() == text) return true;
+            }
+            return false;
+        }
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            ManageItemBLL mib = new ManageItemBLL();
-            decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text) / Convert.ToDecimal(Txb_InitialPrice.Text))), 2);
-            mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text), Convert.ToDecimal(Txb_InitialPrice.Text), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));
-            d("", "", "");
-            this.Close();
+            if (Txb_ID.Text != "" && Txb_Name.Text != "" && Txb_Detail.Text != "" && Txb_InitialPrice.Text != "" 
+                && Txb_Quantity.Text != "" && Txb_SellPrice.Text != "" && Txb_Waranty.Text != "" 
+                && CheckCbbBrand(Cbb_Brand.Text) && CheckCbbCategory(Cbb_Category.Text))
+            {
+                ManageItemBLL mib = new ManageItemBLL();
+                decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text) / Convert.ToDecimal(Txb_InitialPrice.Text))), 2);
+                mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text), Convert.ToDecimal(Txb_InitialPrice.Text), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));
+                d("", "", "");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+            }
         }
 
         public void Reset()
@@ -130,7 +158,11 @@ namespace UI_Winform
             {
 
             }
-            
+        }
+
+        private void Txb_ID_TextChanged(object sender, EventArgs e)
+        {
+            d(Txb_ID.Text, "", "");
         }
     }
 }

@@ -30,15 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txb_IDCustomer = new System.Windows.Forms.TextBox();
             this.PanelTime = new System.Windows.Forms.Panel();
             this.Lb_Date = new System.Windows.Forms.Label();
             this.Lb_Time = new System.Windows.Forms.Label();
             this.Lb_Name = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.rbtn_NewCustomer = new System.Windows.Forms.RadioButton();
-            this.rbtn_OldCustomer = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbb_IDCus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtp_Birth = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,7 +49,6 @@
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Print = new System.Windows.Forms.Button();
             this.btn_CancelOrder = new System.Windows.Forms.Button();
             this.btn_SaveOrder = new System.Windows.Forms.Button();
@@ -88,12 +83,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txb_IDCustomer);
             this.groupBox1.Controls.Add(this.PanelTime);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.rbtn_NewCustomer);
-            this.groupBox1.Controls.Add(this.rbtn_OldCustomer);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.cbb_IDCus);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtp_Birth);
             this.groupBox1.Controls.Add(this.label8);
@@ -107,10 +98,20 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1327, 227);
+            this.groupBox1.Size = new System.Drawing.Size(1327, 188);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
+            // 
+            // txb_IDCustomer
+            // 
+            this.txb_IDCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_IDCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_IDCustomer.Location = new System.Drawing.Point(592, 33);
+            this.txb_IDCustomer.Name = "txb_IDCustomer";
+            this.txb_IDCustomer.ReadOnly = true;
+            this.txb_IDCustomer.Size = new System.Drawing.Size(215, 27);
+            this.txb_IDCustomer.TabIndex = 98;
             // 
             // PanelTime
             // 
@@ -119,7 +120,7 @@
             this.PanelTime.Controls.Add(this.Lb_Date);
             this.PanelTime.Controls.Add(this.Lb_Time);
             this.PanelTime.Controls.Add(this.Lb_Name);
-            this.PanelTime.Location = new System.Drawing.Point(1029, 11);
+            this.PanelTime.Location = new System.Drawing.Point(1029, 12);
             this.PanelTime.Name = "PanelTime";
             this.PanelTime.Size = new System.Drawing.Size(292, 135);
             this.PanelTime.TabIndex = 97;
@@ -153,59 +154,6 @@
             this.Lb_Name.Size = new System.Drawing.Size(123, 20);
             this.Lb_Name.TabIndex = 0;
             this.Lb_Name.Text = "Tên nhân viên: ";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(7, 191);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(136, 20);
-            this.label18.TabIndex = 96;
-            this.label18.Text = "Loại khách hàng:";
-            // 
-            // rbtn_NewCustomer
-            // 
-            this.rbtn_NewCustomer.AutoSize = true;
-            this.rbtn_NewCustomer.Location = new System.Drawing.Point(254, 192);
-            this.rbtn_NewCustomer.Name = "rbtn_NewCustomer";
-            this.rbtn_NewCustomer.Size = new System.Drawing.Size(50, 20);
-            this.rbtn_NewCustomer.TabIndex = 95;
-            this.rbtn_NewCustomer.TabStop = true;
-            this.rbtn_NewCustomer.Text = "Mới";
-            this.rbtn_NewCustomer.UseVisualStyleBackColor = true;
-            this.rbtn_NewCustomer.CheckedChanged += new System.EventHandler(this.rbtn_OldCustomer_CheckedChanged);
-            // 
-            // rbtn_OldCustomer
-            // 
-            this.rbtn_OldCustomer.AutoSize = true;
-            this.rbtn_OldCustomer.Location = new System.Drawing.Point(171, 192);
-            this.rbtn_OldCustomer.Name = "rbtn_OldCustomer";
-            this.rbtn_OldCustomer.Size = new System.Drawing.Size(44, 20);
-            this.rbtn_OldCustomer.TabIndex = 94;
-            this.rbtn_OldCustomer.TabStop = true;
-            this.rbtn_OldCustomer.Text = "Cũ";
-            this.rbtn_OldCustomer.UseVisualStyleBackColor = true;
-            this.rbtn_OldCustomer.CheckedChanged += new System.EventHandler(this.rbtn_OldCustomer_CheckedChanged);
-            // 
-            // label11
-            // 
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(830, 38);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(121, 134);
-            this.label11.TabIndex = 93;
-            this.label11.Text = "*Note: Với khách hàng mới thì không cần nhập mã khách hàng. Khách hàng cũ thì lựa" +
-    " chọn mã khách hàng trong hộp Combobox";
-            // 
-            // cbb_IDCus
-            // 
-            this.cbb_IDCus.FormattingEnabled = true;
-            this.cbb_IDCus.Location = new System.Drawing.Point(592, 38);
-            this.cbb_IDCus.Name = "cbb_IDCus";
-            this.cbb_IDCus.Size = new System.Drawing.Size(215, 24);
-            this.cbb_IDCus.TabIndex = 60;
-            this.cbb_IDCus.SelectedIndexChanged += new System.EventHandler(this.cbb_IDCus_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -252,6 +200,7 @@
             this.txb_Phone.Name = "txb_Phone";
             this.txb_Phone.Size = new System.Drawing.Size(215, 27);
             this.txb_Phone.TabIndex = 50;
+            this.txb_Phone.TextChanged += new System.EventHandler(this.txb_Phone_TextChanged);
             // 
             // label4
             // 
@@ -298,7 +247,6 @@
             this.txb_IDOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_IDOrder.Location = new System.Drawing.Point(165, 36);
             this.txb_IDOrder.Name = "txb_IDOrder";
-            this.txb_IDOrder.ReadOnly = true;
             this.txb_IDOrder.Size = new System.Drawing.Size(215, 27);
             this.txb_IDOrder.TabIndex = 39;
             // 
@@ -308,9 +256,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 20);
+            this.label2.Size = new System.Drawing.Size(101, 20);
             this.label2.TabIndex = 38;
-            this.label2.Text = "Mã Hóa đơn:";
+            this.label2.Text = "Mã hóa đơn:";
             // 
             // Timer
             // 
@@ -321,16 +269,15 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.btn_Close);
             this.groupBox2.Controls.Add(this.btn_Print);
             this.groupBox2.Controls.Add(this.btn_CancelOrder);
             this.groupBox2.Controls.Add(this.btn_SaveOrder);
             this.groupBox2.Controls.Add(this.txb_Total);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.dgv_order);
-            this.groupBox2.Location = new System.Drawing.Point(9, 588);
+            this.groupBox2.Location = new System.Drawing.Point(10, 580);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1330, 265);
+            this.groupBox2.Size = new System.Drawing.Size(1330, 310);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin hóa đơn";
@@ -345,23 +292,13 @@
             this.label19.TabIndex = 93;
             this.label19.Text = "*Note: Nhấn đúp chuột vào một hàng để xóa sản phẩm khỏi hóa đơn";
             // 
-            // btn_Close
-            // 
-            this.btn_Close.AutoSize = true;
-            this.btn_Close.Location = new System.Drawing.Point(617, 219);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(93, 26);
-            this.btn_Close.TabIndex = 78;
-            this.btn_Close.Text = "Đóng";
-            this.btn_Close.UseVisualStyleBackColor = true;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            // 
             // btn_Print
             // 
             this.btn_Print.AutoSize = true;
-            this.btn_Print.Location = new System.Drawing.Point(489, 219);
+            this.btn_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Print.Location = new System.Drawing.Point(621, 219);
             this.btn_Print.Name = "btn_Print";
-            this.btn_Print.Size = new System.Drawing.Size(93, 26);
+            this.btn_Print.Size = new System.Drawing.Size(106, 31);
             this.btn_Print.TabIndex = 77;
             this.btn_Print.Text = "In hóa đơn";
             this.btn_Print.UseVisualStyleBackColor = true;
@@ -370,9 +307,10 @@
             // btn_CancelOrder
             // 
             this.btn_CancelOrder.AutoSize = true;
-            this.btn_CancelOrder.Location = new System.Drawing.Point(374, 219);
+            this.btn_CancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CancelOrder.Location = new System.Drawing.Point(435, 219);
             this.btn_CancelOrder.Name = "btn_CancelOrder";
-            this.btn_CancelOrder.Size = new System.Drawing.Size(93, 26);
+            this.btn_CancelOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_CancelOrder.TabIndex = 76;
             this.btn_CancelOrder.Text = "Hủy hóa đơn";
             this.btn_CancelOrder.UseVisualStyleBackColor = true;
@@ -381,9 +319,10 @@
             // btn_SaveOrder
             // 
             this.btn_SaveOrder.AutoSize = true;
+            this.btn_SaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SaveOrder.Location = new System.Drawing.Point(255, 219);
             this.btn_SaveOrder.Name = "btn_SaveOrder";
-            this.btn_SaveOrder.Size = new System.Drawing.Size(90, 26);
+            this.btn_SaveOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_SaveOrder.TabIndex = 75;
             this.btn_SaveOrder.Text = "Lưu hóa đơn";
             this.btn_SaveOrder.UseVisualStyleBackColor = true;
@@ -425,9 +364,10 @@
             // btn_AddItem
             // 
             this.btn_AddItem.AutoSize = true;
-            this.btn_AddItem.Location = new System.Drawing.Point(106, 305);
+            this.btn_AddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddItem.Location = new System.Drawing.Point(96, 316);
             this.btn_AddItem.Name = "btn_AddItem";
-            this.btn_AddItem.Size = new System.Drawing.Size(192, 26);
+            this.btn_AddItem.Size = new System.Drawing.Size(213, 31);
             this.btn_AddItem.TabIndex = 74;
             this.btn_AddItem.Text = "Thêm sản phẩm vào hóa đơn";
             this.btn_AddItem.UseVisualStyleBackColor = true;
@@ -452,9 +392,9 @@
             this.groupBox3.Controls.Add(this.cbb_Brand);
             this.groupBox3.Controls.Add(this.cbb_Category);
             this.groupBox3.Controls.Add(this.dgv_item);
-            this.groupBox3.Location = new System.Drawing.Point(10, 245);
+            this.groupBox3.Location = new System.Drawing.Point(11, 206);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1329, 337);
+            this.groupBox3.Size = new System.Drawing.Size(1329, 368);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin sản phẩm";
@@ -463,7 +403,7 @@
             // 
             this.lb_Note.AutoSize = true;
             this.lb_Note.ForeColor = System.Drawing.Color.Red;
-            this.lb_Note.Location = new System.Drawing.Point(384, 121);
+            this.lb_Note.Location = new System.Drawing.Point(401, 121);
             this.lb_Note.Name = "lb_Note";
             this.lb_Note.Size = new System.Drawing.Size(330, 16);
             this.lb_Note.TabIndex = 92;
@@ -497,7 +437,7 @@
             this.txb_NameItem.Name = "txb_NameItem";
             this.txb_NameItem.Size = new System.Drawing.Size(215, 27);
             this.txb_NameItem.TabIndex = 89;
-            this.txb_NameItem.TextChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
+            this.txb_NameItem.TextChanged += new System.EventHandler(this.cbb_Category_TextChanged);
             // 
             // label9
             // 
@@ -596,7 +536,7 @@
             this.cbb_Brand.Name = "cbb_Brand";
             this.cbb_Brand.Size = new System.Drawing.Size(215, 24);
             this.cbb_Brand.TabIndex = 80;
-            this.cbb_Brand.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
+            this.cbb_Brand.TextChanged += new System.EventHandler(this.cbb_Category_TextChanged);
             // 
             // cbb_Category
             // 
@@ -605,7 +545,7 @@
             this.cbb_Category.Name = "cbb_Category";
             this.cbb_Category.Size = new System.Drawing.Size(215, 24);
             this.cbb_Category.TabIndex = 79;
-            this.cbb_Category.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
+            this.cbb_Category.TextChanged += new System.EventHandler(this.cbb_Category_TextChanged);
             // 
             // dgv_item
             // 
@@ -625,7 +565,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1393, 802);
+            this.ClientSize = new System.Drawing.Size(1393, 825);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -668,7 +608,6 @@
         private System.Windows.Forms.Button btn_Print;
         private System.Windows.Forms.Button btn_CancelOrder;
         private System.Windows.Forms.Button btn_SaveOrder;
-        private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
@@ -686,16 +625,12 @@
         private System.Windows.Forms.TextBox txb_Price;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lb_Note;
-        private System.Windows.Forms.ComboBox cbb_IDCus;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.RadioButton rbtn_NewCustomer;
-        private System.Windows.Forms.RadioButton rbtn_OldCustomer;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel PanelTime;
         private System.Windows.Forms.Label Lb_Date;
         private System.Windows.Forms.Label Lb_Time;
         private System.Windows.Forms.Label Lb_Name;
+        private System.Windows.Forms.TextBox txb_IDCustomer;
     }
 }

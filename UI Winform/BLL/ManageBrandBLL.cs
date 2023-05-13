@@ -19,9 +19,7 @@ namespace UI_Winform.BLL
         public List<CbbBrand> getCBBBrand()
         {
             List<CbbBrand> list = new List<CbbBrand>();
-
-            ManageBrandDAL mbd = new ManageBrandDAL();
-            mbd.getAllBrands().ForEach(p =>
+            getAllBrands().ForEach(p =>
             {
                 list.Add(new CbbBrand
                 {

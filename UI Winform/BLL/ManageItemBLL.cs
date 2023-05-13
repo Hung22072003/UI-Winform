@@ -168,7 +168,7 @@ namespace UI_Winform.BLL
             else if (s1 == "Số lượng" && s2 == "Giảm dần")
             {
                 SortDescending(ref data, Item.CompareQuantity);
-            } 
+            }
             else if (s1 == "Mã sản phẩm" && s2 == "Tăng dần")
             {
                 SortAscending(ref data, Item.CompareID);

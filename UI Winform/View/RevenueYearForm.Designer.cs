@@ -134,10 +134,6 @@
             // 
             this.CbbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbbYear.FormattingEnabled = true;
-            this.CbbYear.Items.AddRange(new object[] {
-            "2023",
-            "2022",
-            "2021"});
             this.CbbYear.Location = new System.Drawing.Point(81, 21);
             this.CbbYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbbYear.Name = "CbbYear";

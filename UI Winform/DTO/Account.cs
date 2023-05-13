@@ -16,10 +16,11 @@ namespace UI_Winform.DTO
     {
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        public int TypeAccount { get; set; }
         public string DisplayName { get; set; }
         public string ID_Staff { get; set; }
+        public Nullable<int> ID_Role { get; set; }
     
+        public virtual Role Role { get; set; }
         public virtual Staff Staff { get; set; }
     }
 }

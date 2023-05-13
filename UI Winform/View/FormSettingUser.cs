@@ -83,6 +83,7 @@ namespace UI_Winform.View
 
         private void SetGUI()
         {
+            ManageRoleBLL mrb = new ManageRoleBLL();
             ManageStaffBLL msb = new ManageStaffBLL();
             Staff s = msb.GetStaffByID(ID_User);
             ManageAccountBLL mab = new ManageAccountBLL();
@@ -101,13 +102,7 @@ namespace UI_Winform.View
                 txb_Account.Text = a.UserName;
                 txb_PassWord.Text = a.PassWord;
                 dtp_DateOfBirth.Text = Convert.ToString(s.DateOfBirth);
-                if (a.TypeAccount == 1)
-                {
-                    rbtn_Staff.Checked= true;
-                }else if (a.TypeAccount == 0)
-                {
-                    rbtn_Manager.Checked = true;
-                }
+                txb_TypeAccount.Text = mrb.getNameRoleByIDRole(a.ID_Role);
 
                 if (s.Picture != null)
                 {
@@ -144,12 +139,11 @@ namespace UI_Winform.View
 
 
             mssb.AddStaffByID_StaffBLL(ID_User, li);
+            
+            ManageRoleBLL mrb = new ManageRoleBLL();
+            mab.UpdateAccountBLL(txb_IDStaff.Text, txb_Account.Text, txb_PassWord.Text, mrb.getIDRoleByNameRole(txb_TypeAccount.Text));
 
-            mab.UpdateAccountBLL(this.ID_User, txb_Account.Text, txb_PassWord.Text, rbtn_Staff.Checked);
-        }
-
-        private void btn_Exit_Click(object sender, EventArgs e)
-        {
+            MessageBox.Show("Cập nhật thành công!");
         }
 
         private void btn_AddImage_Click(object sender, EventArgs e)
@@ -166,6 +160,11 @@ namespace UI_Winform.View
 
             }
             
+        }
+
+        private void txb_PhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            txb_Account.Text = txb_PhoneNumber.Text;
         }
     }
 }

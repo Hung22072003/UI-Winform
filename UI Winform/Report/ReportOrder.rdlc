@@ -53,19 +53,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.20333in</Width>
+                  <Width>1.56409in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.43668in</Width>
+                  <Width>2.79744in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.20333in</Width>
+                  <Width>1.56409in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.20333in</Width>
+                  <Width>1.56409in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.0422in</Width>
+                  <Width>1.40296in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -265,7 +265,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ID_Item</rd:DefaultName>
@@ -325,7 +327,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Quantity</rd:DefaultName>
@@ -355,7 +359,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>UnitPrice</rd:DefaultName>
@@ -385,7 +391,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>AmountPrice</rd:DefaultName>
@@ -426,10 +434,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>tbReport</DataSetName>
-            <Top>2.57333in</Top>
-            <Left>0.9889in</Left>
+            <Top>3.6371in</Top>
+            <Left>0.21208in</Left>
             <Height>0.65in</Height>
-            <Width>7.08887in</Width>
+            <Width>8.89267in</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -445,7 +453,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Tổng tiền:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -454,8 +464,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>3.60166in</Top>
-            <Left>1.22223in</Left>
+            <Top>4.46043in</Top>
+            <Left>7.09083in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>1</ZIndex>
@@ -490,8 +500,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>3.60166in</Top>
-            <Left>2.23612in</Left>
+            <Top>4.46043in</Top>
+            <Left>8.10472in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>2</ZIndex>
@@ -512,37 +522,15 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ngày giờ tạo hóa đơn:</Value>
+                    <Value>Ngày tạo hóa đơn:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
                     <Style />
                   </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>2.25389in</Top>
-            <Left>4.59557in</Left>
-            <Height>0.25in</Height>
-            <Width>1.60583in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox29">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
                   <TextRun>
                     <Value>=Parameters!pDate.Value</Value>
                     <Style />
@@ -554,11 +542,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>2.25389in</Top>
-            <Left>6.2014in</Left>
+            <Top>1.98293in</Top>
+            <Left>0.20929in</Left>
             <Height>0.25in</Height>
-            <Width>1.86249in</Width>
-            <ZIndex>4</ZIndex>
+            <Width>3.15861in</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -578,7 +566,9 @@
                   <TextRun>
                     <Value>Hóa đơn thanh toán</Value>
                     <Style>
+                      <FontFamily>arial</FontFamily>
                       <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                       <Color>Blue</Color>
                     </Style>
                   </TextRun>
@@ -589,11 +579,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>0.49833in</Top>
-            <Left>2.34807in</Left>
-            <Height>0.4in</Height>
-            <Width>4.30583in</Width>
-            <ZIndex>5</ZIndex>
+            <Top>1.4421in</Top>
+            <Left>3.54823in</Left>
+            <Height>0.35806in</Height>
+            <Width>2.81779in</Width>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -612,7 +602,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Người tạo hóa đơn</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -621,11 +613,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>3.60166in</Top>
-            <Left>6.38557in</Left>
+            <Top>5.31598in</Top>
+            <Left>6.54069in</Left>
             <Height>0.25in</Height>
             <Width>1.35in</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -644,7 +636,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Tên khách hàng:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -653,11 +647,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.08583in</Top>
-            <Left>0.8139in</Left>
+            <Top>2.46905in</Top>
+            <Left>0.20374in</Left>
             <Height>0.25in</Height>
             <Width>1.175in</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -676,7 +670,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Địa chỉ:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -685,11 +681,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.40527in</Top>
-            <Left>0.8139in</Left>
+            <Top>2.78849in</Top>
+            <Left>0.20374in</Left>
             <Height>0.25in</Height>
             <Width>1.175in</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -708,7 +704,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Số điện thoại:</Value>
-                    <Style />
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -717,11 +715,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.72472in</Top>
-            <Left>0.8139in</Left>
+            <Top>3.0996in</Top>
+            <Left>0.21208in</Left>
             <Height>0.25in</Height>
             <Width>1.175in</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -749,11 +747,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.08583in</Top>
-            <Left>2.04446in</Left>
+            <Top>2.46905in</Top>
+            <Left>1.44819in</Left>
             <Height>0.25in</Height>
-            <Width>6.01943in</Width>
-            <ZIndex>10</ZIndex>
+            <Width>7.64266in</Width>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -781,11 +779,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.40527in</Top>
-            <Left>2.05834in</Left>
+            <Top>2.78849in</Top>
+            <Left>1.46207in</Left>
             <Height>0.25in</Height>
-            <Width>6.01943in</Width>
-            <ZIndex>11</ZIndex>
+            <Width>7.64266in</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -813,11 +811,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>1.72472in</Top>
-            <Left>2.05834in</Left>
+            <Top>3.10794in</Top>
+            <Left>1.46207in</Left>
             <Height>0.25in</Height>
-            <Width>6.01943in</Width>
-            <ZIndex>12</ZIndex>
+            <Width>7.64266in</Width>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -829,30 +827,17 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>3.43666in</Top>
-            <Left>1.22223in</Left>
+            <Top>5.19487in</Top>
+            <Left>0.02776in</Left>
             <Height>0in</Height>
-            <Width>6.51333in</Width>
-            <ZIndex>13</ZIndex>
+            <Width>9.22695in</Width>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
             </Style>
           </Line>
-          <Rectangle Name="Rectangle1">
-            <KeepTogether>true</KeepTogether>
-            <Top>0.49833in</Top>
-            <Left>1.8189in</Left>
-            <Height>0.4in</Height>
-            <Width>5.21667in</Width>
-            <ZIndex>14</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Rectangle>
           <Textbox Name="pNameStaff">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -864,14 +849,69 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>pNameStaff</rd:DefaultName>
-            <Top>4.01333in</Top>
-            <Left>6.54667in</Left>
+            <Top>5.84376in</Top>
+            <Left>6.70179in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Logo_Image">
+            <Source>Embedded</Source>
+            <Value>logo</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.35626in</Top>
+            <Left>0.20929in</Left>
+            <Height>0.56944in</Height>
+            <Width>2.54723in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox38">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Mã hóa đơn: </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!pID_Order.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>1.98293in</Top>
+            <Left>3.7649in</Left>
+            <Height>0.25in</Height>
+            <Width>3.31667in</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -883,11 +923,360 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Hệ thống bán lẻ điện thoại di động toàn quốc THT's Store</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>calibri</FontFamily>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>0.0507in</Top>
+            <Left>3.1232in</Left>
+            <Height>0.30556in</Height>
+            <Width>5.95377in</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Địa chỉ:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> 44 Nguyễn Lương Bằng, Hòa Khánh Bắc, Liên Chiểu, TP.Đà Nẵng</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>0.39792in</Top>
+            <Left>3.13708in</Left>
+            <Height>0.25in</Height>
+            <Width>5.95376in</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox42">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Số điện thoại:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> 0353.776688</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>0.71737in</Top>
+            <Left>3.13153in</Left>
+            <Height>0.25in</Height>
+            <Width>5.95376in</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox43">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Địa chỉ Email:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> CuaHangDienThoaiTHT@gmail.com</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>1.03681in</Top>
+            <Left>3.13708in</Left>
+            <Height>0.25in</Height>
+            <Width>5.95376in</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line3">
+            <Top>2.37265in</Top>
+            <Left>0.01943in</Left>
+            <Height>0in</Height>
+            <Width>9.23529in</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="pNameStaff2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(Kí và ghi rõ họ tên)</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pNameStaff</rd:DefaultName>
+            <Top>5.57987in</Top>
+            <Left>6.58235in</Left>
+            <Height>0.25in</Height>
+            <Width>1.30833in</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox44">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Người mua hàng</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>5.31598in</Top>
+            <Left>1.12164in</Left>
+            <Height>0.25in</Height>
+            <Width>1.35in</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="pNameStaff3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(Kí và ghi rõ họ tên)</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pNameStaff</rd:DefaultName>
+            <Top>5.57987in</Top>
+            <Left>1.16331in</Left>
+            <Height>0.25in</Height>
+            <Width>1.30833in</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tổng tiền viết bằng chữ: </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>...........................................................................................................................................................................</Value>
+                    <Style>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox25</rd:DefaultName>
+            <Top>4.77987in</Top>
+            <Left>0.20929in</Left>
+            <Height>0.25in</Height>
+            <Width>8.89543in</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line4">
+            <Top>1.37265in</Top>
+            <Left>0.01943in</Left>
+            <Height>0in</Height>
+            <Width>9.23529in</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="pNameStaff4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!pNameCustomer.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>pNameStaff</rd:DefaultName>
+            <Top>5.82987in</Top>
+            <Left>1.16331in</Left>
+            <Height>0.25in</Height>
+            <Width>1.31119in</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>4.56667in</Height>
+        <Height>6.78334in</Height>
         <Style />
       </Body>
-      <Width>8.89167in</Width>
+      <Width>9.25472in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -919,6 +1308,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="pNameStaff">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pID_Order">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -958,9 +1351,28 @@
           <RowIndex>1</RowIndex>
           <ParameterName>pNameStaff</ParameterName>
         </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>pID_Order</ParameterName>
+        </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAP8AAAAzCAYAAABYIt4FAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+cEExAkIdEejaMAABeeSURBVHja7Z13mBRV1sZ/1TlNniEODIiIICCscU3oIuYccY24KIoBMK45rNk1Ibqsgou6mCMGkihiwBxABVR0RDITu2e6ezpUfX/cqu6amc49M4z71fs89+mq7urb91Td955zzz3nNhgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMG/iiQjFtgIE8MAM4CDgIGAxW6z2Tge6AB2Ef3fgOwEfgR+Ah4GvAat7L7kt8FlAMlailQi0ctbrW41Fenrth1rw711Q5Y1aIhBPTMU57+wE5qPR7ApPs8CgQBH1AHbAM2AfWAsp3k/BIYobbTlOC5bM3znnQW3MB9wETAnGddFxsDQPcl/3PAqV3QnohKyuuBx3L4/nnA4zl8LwhUA992sZzrVeJb01zf3QaAUmCp2nZMvXrgPOwgbH8aibmyD6biQpAVItXrCC5ehv/Vtyi++0ZsI3ZG9jUj19YRWbeB8MpVBBe+h+IPAIwF3jUo2b3IHye+3YapqBBTgQepwIPkcmJyOZFcTiSnA8nhQHLakex2JKcDbDZxbLch2axINhuor5LVIo7NFrCYIRJh2zFnacSw5COUqWcFln59MZUWi3aYJIjKKKEwij+A7PUhN3iRa+tQfE3tK+g6OVcCo0tnPYBlUBVIEpiE8pckCbm+Qbu2O5E/TnyHnYKL/4bzqHFI5uTKP/zjWswV5ZhKitp9VjflesJfrciG/JY2g6iBHJEJyXYCKLr5Shxj9++0hiiRaKsByXn0IRRedXHG39924rnIW2twHjWOwqsvyfx3W0JEN2+l9ozJbA85tSPJ0v5RhNdWd0dl8TwwQirwUPLwHVgHDUj7
+JetOg5Lfj2Aw2Ud91AFhV9WXUAX0Bcp019iMAaBzyV8IYO7Xp0ttEMntyu7rToc4MGc3/ZTsNixVlbHzrpYT0Mze9nODH3/RDld0k/5yLHAwQNGtV2VE/LSDYVOzdtjchvjrkvoSzCaIyprvxGTQuPPI78yFjPnSQ3JlSX6HI6bJs+6AspzzoJOnnD4Auak5qbms4utu0l/OArDvvxf23Ud1jCUUl71RfXVpxDeVlWLbfSSWHQdiruyDuVcPzOVlSEUFbD3g2Gx8VgZyJL9F05CdS4XYczQJTW7PSfPLXl8OPVBpZQl0oZwNQGK/AxBZ87N2+FU36S97AzgO+0uHVSjHZW9QX3sDZuw2yl+endKXYKDzyW8GOv0hSKbW1ptkteZG/tr6HHqgTvN3rZz1YsBqT365qZnohs3a6ZfdpL9UAFiHDekYrR8IQjjS6l6oJj/mstLuTHxJHaSGqmVntWiYgohv+MOTX/RWkym96SzLCR1XsWtUb7sSCWMuL0tZX3RbLXJ9o/C8u5wZzd0Bopu3iE4FYLe1G1SStSsubZfKWQegeNsvb4dX/6RZJI3A2u7UaUzFRSk/D76zDN+M2SgtIVynHItnwvh0Wr8ZaFFJ1QfAVF7a0c0eCvwVOADhxC5v83kN8B2wEBFzsCVBHf8E9kAscZak+K2HgDXAOEQQVExk4GdgPjBzez/XzJfUkpBiy5jjWmnOnh/MS1pF42330/LeR0KFvP0MpgJPsku3+ee+XOGf+3LaOrcecRpKcyDWBqXRx9ZDTkFzSjkO2i8586ZcT3TTFuStNdtLzloAubH9VCX8/Rrt8HO10+hRBZyGiKobBvSgdaxALSLISP9es9rBNyCi6m7IWWP7/UiFBUk/994/MzaVaX7iGSyDqnAc8OdU5K8HpgG3az6mLMivtDkv0wZV3TTiIeDkNPX0UsvBwD+Ae9XXsI74Z6r3WnSVslIsAyoxV/XDUlWJuX8lvoceJ1q9bixipSIR
+dlHLNOBB4Dp14NNjMHAKMEa1KHrS2vlZg4hJeQuYq/WjziN/BiZzFvNd5EZvKlLcB1xO61DRxE/e18pZdjIwRz1265bVEjvUvmrlRPeirmx0oZy12jXt2vbdau3wE93bHuAe4HxSR9WVJ3jPjlij3wnQvHXZDgBeoFSuqcOUgvyWAf0Ir1wVtwTe/TAx+Wvq9OSPEV/yuLHsMCDXHlmrGwCGAYtjU4mqShzjxmDbdRfM/fpiKiqMPaPIr78R+vQrgguXItc3ONR7cwBwjCr3mUAPz0UTsO48GMugAQmfq3z6CXhvfxBzZW9cJx+LbY9RmHv3AFkhumEjLZ98ReC1+UQ3bjarfXwv4DB1cO4P3A+cmEbGnsAharlT5csdiGC1TiB/Np0/GSdscWea3OCFyqTLanerRclSlijwEvAMcJq6HJQJdojNq7tWzprYNfoBLRIhvOIH7XS5jvjvqmYnpp4VOA4+ANufRmIZ0E8E0FgsKI0+wj+tJbjgPQouvxDJYkEJBkVQU00toZWraJ41twS4KAfybwRKQ998h2WHqqQXFd97E77pswjOXwKKQsuHn1J73mXCjxOVUVpaYkFWunpHuE45Bs/5ZyLZ0zt7E1leW4/4q2ZxOPXEN5WVUDDlvKRWoLmsBHNZCfbdR+GZeAbNz75C85znIRodA8xTBwAAnIcehKmkOGm7HAePIfLrOjwTT2/nt7IMrMIysArXKcfgf3EeTY89DeHIfsAC1QJ4HSgGMFf2xvGX/bCOGo6lfyWm0mIwmcRA9XM1Lcs/J7jofRSvz6U+x+PUdlZ3JPllACWcfyyF5LDrSNHY0VOY9g2MRjP97q/bSc4agPA337Fl/2MSGifAh3riS04HngvPwXnMoQkdYlJxIfY9RmPfY7RuMLIKTd2/L5bBO9A8ay7qtCBbvA8MDy5aiuuEI5PPEN0uiq65FNfJR9M8ay4tH31GZPXPyS5fqM61DzUVF2VE/FR+H8UXc1IvAPqY
+B/Sj5IFb0/qY9HV4zhmPbdfhNPz9Hyj+wBhElKvoUlu2pSS/ZDFTcOE5qX/DbMY9/nisw4ZQf/lNEGzZXTXhPaYe5RRcMhHHgfskHqhKSzDvWYJ9z9EUTDqb5udepfnpFyEUHgEsU62VjAaATAIkQmKeF8ifFLpltOhvv6OEw60daR0MJXPyby85l6rz9mTEL1dNzps14pc8dDuu44/I2RMu2WLayJrD1+dq/oiWjz5Le7F1x4EU33U9JTPvwbrLkLYWxIGIiL3DY22x5jkLjftrrgX6SQUeSv55c8bE18M2ejhFt1ylTeEOR8QeEN28rcP6p3XIjvrpk8e66y6UzZmelPiJlIznnPGUPnYfpl49APqpA0BlR2l+H9C79uxLkBx20XlsNiSLGWQlu47njCmbUNPMp2xNM58S0VpmM8Tn51mNAqkcb1lie8m5lPTBKmcCuM89DevQwflJaY498lwCZJYDbwBHN941nbLH7sPcO33KgW2XnSmdeS+Btxbje+QJFF9zH+AdYALwX60fSuY8yR8f7M8F8Ew6C3PPipyrs++9G86jxhF4YxGa3yC6aUuHkd83c47mbHaYB/Sn+J4bM1rZajeIDBpA6Yw7qbvwKuRttf2A/yBWGvLW/COAH4lEUJqakesakDdvJbp+E9GNsXXoHTMbqWKkmKVpWqIyhMLaXFtGxGtvD3RnOcu1+Wb+Zkl8GMixhr8B1UqDl7qL/k7kl98y/qLzyHGUPTUD66hdNMXzJHBGrFV5ruvLceev1VRajPPIg/O+Xe5zT9Pa1QcgvOIHgks/JvDmorzqDS77hMBLb8bOi665NCfixx5mzwoKr52inR6kOng7xOzX1jV7AwNVj7FWdiTD9UrJ6dR7rbU8d30+vE112m0PdHs5paLCtNfUnHo+NaeeT8snXyadb+aJbcD+QLW8rZba8y6n+cV5GU/bzOVllDxwG45DDtT635PkY4toSr+mDkLx0G77mH1SxmJkTKry
+Mux776advtzy4ac03nAX3rtn5O6c+m093jsejFtGu4/COmynxFPXUBjfI0+w7bhz2DL2JLwPPpZiqjIiq6mTJQtihPK9kZLLoSeF5qTrTllZ3VpOuaYOc4/y1A90yCBa3vuIxtsfpHzuo2LlQVL9Hy3hhMuKOWC9OgDMJxQa3jR9FsG33sFzwdl6oqR0ihVeNxW5oZHQZ1+bEAlD+O6fie/+mRlN55I4SEFsztLbNnpEyu83zXmOwKtvIzf7cR4+loJpk5IGhNn23k3zcVQBL5N+KQ6A5hfn4Z/7Moo/iGPcAXgmTwBZFo7EZj/AamBn+1+Sx6J4759J8K3FQlP3KMc2cmjSa8M//KiPmOww8ncIdHNhD//D6AQ5NwKVoS+/xXn42JQXFt96NeFVP+F/5S22HT+hlTZsg1U5tuURYCQiECU24Y+srabhyluwjhiKe8L4VqsNCe+RyUThNZdSM34StIT6AP8CLsxcJccy+9oS3wOkXIr0z1tA8+xnYueB1+ZjqarEddLRiefUO8dmewMRS61pnUDBJR/QNH1W/DfmLSS0YhUmt5Po+k0gYhsqhU8kebh0cPFSsFlxjz8O91mnpFwNCX0ey//6lPaBQzmZ/R1ICuf/E/J3uJxLAJqfeRUlkn5ktw4dTNF1U6l45QncZ58K8dWHZtVsX4VYB8+F+JOB/WLEt1gwlRRj6lEOVgvhlatouOwm6i68ivCatWlNat1gNkhv+CtKGn7FTfoK9XtaaLAbwFSRPEIwMC82X38MeBggsPC95O2MOzWLMr1R/pfe0A6fBy4AvNHqdd7w92u8KvGPjLW1V4+k9TjGHkDZ04/gOS99/EPo0xj5M3JIbC/NX9hRdaYw/zIyH/8gct4L/DVavc7qvethCq+biiSlnyCbigrxTDwdxxFjabzxbiJr1rp1TrtcMBmgYNoFWHYcgLmyN+bSeIi779H/4H/2VWGCfreauguupPi2v2Pfd8+kFdr335vAa/Mh
+HnWoABKRCKRI7pIcdi19u0A3VfPGP08exhD5dZ12+Lg6aFwSqf49+W+53VnfqPBPsb0YpgMfI+I19P1heYL+0g5FcSdeUijhMP5X3xb5IAILM2ljl2p+UzxXvuB/WfN3gpzfIzbKVIIL36Phshv1KxDpR/g+vSh9+E5trd2tzluLc22M64QjsI0c1or4AM5jD9N77L8iEsE3Y3ZqK2XwQO1Qc2aENUdXar9K7B6/h9jsZEUrcqWyHOLOSQUtDyDcwa6n+L4S3+ie4XJdSXRtVlCiUQJvLqJm/CSaHp6tyfUgIh+ky8ifkZ9Wii9lFKhmnlYcOf+yOSaCU2f+ddYmD9tPTngKEQmnhL74lpozJuO9+2HCP/+asTVSdNs1SB43iNWMSzr65lj69sZ91ina6Z8AkZmZql3tVzCCAEpL6imrqTj2vSrJ5axSnXErtPl4qmAty6CYP+AaRAJNyniAZPstpB7VLJkogABAZMOmrKsPvvsBtWdehPfuGVqsQEgl/hVkuJKUK/ndwGvAB4jURV+WpChFpDZq5eg2xLg3U9OllaYR2Vv/BX7PUp4m1VnU1XJmgxWIpUhJ01SBNxdTN2EKtROn4X9jEekSmczlpbhOPEo7PbkzRkfPuafhmXQWUmEBUnERBVPOS2MfhxMSQkmzKmEdNADLoAEUXn0xZU8+rJGtSntG8rbkiW7uM2Kin4hIiCGVx11nZdVnbFJ7Yu6elxFBN9cmuGwtQPjbzFP/W5Z/Qe25U2m86V6iv2/Uf2RDZGtmvIRsyZH4c1GXZ1oJnCaaSnK5hOaxmMXOthYL0ZpaCIVfUEfgF1XiX5GxKrbZNBNxqDqYudHCG9PNi00mzVTS9uLfpGrFrpAzW4wAKJ0zHVNxkdhF2GIhumETtedOxXfPDFqWLKPkwdtSVmI/aF+an3weYAidBPcZJ+E+46SMro3EO7Cm6muAntHaBiwDk3vs227S6jxynOY7aAKKw2urk3r8HQfug3Lt
+FJqeeBa5tg7HmH3wnDM++fi06kft8BdEJl168vcoQ65vANhXLRru0B0vA0YE3l6SMlcidoM++5rm/76E7GtCcruEzyMa1U9xXlQH9Zc6i/zFwLE47BTdeLnY4rq4CHNFWUrHBYj13R7zn231XsONd2u57xWIYJgrADyTJ2AZNABzReq87rI501ECQUKff4Nv+uNDAApvuAzbqOGYSktSOwPffw0lEET2B6g57mwQ+dxdIWfOaLtppmVgf4puvgLfA/9Oa2IDWPr37Vb+kdAX32qHmrdqM7BLtmG07jNPJvDWYghHKgHCX6/EOW5M0uudh49Nu2yq17Yq9nKddDS2P++u9+skRMl9txD5bT3R9RuJrt8kkm9E2rKe/HOAiyJrfib4/sc4xqSO6bfvORr7nomXUBtuuIuWpR9nN03L4XnZhVnjxrH/3vk7x+JztyJV24LZjPu04zOz+jUtbJJazT3TBcPo58LmxGTuTDk7FI4x+6TtOAmcXdsdiqLow2TfUV9/BYis/gmOPiTjusw9ynEecTCB1xeIOfH7yymYOkmfyJQTopu2EPry23jfGjo4KQFbPe+iQmwjh8FIsaKqkr8tvgBeAU7w3TcT69CdMu637R5rffZZsrnM+a3C3LZ2SAfQLaO49ITMWhCdls9kLbw7yLk9oFt7j+ZD2o5A4I2FRH9bj+qkm6UjBKH4fgZZaX/N0aZ4fQTmLci7jU1PPKsFE1Un8VHki8nAerm+gfppNxDV7yqV5SClYmtnkl/cXXPHhAjoct/z+5cejzvuYY12SHpAt5Qzb8K9vkDvIM2a96msh2y2TQ+vraZpxn+008eJRxx+ABCt/p3Q96uzapy5ZwXW4fHw16ZZc/PKwmv56DOCC2J/IvQugNwBKd9tsAWRgbc+um4DtX+bRnDZJ9k9lGCL3sFZ3ZnkRzPNO4QUCepRAoFsc/GFMIWFqubvwNygTpQzJ62bh9ke/PBTgovf105n5mJdqqo/4Yfe
+B/6dMfEbLr8JJRAA8ZdlegfvD6hblzU/+ULmDWv00nDdnYS/XhkjgdLsp/7ym4luy36Lu9CKH2i85T7t9A3UVYSclv3SY7U2ACgNjTRedwf1U6+n5fPM/q4h8stv2jPxI/IuOm3Or/VCZH9AdOq2XnVFBllBUV9RFIhEUaIRCEdQwmGUYAuKP9B2nboJiBKVzb4Zs7ENH4qppAjJ7RbebbsNrBaxPZLZhGQyx1belagMqomuNDUJLWQ2ibapJZOouC6SkxyJZ0KW220yGq2rbxdw007jz1+C95+Pap1kHmKrs1zaYCYqJ+w52rZdhZddkPT/D/zzFtI0Y7a2w/JK4FDaL6HeBrwZWv4FTbPm4pl4evLHE4kQeGMRTU88gxLfDu1ERFDNkujvG/rWTZxGwdTzU27mqq/P/8I8mmbPFSnYIjLvdOAySL8DlaKo/UArUVn0h8wGgN2AfwPHhb5cQejLFZgqyrD/eXesI4dh2XEglj692k2Lw/H/d/iOLPbDyCUYZijwGR0bn78MkdjxHHApYhPDXFVlkPyCaaQukjNrZQRYKxY+3y7ve+tRp+M69jBse+2GpX8lUqFoslxTR+ib7wi8Nl+/oeY8xB+vBnNoQwBwVCx4rp23W4lG2XqgcNKaelbgOv5wbHuMxlzZGxRo+eBT/C+8TiQe9qoRP1mEyw3ArYBIFjr9RMwD+2PuUYHi9xNZW03L8i8ILlqq/6+GWsTmpq+o50MQeRF9QbeB56jhWPr3RSooEBmPvmYi1esIffEtgflL9Ls5fwgcoQ5OkxG5DfnAR2Yh32OBq0m2IYfNhuRyIEkmoWD8sd2r/6W2s1MxVBUkoHaiRMWvanIv4t9Y6lRnxAaER3e1Ou98H2i7yHqpSpB3ERtrrkFso7RZrceLSFLxtyk+RCJFQCVLRHVsyep8NV3pajmz7ThKnmVOngNjYwa/EcngmscyHFRvyFCuEPAoiZdRewEvZHmfQohdkh0JnHOZfF9W
++11ErSuALu8gC1QCkxD/I7BC7WfJfvPRPBSmgT8AUg0AHyIy9qJtyu+IqMf9OqgNjWmIXwXcpQ54Xl1pRIQoj87y9/ZVrZW1iLh/rdQi4vqvJB6YlU5h/UO1vraodUR0ZZs6QN+A2AuvO0JChLFXILIqtVJsEN+AAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBj438b/ATvi/TDJ9P+2AAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>82733e69-0514-4441-ba33-3ef69cd2a79a</rd:ReportID>
 </Report>

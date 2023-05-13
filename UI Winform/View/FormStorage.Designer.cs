@@ -31,11 +31,11 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Cbb_Type = new System.Windows.Forms.ComboBox();
             this.Cbb_Category = new System.Windows.Forms.ComboBox();
+            this.Btn_Sort = new System.Windows.Forms.Button();
             this.Btn_View = new System.Windows.Forms.Button();
+            this.Cbb_Sort = new System.Windows.Forms.ComboBox();
             this.Btn_Import = new System.Windows.Forms.Button();
             this.Cbb_Brand = new System.Windows.Forms.ComboBox();
-            this.Cbb_Sort = new System.Windows.Forms.ComboBox();
-            this.Btn_Sort = new System.Windows.Forms.Button();
             this.Btn_Delete = new System.Windows.Forms.Button();
             this.Btn_Update = new System.Windows.Forms.Button();
             this.Btn_Add = new System.Windows.Forms.Button();
@@ -52,11 +52,11 @@
             // 
             this.MainPanel.Controls.Add(this.Cbb_Type);
             this.MainPanel.Controls.Add(this.Cbb_Category);
+            this.MainPanel.Controls.Add(this.Btn_Sort);
             this.MainPanel.Controls.Add(this.Btn_View);
+            this.MainPanel.Controls.Add(this.Cbb_Sort);
             this.MainPanel.Controls.Add(this.Btn_Import);
             this.MainPanel.Controls.Add(this.Cbb_Brand);
-            this.MainPanel.Controls.Add(this.Cbb_Sort);
-            this.MainPanel.Controls.Add(this.Btn_Sort);
             this.MainPanel.Controls.Add(this.Btn_Delete);
             this.MainPanel.Controls.Add(this.Btn_Update);
             this.MainPanel.Controls.Add(this.Btn_Add);
@@ -77,9 +77,9 @@
             this.Cbb_Type.Items.AddRange(new object[] {
             "Tăng dần",
             "Giảm dần"});
-            this.Cbb_Type.Location = new System.Drawing.Point(756, 338);
+            this.Cbb_Type.Location = new System.Drawing.Point(903, 338);
             this.Cbb_Type.Name = "Cbb_Type";
-            this.Cbb_Type.Size = new System.Drawing.Size(103, 28);
+            this.Cbb_Type.Size = new System.Drawing.Size(129, 28);
             this.Cbb_Type.TabIndex = 42;
             // 
             // Cbb_Category
@@ -90,6 +90,18 @@
             this.Cbb_Category.Name = "Cbb_Category";
             this.Cbb_Category.Size = new System.Drawing.Size(170, 33);
             this.Cbb_Category.TabIndex = 41;
+            // 
+            // Btn_Sort
+            // 
+            this.Btn_Sort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Sort.Location = new System.Drawing.Point(613, 336);
+            this.Btn_Sort.Name = "Btn_Sort";
+            this.Btn_Sort.Size = new System.Drawing.Size(106, 31);
+            this.Btn_Sort.TabIndex = 36;
+            this.Btn_Sort.Text = "Sắp xếp";
+            this.Btn_Sort.UseVisualStyleBackColor = true;
+            this.Btn_Sort.Click += new System.EventHandler(this.Btn_Sort_Click);
             // 
             // Btn_View
             // 
@@ -103,11 +115,23 @@
             this.Btn_View.UseVisualStyleBackColor = true;
             this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
             // 
+            // Cbb_Sort
+            // 
+            this.Cbb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbb_Sort.FormattingEnabled = true;
+            this.Cbb_Sort.Items.AddRange(new object[] {
+            "Mã sản phẩm",
+            "Số lượng"});
+            this.Cbb_Sort.Location = new System.Drawing.Point(755, 338);
+            this.Cbb_Sort.Name = "Cbb_Sort";
+            this.Cbb_Sort.Size = new System.Drawing.Size(121, 28);
+            this.Cbb_Sort.TabIndex = 37;
+            // 
             // Btn_Import
             // 
             this.Btn_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Import.Location = new System.Drawing.Point(921, 336);
+            this.Btn_Import.Location = new System.Drawing.Point(461, 336);
             this.Btn_Import.Name = "Btn_Import";
             this.Btn_Import.Size = new System.Drawing.Size(106, 31);
             this.Btn_Import.TabIndex = 39;
@@ -123,30 +147,6 @@
             this.Cbb_Brand.Name = "Cbb_Brand";
             this.Cbb_Brand.Size = new System.Drawing.Size(121, 33);
             this.Cbb_Brand.TabIndex = 38;
-            // 
-            // Cbb_Sort
-            // 
-            this.Cbb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cbb_Sort.FormattingEnabled = true;
-            this.Cbb_Sort.Items.AddRange(new object[] {
-            "Mã sản phẩm",
-            "Số lượng"});
-            this.Cbb_Sort.Location = new System.Drawing.Point(597, 338);
-            this.Cbb_Sort.Name = "Cbb_Sort";
-            this.Cbb_Sort.Size = new System.Drawing.Size(121, 28);
-            this.Cbb_Sort.TabIndex = 37;
-            // 
-            // Btn_Sort
-            // 
-            this.Btn_Sort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Sort.Location = new System.Drawing.Point(461, 336);
-            this.Btn_Sort.Name = "Btn_Sort";
-            this.Btn_Sort.Size = new System.Drawing.Size(106, 31);
-            this.Btn_Sort.TabIndex = 36;
-            this.Btn_Sort.Text = "Sắp xếp";
-            this.Btn_Sort.UseVisualStyleBackColor = true;
-            this.Btn_Sort.Click += new System.EventHandler(this.Btn_Sort_Click);
             // 
             // Btn_Delete
             // 

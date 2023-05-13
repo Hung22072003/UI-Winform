@@ -46,7 +46,7 @@ namespace UI_Winform.BLL
 
             list.ForEach(p =>
             {
-                if (p.ID_Order == search || p.PhoneCustomer == search || p.NameCustomer.Contains(search))
+                if (p.PhoneCustomer == search || p.NameCustomer.Contains(search))
                 {
                     dt.Rows.Add(p.ID_Order, p.NameStaff, p.NameCustomer, p.PhoneCustomer, p.OrderDate, p.Total);
                 }
@@ -76,6 +76,26 @@ namespace UI_Winform.BLL
         {
             ManageOrderDAL mod = new ManageOrderDAL();
             return mod.getOrderByID(ID_Order);
+        }
+
+        public List<int> getListYear()
+        {
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<int> list = new List<int>();
+            mod.getAllOrder().ForEach(p =>
+            {
+                list.Add(p.OrderDate.Year);
+            });
+            return list.Distinct().ToList();
+        }
+
+        public bool CheckSameOrder(string ID_Order)
+        {
+            ManageOrderDAL mod = new ManageOrderDAL();
+            if (mod.getOrderByID(ID_Order) != null)
+            {
+                return true;
+            }else return false;
         }
     }
 }

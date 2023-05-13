@@ -15,11 +15,12 @@ namespace UI_Winform.View
     public partial class UserForm : Form
     {
         private string ID_User;
+        private string typeAccount;
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
-        public UserForm(string iD_User)
+        public UserForm(string iD_User, string typeAccount)
         {
             InitializeComponent();
             random = new Random();
@@ -27,6 +28,7 @@ namespace UI_Winform.View
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             ID_User = iD_User;
+            this.typeAccount = typeAccount; 
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -106,7 +108,7 @@ namespace UI_Winform.View
 
         private void Btn_Storage_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormStorage(), sender);
+            OpenChildForm(new FormStorage(ID_User, typeAccount), sender);
         }
 
         private void Btn_Order_Click(object sender, EventArgs e)
@@ -161,10 +163,10 @@ namespace UI_Winform.View
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            ManageStaffBLL msb=  new ManageStaffBLL();
+            /*ManageStaffBLL msb=  new ManageStaffBLL();
             Lb_Name.Text = "Tên nhân viên: " + msb.GetStaffByID(ID_User).Name;
             Lb_Time.Text = "Thời gian: " + DateTime.Now.ToLongTimeString();
-            Lb_Date.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");   
+            Lb_Date.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");   */
         }
     }
 }

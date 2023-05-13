@@ -172,6 +172,7 @@
             this.Txb_ID.Name = "Txb_ID";
             this.Txb_ID.Size = new System.Drawing.Size(215, 27);
             this.Txb_ID.TabIndex = 26;
+            this.Txb_ID.TextChanged += new System.EventHandler(this.Txb_ID_TextChanged);
             // 
             // label2
             // 
@@ -219,7 +220,7 @@
             // 
             this.Txb_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txb_Name.Location = new System.Drawing.Point(563, 62);
+            this.Txb_Name.Location = new System.Drawing.Point(563, 57);
             this.Txb_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txb_Name.Name = "Txb_Name";
             this.Txb_Name.Size = new System.Drawing.Size(215, 27);

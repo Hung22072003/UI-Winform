@@ -11,9 +11,9 @@
           </Key>
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TypeAccount" Type="int" Nullable="false" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Staff" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Role" Type="int" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -54,6 +54,7 @@
           <Property Name="ID_Category" Type="varchar" MaxLength="50" />
           <Property Name="ID_Brand" Type="varchar" MaxLength="50" />
           <Property Name="SellPrice" Type="money" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -75,6 +76,13 @@
           <Property Name="UnitPrice" Type="money" />
           <Property Name="AmountPrice" Type="money" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Shift">
           <Key>
             <PropertyRef Name="ID_Shift" />
@@ -95,6 +103,7 @@
           <Property Name="Salary" Type="money" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Picture" Type="image" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="Staff_Shift">
           <Key>
@@ -124,6 +133,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="ID_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -243,6 +264,7 @@
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shift" EntityType="Self.Shift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff_Shift" EntityType="Self.Staff_Shift" Schema="dbo" store:Type="Tables" />
@@ -250,6 +272,10 @@
           <AssociationSet Name="FK_A_Customer" Association="Self.FK_A_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
           </AssociationSet>
           <AssociationSet Name="FK_Account_Staff" Association="Self.FK_Account_Staff">
             <End Role="Staff" EntitySet="Staff" />
@@ -299,9 +325,10 @@
           </Key>
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TypeAccount" Type="Int32" Nullable="false" />
           <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_Staff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Role" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Account_Staff" FromRole="Account" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Brand">
@@ -346,6 +373,7 @@
           <Property Name="ID_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ID_Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SellPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Deleted" Type="Boolean" />
           <NavigationProperty Name="Brand" Relationship="Self.FK_Item_Brand" FromRole="Item" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Item_Category" FromRole="Item" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Item" FromRole="Item" ToRole="OrderDetail" />
@@ -376,6 +404,14 @@
           <NavigationProperty Name="Item" Relationship="Self.FK_OrderDetail_Item" FromRole="OrderDetail" ToRole="Item" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+        </EntityType>
         <EntityType Name="Shift">
           <Key>
             <PropertyRef Name="ID_Shift" />
@@ -397,6 +433,7 @@
           <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Deleted" Type="Boolean" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Staff" FromRole="Staff" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Staff" FromRole="Staff" ToRole="Order" />
           <NavigationProperty Name="Shifts" Relationship="Self.Staff_Shift" FromRole="Staff" ToRole="Shift" />
@@ -413,6 +450,18 @@
           <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Storage_Item" FromRole="Storage" ToRole="Item" />
         </EntityType>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Account_Staff">
           <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -521,9 +570,14 @@
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Shifts" EntityType="Self.Shift" />
           <EntitySet Name="Staffs" EntityType="Self.Staff" />
           <EntitySet Name="Storages" EntityType="Self.Storage" />
+          <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
           <AssociationSet Name="FK_Account_Staff" Association="Self.FK_Account_Staff">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="Account" EntitySet="Accounts" />
@@ -572,9 +626,9 @@
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="TypeAccount" ColumnName="TypeAccount" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -619,6 +673,7 @@
                 <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
                 <ScalarProperty Name="ID_Brand" ColumnName="ID_Brand" />
                 <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -643,6 +698,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Shifts">
             <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Shift">
               <MappingFragment StoreEntitySet="Shift">
@@ -663,6 +726,7 @@
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

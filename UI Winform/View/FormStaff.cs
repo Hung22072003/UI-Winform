@@ -95,8 +95,6 @@ namespace UI_Winform
 
         private void Btn_Delete_Click(object sender, EventArgs e)
         {
-
-
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 ManageStaffBLL mnb = new ManageStaffBLL();
@@ -110,27 +108,23 @@ namespace UI_Winform
 
                 foreach (DataGridViewRow i in dataGridView1.SelectedRows)
                 {
-
                     mssb.DeleteByID_StaffBLL(i.Cells["ID_Staff"].Value.ToString(), li);
 
                     mab.DeleteAccountById_StaffBLL(i.Cells["ID_Staff"].Value.ToString());
                     mnb.DeleteStaffByIDBLL(i.Cells["ID_Staff"].Value.ToString());
-
                 }
-
                 LoadInfor();
-
             }
 
         }
 
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
-
             ManageStaffBLL mnb = new ManageStaffBLL();
-            dataGridView1.DataSource = mnb.SortStaffBLL(cbb_Sort.Text);
-
-
+            if (cbb_Sort.Text != "" && cbb_AscDesc.Text != "")
+            {
+                dataGridView1.DataSource = mnb.SortStaffBLL(cbb_Sort.Text, cbb_AscDesc.Text);
+            }
         }
 
         private void Btn_Update_Click(object sender, EventArgs e)
@@ -141,7 +135,6 @@ namespace UI_Winform
                 check = 1;
                 OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()), sender);
             }
-
         }
 
         private void Btn_View_Click(object sender, EventArgs e)
@@ -150,9 +143,7 @@ namespace UI_Winform
             {
                 check = 2;
                 InfoStaff inf = new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString());
-
                 inf.Show();
-
             }
         }
     }

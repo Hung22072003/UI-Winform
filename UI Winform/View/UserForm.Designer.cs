@@ -43,14 +43,8 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.PanelTime = new System.Windows.Forms.Panel();
-            this.Lb_Date = new System.Windows.Forms.Label();
-            this.Lb_Time = new System.Windows.Forms.Label();
-            this.Lb_Name = new System.Windows.Forms.Label();
             this.panelTitle.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            this.panelDesktopPane.SuspendLayout();
-            this.PanelTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitle
@@ -254,54 +248,11 @@
             // 
             // panelDesktopPane
             // 
-            this.panelDesktopPane.Controls.Add(this.PanelTime);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(862, 553);
             this.panelDesktopPane.TabIndex = 5;
-            // 
-            // PanelTime
-            // 
-            this.PanelTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PanelTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelTime.Controls.Add(this.Lb_Date);
-            this.PanelTime.Controls.Add(this.Lb_Time);
-            this.PanelTime.Controls.Add(this.Lb_Name);
-            this.PanelTime.Location = new System.Drawing.Point(280, 194);
-            this.PanelTime.Name = "PanelTime";
-            this.PanelTime.Size = new System.Drawing.Size(290, 135);
-            this.PanelTime.TabIndex = 82;
-            // 
-            // Lb_Date
-            // 
-            this.Lb_Date.AutoSize = true;
-            this.Lb_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_Date.Location = new System.Drawing.Point(14, 90);
-            this.Lb_Date.Name = "Lb_Date";
-            this.Lb_Date.Size = new System.Drawing.Size(52, 20);
-            this.Lb_Date.TabIndex = 2;
-            this.Lb_Date.Text = "Ngày:";
-            // 
-            // Lb_Time
-            // 
-            this.Lb_Time.AutoSize = true;
-            this.Lb_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_Time.Location = new System.Drawing.Point(14, 52);
-            this.Lb_Time.Name = "Lb_Time";
-            this.Lb_Time.Size = new System.Drawing.Size(40, 20);
-            this.Lb_Time.TabIndex = 1;
-            this.Lb_Time.Text = "Giờ:";
-            // 
-            // Lb_Name
-            // 
-            this.Lb_Name.AutoSize = true;
-            this.Lb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_Name.Location = new System.Drawing.Point(14, 16);
-            this.Lb_Name.Name = "Lb_Name";
-            this.Lb_Name.Size = new System.Drawing.Size(123, 20);
-            this.Lb_Name.TabIndex = 0;
-            this.Lb_Name.Text = "Tên nhân viên: ";
             // 
             // UserForm
             // 
@@ -319,9 +270,6 @@
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panelMenu.ResumeLayout(false);
-            this.panelDesktopPane.ResumeLayout(false);
-            this.PanelTime.ResumeLayout(false);
-            this.PanelTime.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -341,9 +289,5 @@
         private System.Windows.Forms.Button Btn_Order;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Panel panelDesktopPane;
-        private System.Windows.Forms.Panel PanelTime;
-        private System.Windows.Forms.Label Lb_Date;
-        private System.Windows.Forms.Label Lb_Time;
-        private System.Windows.Forms.Label Lb_Name;
     }
 }

@@ -27,17 +27,15 @@ namespace UI_Winform.View
             InitializeComponent();
             LoadCBBBrand();
             LoadCBBCategory();
-            LoadCBBIDCustomer();
 
             SetTxbIdOrder();
             ManageStaffBLL msb = new ManageStaffBLL();
             Lb_Name.Text = "Tên nhân viên: " + msb.GetStaffByID(ID_User).Name;
 
-            rbtn_OldCustomer.Checked = true;
-            
-            //LoadNameItem();
-            //LoadIDItem();
+            LoadTheme();
         }
+
+        
         public void SetTxbIdOrder()
         {
             ManageOrderBLL mob = new ManageOrderBLL();
@@ -55,15 +53,6 @@ namespace UI_Winform.View
             cbb_Category.Items.AddRange(mcb.getCBBCategory().ToArray());
         }
 
-        public void LoadCBBIDCustomer()
-        {
-            ManageCustomerBLL mcb = new ManageCustomerBLL();
-            foreach (Customer i in mcb.GetAllCustomerBLL())
-            {
-                cbb_IDCus.Items.Add(i.ID_Customer);
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             Lb_Time.Text = "Thời gian: " + DateTime.Now.ToLongTimeString();
@@ -73,11 +62,33 @@ namespace UI_Winform.View
         private void Order_Load(object sender, EventArgs e)
         {
             ManageItemBLL mib = new ManageItemBLL();
-
             dgv_item.DataSource = mib.getAllItemDGV();
-            //AddColumnOrderDetail();
+            
         }
 
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(System.Windows.Forms.Button))
+                {
+                    System.Windows.Forms.Button btn = (System.Windows.Forms.Button)btns;
+                    btn.BackColor = ThemeColor.PrimaryColor;
+                    btn.ForeColor = Color.Black;
+                    btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
+                    btn.FlatStyle = FlatStyle.Flat;
+                }
+            }
+        }
+
+        public void SetHeaderText()
+        {
+            dgv_order.Columns[0].HeaderText = "Mã sản phẩm";
+            dgv_order.Columns[1].HeaderText = "Tên sản phẩm";
+            dgv_order.Columns[2].HeaderText = "Số lượng";
+            dgv_order.Columns[3].HeaderText = "Đơn giá";
+            dgv_order.Columns[4].HeaderText = "Thành tiền";
+        }
         private void cbb_Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             ManageItemBLL mib = new ManageItemBLL();
@@ -92,9 +103,9 @@ namespace UI_Winform.View
 
         private void dgv_item_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cbb_Brand.SelectedIndexChanged -= cbb_Category_SelectedIndexChanged;
-            cbb_Category.SelectedIndexChanged -= cbb_Category_SelectedIndexChanged;
-            txb_NameItem.TextChanged -= cbb_Category_SelectedIndexChanged;
+            cbb_Brand.TextChanged -= cbb_Category_TextChanged;
+            cbb_Category.TextChanged -= cbb_Category_TextChanged;
+            txb_NameItem.TextChanged -= cbb_Category_TextChanged;
 
             DataGridViewRow i = dgv_item.SelectedRows[0];
             txb_NameItem.Text = i.Cells["Tên sản phẩm"].Value.ToString();
@@ -105,9 +116,10 @@ namespace UI_Winform.View
             txb_Amount.Text = "";
             txb_Quantity.Text = "";
 
-            cbb_Brand.SelectedIndexChanged += cbb_Category_SelectedIndexChanged;
-            cbb_Category.SelectedIndexChanged += cbb_Category_SelectedIndexChanged;
-            txb_NameItem.TextChanged += cbb_Category_SelectedIndexChanged;
+            cbb_Brand.TextChanged += cbb_Category_TextChanged;
+            cbb_Category.TextChanged += cbb_Category_TextChanged;
+            txb_NameItem.TextChanged += cbb_Category_TextChanged;
+
         }
 
         private void txb_Quantity_TextChanged(object sender, EventArgs e)
@@ -134,22 +146,43 @@ namespace UI_Winform.View
                 ViewOrderDetail temp = new ViewOrderDetail();
                 if (dgv_item.SelectedRows.Count == 1)
                 {
-                    DataGridViewRow i = dgv_item.SelectedRows[0];
-                    temp.ID_Item = i.Cells["Mã sản phẩm"].Value.ToString();
-                    temp.Quantity = Convert.ToInt32(txb_Quantity.Text);
-                    temp.NameItem = txb_NameItem.Text;
-                    temp.UnitPrice = Convert.ToDecimal(i.Cells["Giá bán"].Value.ToString());
-                    temp.AmountPrice = Convert.ToDecimal(txb_Amount.Text);
 
-                    total += Convert.ToDecimal(temp.AmountPrice);
+                    DataGridViewRow i = dgv_item.SelectedRows[0];
+                    if (CheckQuantityItem(Convert.ToInt32(i.Cells["Số lượng"].Value.ToString())))
+                    {
+                        temp.ID_Item = i.Cells["Mã sản phẩm"].Value.ToString();
+                        temp.Quantity = Convert.ToInt32(txb_Quantity.Text);
+                        temp.NameItem = txb_NameItem.Text;
+                        temp.UnitPrice = Convert.ToDecimal(i.Cells["Giá bán"].Value.ToString());
+                        temp.AmountPrice = Convert.ToDecimal(txb_Amount.Text);
+
+                        total += Convert.ToDecimal(temp.AmountPrice);
+                        li.Add(temp);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số lượng máy không đủ để đáp ứng");
+                    }
+
                 }
-                li.Add(temp);
+
                 dgv_order.DataSource = null;
                 dgv_order.DataSource = li;
+                SetHeaderText();
                 txb_Total.Text = Convert.ToString(total);
             }
         }
-
+        public bool CheckQuantityItem(int quantity)
+        {
+            if (Convert.ToInt32(txb_Quantity.Text) > quantity)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public bool CheckEmptyInfor()
         {
             if (txb_IDOrder.Text == ""
@@ -170,76 +203,101 @@ namespace UI_Winform.View
 
         public void AddColumnOrderDetail()
         {
-            dgv_order.Columns.Add("ID_Item", "Mã sản phẩm");
-            dgv_order.Columns.Add("NameItem", "Tên sản phẩm");
-            dgv_order.Columns.Add("Quantity", "Số lượng");
-            dgv_order.Columns.Add("UnitPrice", "Đơn giá");
-            dgv_order.Columns.Add("AmountPrice", "Thành Tiền");
+            dgv_order.Columns.Add("Mã sản phẩm", "Mã sản phẩm");
+            dgv_order.Columns.Add("Tên sản phẩm", "Tên sản phẩm");
+            dgv_order.Columns.Add("Số lượng", "Số lượng");
+            dgv_order.Columns.Add("Đơn giá", "Đơn giá");
+            dgv_order.Columns.Add("Thành Tiền", "Thành Tiền");
             dgv_order.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        private void cbb_IDCus_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cbb_Category_TextChanged(object sender, EventArgs e)
         {
-            ManageCustomerBLL mcb = new ManageCustomerBLL();
+            ManageItemBLL mib = new ManageItemBLL();
+            txb_Price.Text = "";
+            txb_Quantity.Text = "";
+            txb_Discount.Text = "";
+            txb_Amount.Text = "";
 
-            Customer temp = mcb.GetCustomerByID(Convert.ToInt32(cbb_IDCus.Text));
-            txb_NameCus.Text = temp.Name;
-            txb_Address.Text = temp.Address;
-            txb_Phone.Text = temp.Phone;
-            dtp_Birth.Text = Convert.ToString(temp.DateOfBirth);
+            dgv_item.DataSource = mib.getItemsBySearch(txb_NameItem.Text, cbb_Brand.Text, cbb_Category.Text);
+        }
 
+        public bool CheckSameOrder()
+        {
+            ManageOrderBLL mob = new ManageOrderBLL();
+            return mob.CheckSameOrder(txb_IDOrder.Text);
         }
 
         private void btn_SaveOrder_Click(object sender, EventArgs e)
         {
-            if(dgv_order.Rows.Count > 0)
+            if (dgv_order.Rows.Count > 0)
             {
-                //Lưu thông tin khách hàng
 
-                ManageCustomerBLL mcb = new ManageCustomerBLL();
-                if (mcb.CheckOldCustomerBLL(cbb_IDCus.Text))
+                if (CheckSameOrder() == false)
                 {
+                    //Lưu thông tin khách hàng
+                    ManageCustomerBLL mcb = new ManageCustomerBLL();
+                    if (mcb.CheckOldCustomerBLL(txb_IDCustomer.Text))
+                    {
 
+                    }
+                    else
+                    {
+                        Customer temp = new Customer();
+                        temp.Name = txb_NameCus.Text;
+                        temp.Address = txb_Address.Text;
+                        temp.Phone = txb_Phone.Text;
+                        temp.DateOfBirth = Convert.ToDateTime(dtp_Birth.Text);
+                        mcb.AddCustomerBLL(temp);
+                    }
+
+
+                    //Tạo hóa đơn
+                    ManageOrderBLL mob = new ManageOrderBLL();
+
+                    Customer temp2 = new Customer();
+                    temp2 = mcb.GetCustomerByPhoneBLL(txb_Phone.Text);
+
+                    Order or = new Order();
+                    or.OrderID = txb_IDOrder.Text;
+                    or.ID_Staff = ID_User;
+                    or.ID_Customer = temp2.ID_Customer;
+                    or.OrderDate = DateTime.Now;
+                    mob.AddOrder(or);
+
+                    //Tạo chi tiết hóa đơn và cập nhật lại số lượng máy trong item
+                    ManageOrderDetailBLL modb = new ManageOrderDetailBLL();
+                    ManageItemBLL mib = new ManageItemBLL();
+                    foreach (DataGridViewRow i in dgv_order.Rows)
+                    {
+                        OrderDetail detail = new OrderDetail();
+                        detail.ID_Order = txb_IDOrder.Text;
+                        detail.ID_Item = i.Cells[0].Value.ToString();
+                        detail.Quantity = Convert.ToInt32(i.Cells[2].Value.ToString());
+
+                        //cập nhật lại số lượng máy trong csdl
+                        mib.UpdateQuantityItem(i.Cells[0].Value.ToString(), -Convert.ToInt32(i.Cells[2].Value.ToString()));
+
+                        detail.UnitPrice = Convert.ToDecimal(i.Cells[3].Value.ToString());
+                        modb.AddOrderDetailBLL(detail);
+                    }
+                    MessageBox.Show("Lưu thành công");
+                    LoadDGVItem();
+                    dgv_order.DataSource = null;
                 }
                 else
                 {
-                    Customer temp = new Customer();
-                    temp.Name = txb_NameCus.Text;
-                    temp.Address = txb_Address.Text;
-                    temp.Phone = txb_Phone.Text;
-                    temp.DateOfBirth = Convert.ToDateTime(dtp_Birth.Text);
-                    mcb.AddCustomerBLL(temp);
+                    MessageBox.Show("Lưu không thành công");
                 }
-
-
-                //Tạo hóa đơn
-                ManageOrderBLL mob = new ManageOrderBLL();
-
-                Customer temp2 = new Customer();
-                temp2 = mcb.GetCustomerByPhoneBLL(txb_Phone.Text);
-
-                Order or = new Order();
-                or.OrderID = txb_IDOrder.Text;
-                or.ID_Staff = ID_User;
-                or.ID_Customer = temp2.ID_Customer;
-                or.OrderDate = DateTime.Now;
-                mob.AddOrder(or);
-
-                //Tạo chi tiết hóa đơn
-                ManageOrderDetailBLL modb = new ManageOrderDetailBLL();
-                foreach (DataGridViewRow i in dgv_order.Rows)
-                {
-
-                    OrderDetail detail = new OrderDetail();
-                    detail.ID_Order = txb_IDOrder.Text;
-                    detail.ID_Item = i.Cells[0].Value.ToString();
-                    detail.Quantity = Convert.ToInt32(i.Cells[2].Value.ToString());
-                    detail.UnitPrice = Convert.ToDecimal(i.Cells[3].Value.ToString());
-                    modb.AddOrderDetailBLL(detail);
-                }
-                MessageBox.Show("Lưu thành công");
             }
         }
 
+        public void LoadDGVItem()
+        {
+            ManageItemBLL mib = new ManageItemBLL();
+
+            dgv_item.DataSource = mib.getAllItemDGV();
+        }
         private void txb_NameCus_TextChanged(object sender, EventArgs e)
         {
 
@@ -259,36 +317,18 @@ namespace UI_Winform.View
             }
         }
 
-        private void rbtn_OldCustomer_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtn_NewCustomer.Checked == true)
-            {
-                cbb_IDCus.Enabled = false;
-                rbtn_OldCustomer.Checked = false;
-            }
-            else
-            {
-                cbb_IDCus.Enabled = true;
-                rbtn_OldCustomer.Checked = true;
-            }
-        }
-
         public void ResetAll()
         {
             SetTxbIdOrder();
             li.Clear();
             dgv_order.DataSource = null;
-            cbb_IDCus.Text = "";
+            txb_IDCustomer.Text = "";
             txb_NameCus.Text = "";
             txb_Phone.Text = "";
             txb_Address.Text = "";
             txb_Total.Text = "";
             txb_Quantity.Text = "";
-        }
-
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            total = 0;
         }
 
         private void btn_CancelOrder_Click(object sender, EventArgs e)
@@ -316,8 +356,31 @@ namespace UI_Winform.View
         {
             ManageStaffBLL msb = new ManageStaffBLL();
             Staff s = msb.GetStaffByID(ID_User);
-            FormReport fr = new FormReport(li, txb_Total.Text, txb_NameCus.Text, txb_Phone.Text, txb_Address.Text, s.Name, DateTime.Now);
+            FormReport fr = new FormReport(li, txb_Total.Text, txb_NameCus.Text, txb_Phone.Text, txb_Address.Text, s.Name, DateTime.Now, txb_IDOrder.Text);
             fr.Show();
+        }
+
+        private void txb_Phone_TextChanged(object sender, EventArgs e)
+        {
+            Customer temp = new Customer();
+            ManageCustomerBLL mcb = new ManageCustomerBLL();
+            temp = mcb.GetCustomerByPhoneBLL(txb_Phone.Text);
+            if (temp != null)
+            {
+                txb_NameCus.Text = temp.Name;
+                txb_IDCustomer.Text = Convert.ToString(temp.ID_Customer);
+                txb_Address.Text = temp.Address;
+                dtp_Birth.Text = Convert.ToString(temp.DateOfBirth);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cbb_Brand_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

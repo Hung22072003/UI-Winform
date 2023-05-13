@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +26,8 @@ namespace UI_Winform
             ManageShiftBLL msb = new ManageShiftBLL();
             li = msb.SetCheckBoxShiftBLL();
             SetGroupBoxShift();
-
+            SetCbbTypeAccount();
+            SetTextBoxIDStaff();
         }
 
         public InfoStaff(string id)
@@ -34,10 +36,10 @@ namespace UI_Winform
             ManageShiftBLL msb = new ManageShiftBLL();
             li = msb.SetCheckBoxShiftBLL();
             InitializeComponent();
+            SetCbbTypeAccount();
             LoadInfor();
-            btn_Reset.Visible = false;
-
             SetGroupBoxShift();
+            btn_Reset.Visible = false;
 
             if (FormStaff.check == 2)
             {
@@ -45,6 +47,17 @@ namespace UI_Winform
                 btn_Ok.Visible = false;
                 btn_AddImage.Visible = false;
             }
+        }
+        public void SetTextBoxIDStaff()
+        {
+            ManageStaffBLL msb = new ManageStaffBLL();
+            txb_IDStaff.Text = msb.setIDStaff();
+        }
+
+        public void SetCbbTypeAccount()
+        {
+            ManageRoleBLL mrb = new ManageRoleBLL();
+            cbb_TypeAccount.Items.AddRange(mrb.GetCbbTypeAccounts().ToArray());
         }
         public void ViewStaff()
         {
@@ -57,9 +70,6 @@ namespace UI_Winform
             dtp_DateOfBirth.Enabled = false;
             txb_PhoneNumber.Enabled = false;
 
-            rbtn_Manager.Enabled = false;
-            rbtn_Staff.Enabled = false;
-
             txb_Account.Enabled = false;
             txb_PassWord.Enabled = false;
 
@@ -69,6 +79,7 @@ namespace UI_Winform
             }
 
             Lb_Title.Visible = false;
+            cbb_TypeAccount.Enabled = false;
         }
         private void InfoStaff_Load(object sender, EventArgs e)
         {
@@ -89,14 +100,6 @@ namespace UI_Winform
                 }
             }
             Lb_Title.ForeColor = ThemeColor.SecondaryColor;
-        }
-
-        public void AutoFalseCheckbox()
-        {
-            //cb_711.Checked = false;
-            //cb_1114.Checked = false;
-            //cb_1418.Checked = false;
-            //cb_1822.Checked = false;
         }
 
         public void LoadInfor()
@@ -150,15 +153,9 @@ namespace UI_Winform
 
             txb_Account.Text = a.UserName;
             txb_PassWord.Text = a.PassWord;
-            if (a.TypeAccount == 0)
-            {
-                rbtn_Manager.Checked = true;
-            }
-            else
-            {
-                rbtn_Staff.Checked = true;
-            }
 
+            ManageRoleBLL mrb = new ManageRoleBLL();
+            cbb_TypeAccount.Text = mrb.getNameRoleByIDRole(a.ID_Role);
         }
 
         private void btn_Reset_Click(object sender, EventArgs e)
@@ -169,53 +166,66 @@ namespace UI_Winform
             txb_Salary.Text = "";
             dtp_DateOfBirth.Text = "";
             txb_PhoneNumber.Text = "";
-            txb_IDStaff.Text = "";
             pt_Staff.Image = null;
 
             txb_Account.Text = "";
             txb_PassWord.Text = "";
-            rbtn_Staff.Checked = rbtn_Manager.Checked = false;
+            cbb_TypeAccount.Text = "";
         }
 
+        public bool CheckCbbTypeAccount(string text)
+        {
+            for (int i = 0; i < cbb_TypeAccount.Items.Count; i++)
+            {
+                if (cbb_TypeAccount.Items[i].ToString() == text) return true;
+            }
+            return false;
+        }
         private void btn_Ok_Click(object sender, EventArgs e)
         {
 
             ManageStaffBLL msb = new ManageStaffBLL();
             ManageAccountBLL mab = new ManageAccountBLL();
             ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
-
-
-            if (FormStaff.check == 1)
+            if (txb_IDStaff.Text != "" && txb_Name.Text != "" && txb_PhoneNumber.Text != "" && txb_Address.Text != ""
+                && txb_Salary.Text != "" && txb_Email.Text != "" && txb_Account.Text != "" && txb_PassWord.Text != "" 
+                && CheckCbbTypeAccount(cbb_TypeAccount.Text) && IsEmail(txb_Email.Text))
             {
+                if (FormStaff.check == 1)
+                {
+                 msb.UpdateStaffBLL(this.id, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
+                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
 
-                msb.UpdateStaffBLL(this.id, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
-                    txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
+                        //Update Staff_Shift
 
-                //Update Staff_Shift
+                 mssb.DeleteByID_StaffBLL(id, li);
 
-                mssb.DeleteByID_StaffBLL(id, li);
+                 GetCheckBoxShiftFromUI(); //Cập nhật lại li
 
-                GetCheckBoxShiftFromUI(); //Cập nhật lại li
+                 mssb.AddStaffByID_StaffBLL(id, li);
 
+                 mab.UpdateAccountBLL(this.id, txb_Account.Text, txb_PassWord.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
+                   
+                }
+                else if (FormStaff.check == 0)
+                {
+                 msb.AddStaffBLL(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
+                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
 
-                mssb.AddStaffByID_StaffBLL(id, li);
+                 GetCheckBoxShiftFromUI();
 
-                mab.UpdateAccountBLL(this.id, txb_Account.Text, txb_PassWord.Text, rbtn_Staff.Checked);
-            }
-            else if (FormStaff.check == 0)
+                 mssb.AddStaffByID_StaffBLL(txb_IDStaff.Text, li);
+
+                 mab.AddAccountBLL(txb_IDStaff.Text, txb_Name.Text, txb_Account.Text, txb_PassWord.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
+
+                }
+                this.Close();
+            } else
             {
-                msb.AddStaffBLL(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
-                    txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
-
-                GetCheckBoxShiftFromUI();
-                mssb.AddStaffByID_StaffBLL(txb_IDStaff.Text, li);
-
-
-                mab.AddAccountBLL(txb_IDStaff.Text, txb_Name.Text, txb_Account.Text, txb_PassWord.Text, rbtn_Staff.Checked);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
             }
-            this.Close();
+                
         }
-
 
 
         public void SetGroupBoxShift()
@@ -250,33 +260,39 @@ namespace UI_Winform
             }
         }
 
-
-        //public void SetGroupBoxShift(bool check1, bool check2, bool check3, bool check4)
-        //{
-        //    ManageShiftBLL msb = new ManageShiftBLL();
-        //    int x = 12, y = 38;
-
-        //    foreach (CheckBoxShift i in msb.SetCheckBoxShiftBLL())
-        //    {
-
-        //        CheckBox temp = new CheckBox();
-        //        temp.Text = i.text;
-        //        temp.Name = "cb_Shift" + i.value.ToString();
-        //        temp.Location = new System.Drawing.Point(x, y * i.value);
-        //        temp.AutoSize = true;
-        //        grb_Shift.Controls.Add(temp);
-
-        //    }
-
-        //}
-
         private void btn_AddImage_Click(object sender, EventArgs e)
         {
-            ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";
-            ofd_OpenFile.ShowDialog();
-            string file = ofd_OpenFile.FileName; //lấy đường dẫn đến file mà mình đã chọn
-            Image image = Image.FromFile(file); //Tạo ra một đối tượng image thông qua đường dẫn
-            pt_Staff.Image = image;
+            try
+            {
+                ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";
+                ofd_OpenFile.ShowDialog();
+                string file = ofd_OpenFile.FileName; //lấy đường dẫn đến file mà mình đã chọn
+                Image image = Image.FromFile(file); //Tạo ra một đối tượng image thông qua đường dẫn
+                pt_Staff.Image = image;
+            }
+            catch (Exception ex)
+            {
+            }
+            
+        }
+
+        private void txb_PhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            txb_Account.Text = txb_PhoneNumber.Text;
+        }
+
+        // Kiểm tra định dạng email
+        public bool IsEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 }

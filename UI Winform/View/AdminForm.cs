@@ -16,12 +16,16 @@ namespace UI_Winform
 {
     public partial class AdminForm : Form
     {
+        private string ID_User;
+        private string typeAccount;
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
-        public AdminForm()
+        public AdminForm(string iD_User, string typeAccount)
         {
+            this.typeAccount = typeAccount;
+            ID_User = iD_User;
             InitializeComponent();
             random = new Random();
             this.Text = string.Empty;
@@ -106,7 +110,7 @@ namespace UI_Winform
 
         private void Btn_Storage_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormStorage(), sender);
+            OpenChildForm(new FormStorage(ID_User, typeAccount), sender);
         }
 
         private void Btn_TradeHistory_Click(object sender, EventArgs e)

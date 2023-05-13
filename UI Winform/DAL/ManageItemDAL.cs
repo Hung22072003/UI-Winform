@@ -11,18 +11,18 @@ namespace UI_Winform.DAL
     {
         public List<Item> getAllItems() {
             DBPM db = new DBPM();
-            var s = db.Items.Select(p => p).ToList();
+            var s = db.Items.Where(p => p.Deleted == false).Select(p => p).ToList();
             return s;
         }
 
         public Item getItemByID(string ID_Item)
         {
             DBPM db = new DBPM();
-            var s = db.Items.Where(p => p.IDItem == ID_Item).SingleOrDefault();
+            var s = db.Items.Where(p => p.IDItem == ID_Item && p.Deleted == false).SingleOrDefault();
             return s;
         }
 
-        public bool chechIdItem(string Id_Item)
+        public bool checkIdItem(string Id_Item)
         {
             DBPM db = new DBPM();
             var s = db.Items.Where (p => p.IDItem ==  Id_Item).SingleOrDefault();
@@ -30,21 +30,21 @@ namespace UI_Winform.DAL
             else return false;
         }
 
-        public List<Item> getItemsBySearch(string searchName, string searchBrand, string searchCategory) {
+        public List<Item> getItemsBySearch(string search, string searchBrand, string searchCategory) {
             DBPM db = new DBPM();
             if (searchBrand == "" && searchCategory == "")
             {
-                return db.Items.Where(p => p.ItemName.Contains(searchName)).Select(p=>p).ToList();
+                return db.Items.Where(p => (p.ItemName.Contains(search) || p.IDItem.Contains(search)) && p.Deleted == false).Select(p=>p).ToList();
             } else if (searchBrand == "")
             {
-                return db.Items.Where(p => p.ItemName.Contains(searchName) && p.Category.NameCategory == searchCategory).Select(p => p).ToList();
+                return db.Items.Where(p => (p.ItemName.Contains(search) || p.IDItem.Contains(search)) && p.Category.NameCategory == searchCategory && p.Deleted == false).Select(p => p).ToList();
             }
             else if (searchCategory == "")
             {
-                return db.Items.Where(p => p.ItemName.Contains(searchName) && p.Brand.BrandName == searchBrand).Select(p => p).ToList();
+                return db.Items.Where(p => (p.ItemName.Contains(search) || p.IDItem.Contains(search)) && p.Brand.BrandName == searchBrand && p.Deleted == false).Select(p => p).ToList();
             } else
             {
-                return db.Items.Where(p => p.ItemName.Contains(searchName) && p.Brand.BrandName == searchBrand && p.Category.NameCategory == searchCategory).Select(p => p).ToList();
+                return db.Items.Where(p => (p.ItemName.Contains(search) || p.IDItem.Contains(search)) && p.Brand.BrandName == searchBrand && p.Category.NameCategory == searchCategory && p.Deleted == false).Select(p => p).ToList();
             }
         }
 
@@ -96,7 +96,8 @@ namespace UI_Winform.DAL
         {
             using (DBPM db = new DBPM())
             {
-                db.Items.Remove(db.Items.Find(ID_Item));
+                Item i = db.Items.Find(ID_Item);
+                i.Deleted = true;
                 db.SaveChanges();
             }
         }

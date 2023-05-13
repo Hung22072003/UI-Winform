@@ -13,6 +13,20 @@ namespace UI_Winform.BLL
 {
     public class ManageStaffBLL
     {
+        public string setIDStaff()
+        {
+            ManageStaffDAL msd = new ManageStaffDAL();
+            string ID_Staff;
+            if (msd.GetAllStaffDAL().Count < 9)
+            {
+                ID_Staff = "NV0" + (msd.GetAllStaffDAL().Count + 1);
+            }else
+            {
+                ID_Staff = "NV" + (msd.GetAllStaffDAL().Count + 1);
+            }
+             
+            return ID_Staff;
+        }
         public dynamic GetAllStaffBLL()
         {
             ManageStaffDAL mnd = new ManageStaffDAL();
@@ -35,12 +49,12 @@ namespace UI_Winform.BLL
             mnd.DeleteStaffByIDDAL(id);
         }
 
-        public dynamic SortStaffBLL(String KeyWord)
+        public dynamic SortStaffBLL(String KeyWord, string ascdesc)
         {
 
             ManageStaffDAL mnd = new ManageStaffDAL();
 
-            return mnd.SortStaffDAL(KeyWord);
+            return mnd.SortStaffDAL(KeyWord, ascdesc);
 
         }
 
@@ -95,6 +109,7 @@ namespace UI_Winform.BLL
                 Picture.Save(memory, ImageFormat.Jpeg);
                 temp.Picture = memory.ToArray();
             }
+            temp.Deleted = false;
 
             ManageStaffDAL msd = new ManageStaffDAL();
 

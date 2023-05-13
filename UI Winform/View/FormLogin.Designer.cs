@@ -33,6 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Btn_Maximize = new Guna.UI2.WinForms.Guna2CircleButton();
             this.Btn_Login = new System.Windows.Forms.Button();
@@ -41,13 +42,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.Panel_Lock = new System.Windows.Forms.Panel();
             this.Txb_PassWord = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.Txb_UserName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Panel_Lock = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -99,6 +99,15 @@
             this.label1.Size = new System.Drawing.Size(210, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Location = new System.Drawing.Point(61, 26);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 47);
+            this.panel2.TabIndex = 0;
             // 
             // panel3
             // 
@@ -219,6 +228,18 @@
             this.panel5.Size = new System.Drawing.Size(450, 45);
             this.panel5.TabIndex = 2;
             // 
+            // Panel_Lock
+            // 
+            this.Panel_Lock.BackColor = System.Drawing.Color.White;
+            this.Panel_Lock.BackgroundImage = global::UI_Winform.Properties.Resources.lock_solid;
+            this.Panel_Lock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Panel_Lock.Location = new System.Drawing.Point(6, 10);
+            this.Panel_Lock.Name = "Panel_Lock";
+            this.Panel_Lock.Size = new System.Drawing.Size(25, 25);
+            this.Panel_Lock.TabIndex = 2;
+            this.Panel_Lock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_Lock_MouseDown);
+            this.Panel_Lock.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel_Lock_MouseUp);
+            // 
             // Txb_PassWord
             // 
             this.Txb_PassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -239,6 +260,15 @@
             this.panel4.Size = new System.Drawing.Size(450, 45);
             this.panel4.TabIndex = 1;
             // 
+            // panel6
+            // 
+            this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
+            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel6.Location = new System.Drawing.Point(6, 10);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(25, 25);
+            this.panel6.TabIndex = 1;
+            // 
             // Txb_UserName
             // 
             this.Txb_UserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -258,36 +288,6 @@
             this.label4.Size = new System.Drawing.Size(328, 29);
             this.label4.TabIndex = 0;
             this.label4.Text = "LOGIN TO YOUR ACCOUNT";
-            // 
-            // Panel_Lock
-            // 
-            this.Panel_Lock.BackColor = System.Drawing.Color.White;
-            this.Panel_Lock.BackgroundImage = global::UI_Winform.Properties.Resources.lock_solid;
-            this.Panel_Lock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Panel_Lock.Location = new System.Drawing.Point(6, 10);
-            this.Panel_Lock.Name = "Panel_Lock";
-            this.Panel_Lock.Size = new System.Drawing.Size(25, 25);
-            this.Panel_Lock.TabIndex = 2;
-            this.Panel_Lock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_Lock_MouseDown);
-            this.Panel_Lock.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel_Lock_MouseUp);
-            // 
-            // panel6
-            // 
-            this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
-            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel6.Location = new System.Drawing.Point(6, 10);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(25, 25);
-            this.panel6.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Location = new System.Drawing.Point(61, 26);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 47);
-            this.panel2.TabIndex = 0;
             // 
             // FormLogin
             // 

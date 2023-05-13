@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Btn_View = new System.Windows.Forms.Button();
             this.cbb_Sort = new System.Windows.Forms.ComboBox();
             this.Btn_Sort = new System.Windows.Forms.Button();
             this.Btn_Delete = new System.Windows.Forms.Button();
@@ -39,13 +40,14 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
-            this.Btn_View = new System.Windows.Forms.Button();
+            this.cbb_AscDesc = new System.Windows.Forms.ComboBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.cbb_AscDesc);
             this.MainPanel.Controls.Add(this.Btn_View);
             this.MainPanel.Controls.Add(this.cbb_Sort);
             this.MainPanel.Controls.Add(this.Btn_Sort);
@@ -62,11 +64,23 @@
             this.MainPanel.Size = new System.Drawing.Size(1082, 380);
             this.MainPanel.TabIndex = 0;
             // 
+            // Btn_View
+            // 
+            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_View.Location = new System.Drawing.Point(880, 323);
+            this.Btn_View.Name = "Btn_View";
+            this.Btn_View.Size = new System.Drawing.Size(190, 31);
+            this.Btn_View.TabIndex = 20;
+            this.Btn_View.Text = "Xem thông tin chi tiết";
+            this.Btn_View.UseVisualStyleBackColor = true;
+            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
+            // 
             // cbb_Sort
             // 
             this.cbb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_Sort.FormattingEnabled = true;
-            this.cbb_Sort.Location = new System.Drawing.Point(620, 325);
+            this.cbb_Sort.Location = new System.Drawing.Point(605, 325);
             this.cbb_Sort.Name = "cbb_Sort";
             this.cbb_Sort.Size = new System.Drawing.Size(121, 28);
             this.cbb_Sort.TabIndex = 19;
@@ -171,17 +185,17 @@
             this.ChildPanel.Size = new System.Drawing.Size(1082, 253);
             this.ChildPanel.TabIndex = 1;
             // 
-            // Btn_View
+            // cbb_AscDesc
             // 
-            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_View.Location = new System.Drawing.Point(821, 323);
-            this.Btn_View.Name = "Btn_View";
-            this.Btn_View.Size = new System.Drawing.Size(190, 31);
-            this.Btn_View.TabIndex = 20;
-            this.Btn_View.Text = "Xem thông tin chi tiết";
-            this.Btn_View.UseVisualStyleBackColor = true;
-            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
+            this.cbb_AscDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_AscDesc.FormattingEnabled = true;
+            this.cbb_AscDesc.Items.AddRange(new object[] {
+            "Tăng dần",
+            "Giảm dần"});
+            this.cbb_AscDesc.Location = new System.Drawing.Point(732, 325);
+            this.cbb_AscDesc.Name = "cbb_AscDesc";
+            this.cbb_AscDesc.Size = new System.Drawing.Size(121, 28);
+            this.cbb_AscDesc.TabIndex = 21;
             // 
             // FormStaff
             // 
@@ -214,5 +228,6 @@
         private System.Windows.Forms.ComboBox cbb_Sort;
         private System.Windows.Forms.Panel ChildPanel;
         private System.Windows.Forms.Button Btn_View;
+        private System.Windows.Forms.ComboBox cbb_AscDesc;
     }
 }

@@ -18,6 +18,7 @@ namespace UI_Winform.View
         public RevenueYearForm()
         {
             InitializeComponent();
+            SetCbbYear();
         }
         private void RevenueYearForm_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,15 @@ namespace UI_Winform.View
                     btn.FlatStyle = FlatStyle.Flat;
                 }
             }
+        }
+
+        public void SetCbbYear()
+        {
+            ManageOrderBLL mob = new ManageOrderBLL();
+            mob.getListYear().ForEach(p =>
+            {
+                CbbYear.Items.Add(p);
+            });
         }
         private void Btn_Statistic_Click(object sender, EventArgs e)
         {
@@ -108,7 +118,7 @@ namespace UI_Winform.View
                 Customer customer = mcb.GetCustomerByID(o.ID_Customer);
 
 
-                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate);
+                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
                 f.ShowDialog();
             }
         }

@@ -57,19 +57,19 @@ namespace UI_Winform
             } else
             {
                 ManageAccountBLL mab = new ManageAccountBLL();
-                int result = mab.getTypeAccount(Txb_UserName.Text.Replace(" ", ""), Txb_PassWord.Text);
-                if (result == -1)
+                string result = mab.getTypeAccount(Txb_UserName.Text.Replace(" ", ""), Txb_PassWord.Text);
+                if (result == null)
                 {
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
                 }
-                if (result == 0)
+                if (result == "Quản lý")
                 {
-                    AdminForm af = new AdminForm();
+                    AdminForm af = new AdminForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
                     af.ShowDialog();
                 }
-                if (result == 1)
+                if (result == "Nhân viên")
                 {
-                    UserForm uf = new UserForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text));
+                    UserForm uf = new UserForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
                     this.Hide();
                     uf.ShowDialog();
                     this.Show();

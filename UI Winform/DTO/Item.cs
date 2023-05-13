@@ -32,6 +32,7 @@ namespace UI_Winform.DTO
         public string ID_Category { get; set; }
         public string ID_Brand { get; set; }
         public Nullable<decimal> SellPrice { get; set; }
+        public Nullable<bool> Deleted { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }

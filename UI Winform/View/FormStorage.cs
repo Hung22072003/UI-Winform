@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using UI_Winform.BLL;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
@@ -16,10 +17,14 @@ namespace UI_Winform
 {
     public partial class FormStorage : Form
     {
+        private string ID_User;
+        private string typeAccount;
         private Form activeForm;
         private DataTable dt;
-        public FormStorage()
+        public FormStorage(string iD_User, string typeAccount)
         {
+            this.ID_User = iD_User;
+            this.typeAccount = typeAccount;
             InitializeComponent();
             dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[]
@@ -37,6 +42,7 @@ namespace UI_Winform
             });
             SetCbbBrand();
             SetCbbCategory();
+            SetGUI();
         }
 
         private void FormStorage_Load(object sender, EventArgs e)
@@ -81,7 +87,20 @@ namespace UI_Winform
             ManageItemBLL mib = new ManageItemBLL();
             dataGridView1.DataSource = mib.getItemsBySearch(searchName, searchBrand, searchCategory);
         }
-
+        public void SetGUI()
+        {
+            if (typeAccount == "Nhân viên")
+            {
+                Btn_Add.Visible = false;
+                Btn_Update.Visible = false;
+                Btn_Delete.Visible = false;
+                Btn_Import.Visible = false;
+                Btn_View.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+                Btn_Sort.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+                Cbb_Sort.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+                Cbb_Type.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            }
+        }
         public void SetCbbBrand()
         {
             ManageBrandBLL mbb = new ManageBrandBLL();

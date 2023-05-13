@@ -20,21 +20,12 @@ namespace UI_Winform.DAL
             return accounts;
         }
 
-        public int getTypeAccount(string UserName, string PassWord)
+        public int? getIDRoleByUserName(string userName)
         {
-            using (DBPM db = new DBPM())
-            {
-                var s = db.Accounts.Where(p => p.UserName == UserName && p.PassWord == PassWord).Select(p => p).FirstOrDefault();
-                if (s != null)
-                {
-                    return s.TypeAccount;
-                } else
-                {
-                    return -1;
-                }
-            }
-        }   
-
+            DBPM db = new DBPM();
+            Account s = db.Accounts.Where(p => p.UserName == userName).FirstOrDefault();
+            return s.ID_Role;
+        }
         public Account GetAccountByIDDAL(string id)
         {
 
@@ -63,12 +54,10 @@ namespace UI_Winform.DAL
             using (DBPM db = new DBPM())
             {
                 var a = db.Accounts.Find(temp.UserName);
-
+                a.ID_Staff = temp.ID_Staff;
                 a.UserName = temp.UserName;
-
-
                 a.PassWord = temp.PassWord;
-                a.TypeAccount = temp.TypeAccount;
+                a.ID_Role = temp.ID_Role;
 
                 db.SaveChanges();
             }
@@ -81,7 +70,6 @@ namespace UI_Winform.DAL
             {
                 db.Accounts.Add(temp);
                 db.SaveChanges();
-
             }
 
         }

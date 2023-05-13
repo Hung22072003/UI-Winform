@@ -32,13 +32,12 @@
             this.txb_IDStaff = new System.Windows.Forms.TextBox();
             this.grb_Shift = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbb_TypeAccount = new System.Windows.Forms.ComboBox();
             this.txb_PassWord = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txb_Account = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.rbtn_Staff = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
-            this.rbtn_Manager = new System.Windows.Forms.RadioButton();
             this.btn_AddImage = new System.Windows.Forms.Button();
             this.pt_Staff = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.txb_IDStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_IDStaff.Location = new System.Drawing.Point(559, 202);
             this.txb_IDStaff.Name = "txb_IDStaff";
+            this.txb_IDStaff.ReadOnly = true;
             this.txb_IDStaff.Size = new System.Drawing.Size(215, 27);
             this.txb_IDStaff.TabIndex = 56;
             // 
@@ -93,19 +93,27 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbb_TypeAccount);
             this.groupBox1.Controls.Add(this.txb_PassWord);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txb_Account);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.rbtn_Staff);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.rbtn_Manager);
             this.groupBox1.Location = new System.Drawing.Point(28, 342);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(753, 112);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tài Khoản";
+            // 
+            // cbb_TypeAccount
+            // 
+            this.cbb_TypeAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_TypeAccount.FormattingEnabled = true;
+            this.cbb_TypeAccount.Location = new System.Drawing.Point(149, 69);
+            this.cbb_TypeAccount.Name = "cbb_TypeAccount";
+            this.cbb_TypeAccount.Size = new System.Drawing.Size(215, 28);
+            this.cbb_TypeAccount.TabIndex = 19;
             // 
             // txb_PassWord
             // 
@@ -132,6 +140,7 @@
             this.txb_Account.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Account.Location = new System.Drawing.Point(149, 30);
             this.txb_Account.Name = "txb_Account";
+            this.txb_Account.ReadOnly = true;
             this.txb_Account.Size = new System.Drawing.Size(215, 27);
             this.txb_Account.TabIndex = 15;
             // 
@@ -145,17 +154,6 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Mật khẩu:";
             // 
-            // rbtn_Staff
-            // 
-            this.rbtn_Staff.AutoSize = true;
-            this.rbtn_Staff.Location = new System.Drawing.Point(274, 71);
-            this.rbtn_Staff.Name = "rbtn_Staff";
-            this.rbtn_Staff.Size = new System.Drawing.Size(90, 20);
-            this.rbtn_Staff.TabIndex = 26;
-            this.rbtn_Staff.TabStop = true;
-            this.rbtn_Staff.Text = "Nhân Viên";
-            this.rbtn_Staff.UseVisualStyleBackColor = true;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -165,17 +163,6 @@
             this.label11.Size = new System.Drawing.Size(118, 20);
             this.label11.TabIndex = 18;
             this.label11.Text = "Loại tài khoản:";
-            // 
-            // rbtn_Manager
-            // 
-            this.rbtn_Manager.AutoSize = true;
-            this.rbtn_Manager.Location = new System.Drawing.Point(169, 71);
-            this.rbtn_Manager.Name = "rbtn_Manager";
-            this.rbtn_Manager.Size = new System.Drawing.Size(77, 20);
-            this.rbtn_Manager.TabIndex = 25;
-            this.rbtn_Manager.TabStop = true;
-            this.rbtn_Manager.Text = "Quản Lý";
-            this.rbtn_Manager.UseVisualStyleBackColor = true;
             // 
             // btn_AddImage
             // 
@@ -296,6 +283,7 @@
             this.txb_PhoneNumber.Name = "txb_PhoneNumber";
             this.txb_PhoneNumber.Size = new System.Drawing.Size(215, 27);
             this.txb_PhoneNumber.TabIndex = 42;
+            this.txb_PhoneNumber.TextChanged += new System.EventHandler(this.txb_PhoneNumber_TextChanged);
             // 
             // label5
             // 
@@ -420,9 +408,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txb_Account;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton rbtn_Staff;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton rbtn_Manager;
         private System.Windows.Forms.Button btn_AddImage;
         private System.Windows.Forms.PictureBox pt_Staff;
         private System.Windows.Forms.Label label1;
@@ -443,5 +429,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Lb_Title;
         private System.Windows.Forms.OpenFileDialog ofd_OpenFile;
+        private System.Windows.Forms.ComboBox cbb_TypeAccount;
     }
 }

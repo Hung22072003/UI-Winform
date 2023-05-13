@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Winform.BLL;
+using UI_Winform.DTO;
 
 namespace UI_Winform.View
 {
@@ -46,7 +47,7 @@ namespace UI_Winform.View
             else
             {
                 Dgv_Statistic.DataSource = mob.getOrderstoDGV(startDate, endDate, ID_User);
-                if (Dgv_Statistic.Rows.Count > 1 ) {
+                if (Dgv_Statistic.Rows.Count > 0 ) {
                     Lb_TotalOrders.Visible = true;
                     Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
                     Lb_TotalRevenue.Visible = true;
@@ -64,11 +65,46 @@ namespace UI_Winform.View
         {
             ManageOrderBLL mob=  new ManageOrderBLL();
             Dgv_Statistic.DataSource = mob.getOrdersBySearch(Txb_Search.Text, ID_User);
+            if (Dgv_Statistic.Rows.Count > 0)
+            {
+                Lb_TotalOrders.Visible = true;
+                Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
+                Lb_TotalRevenue.Visible = true;
+                decimal? total = 0;
+                foreach (DataGridViewRow i in Dgv_Statistic.Rows)
+                {
+                    total += Convert.ToDecimal(i.Cells["Tổng tiền"].Value);
+                }
+                Txb_TotalRevenue.Text = total.ToString();
+            }
         }
 
         private void FormTradeHistory_Load(object sender, EventArgs e)
         {
             LoadTheme();
+        }
+
+        private void Btn_View_Click(object sender, EventArgs e)
+        {
+            if (Dgv_Statistic.SelectedRows.Count == 1)
+            {
+                ManageOrderDetailBLL mobb = new ManageOrderDetailBLL();
+                List<ViewOrderDetail> list = mobb.GetOrderDetailList(Dgv_Statistic.SelectedRows[0].Cells["Mã hóa đơn"].Value.ToString());
+                decimal? total = 0;
+                list.ForEach(p =>
+                {
+                    total += p.AmountPrice;
+                });
+
+                ManageOrderBLL mob = new ManageOrderBLL();
+                Order o = mob.getOrderByID(Dgv_Statistic.SelectedRows[0].Cells["Mã hóa đơn"].Value.ToString());
+                ManageCustomerBLL mcb = new ManageCustomerBLL();
+                Customer customer = mcb.GetCustomerByID(o.ID_Customer);
+
+
+                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
+                f.ShowDialog();
+            }
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_View = new System.Windows.Forms.Button();
             this.Txb_TotalRevenue = new System.Windows.Forms.TextBox();
             this.Lb_TotalRevenue = new System.Windows.Forms.Label();
             this.Txb_TotalOrders = new System.Windows.Forms.TextBox();
@@ -44,17 +44,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // Btn_View
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(928, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 34);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Xem chi tiết";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_View.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_View.Location = new System.Drawing.Point(960, 336);
+            this.Btn_View.Name = "Btn_View";
+            this.Btn_View.Size = new System.Drawing.Size(138, 34);
+            this.Btn_View.TabIndex = 53;
+            this.Btn_View.Text = "Xem chi tiết";
+            this.Btn_View.UseVisualStyleBackColor = true;
+            this.Btn_View.Click += new System.EventHandler(this.Btn_View_Click);
             // 
             // Txb_TotalRevenue
             // 
@@ -161,7 +162,7 @@
             this.Dgv_Statistic.RowHeadersWidth = 51;
             this.Dgv_Statistic.RowTemplate.Height = 24;
             this.Dgv_Statistic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_Statistic.Size = new System.Drawing.Size(1054, 270);
+            this.Dgv_Statistic.Size = new System.Drawing.Size(1086, 270);
             this.Dgv_Statistic.TabIndex = 43;
             // 
             // Txb_Search
@@ -169,7 +170,7 @@
             this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txb_Search.Location = new System.Drawing.Point(868, 14);
+            this.Txb_Search.Location = new System.Drawing.Point(900, 14);
             this.Txb_Search.Name = "Txb_Search";
             this.Txb_Search.Size = new System.Drawing.Size(198, 27);
             this.Txb_Search.TabIndex = 54;
@@ -179,7 +180,7 @@
             this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search.Location = new System.Drawing.Point(744, 9);
+            this.Btn_Search.Location = new System.Drawing.Point(776, 9);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(106, 34);
             this.Btn_Search.TabIndex = 55;
@@ -192,10 +193,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1078, 675);
+            this.ClientSize = new System.Drawing.Size(1110, 675);
             this.Controls.Add(this.Btn_Search);
             this.Controls.Add(this.Txb_Search);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_View);
             this.Controls.Add(this.Txb_TotalRevenue);
             this.Controls.Add(this.Lb_TotalRevenue);
             this.Controls.Add(this.Txb_TotalOrders);
@@ -206,6 +207,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DtpDateStart);
             this.Controls.Add(this.Dgv_Statistic);
+            this.MinimumSize = new System.Drawing.Size(1128, 722);
             this.Name = "FormTradeHistory";
             this.Text = "Lịch sử giao dịch";
             this.Load += new System.EventHandler(this.FormTradeHistory_Load);
@@ -217,7 +219,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_View;
         private System.Windows.Forms.TextBox Txb_TotalRevenue;
         private System.Windows.Forms.Label Lb_TotalRevenue;
         private System.Windows.Forms.TextBox Txb_TotalOrders;

@@ -54,7 +54,7 @@ namespace UI_Winform
             {
                 ManageRevenueBLL mrb = new ManageRevenueBLL();
                 Dgv_Statistic.DataSource = mrb.getOrderToDRV(startDate, endDate);
-                if (Dgv_Statistic.Rows.Count > 1)
+                if (Dgv_Statistic.Rows.Count > 0)
                 {
                     PanelChart.Controls.Clear();
                     Chart chartRevenue = new Chart();
@@ -106,8 +106,7 @@ namespace UI_Winform
                 ManageCustomerBLL mcb = new ManageCustomerBLL();
                 Customer customer = mcb.GetCustomerByID(o.ID_Customer);
 
-
-                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate);
+                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
                 f.ShowDialog();
             }
         }
