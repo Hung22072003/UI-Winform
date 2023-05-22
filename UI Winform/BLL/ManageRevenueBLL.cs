@@ -49,6 +49,44 @@ namespace UI_Winform.BLL
             return dt;
         }
 
+        public DataTable getOrderBySearch(string search)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn {ColumnName = "Mã hóa đơn", DataType = typeof(string)},
+                new DataColumn {ColumnName = "Tên nhân viên", DataType = typeof(string)},
+                new DataColumn {ColumnName = "Ngày tạo hóa đơn", DataType = typeof(DateTime)},
+                new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
+            });
+            List<OrderDGV> listOrder = new List<OrderDGV>();
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<Order> orders = mod.getAllOrder();
+            foreach (Order order in orders)
+            {
+                if (order.Staff.Name ==  search)
+                {
+                    decimal? total = 0;
+                    order.OrderDetails.Select(p => new { p.AmountPrice }).ToList().ForEach(p =>
+                    {
+                        total += p.AmountPrice;
+                    });
+                    OrderDGV orderDGV = new OrderDGV
+                    {
+                        ID_Order = order.OrderID,
+                        NameStaff = order.Staff.Name,
+                        OrderDate = order.OrderDate,
+                        Total = total
+                    };
+                    listOrder.Add(orderDGV);
+                }
+            }
+            listOrder.ForEach(p =>
+            {
+                dt.Rows.Add(p.ID_Order, p.NameStaff, p.OrderDate, p.Total);
+            });
+            return dt;
+        }
         public DataTable getRevenueOfCategory(DateTime startDate, DateTime endDate)
         {
             DataTable dt = new DataTable();
@@ -104,7 +142,7 @@ namespace UI_Winform.BLL
             orders.ForEach(order =>
             {
                 decimal? total = order.OrderDetails.Sum(p => p.AmountPrice);
-                dt.Rows[order.OrderDate.Month - 1]["Tổng tiền"] = total;
+                dt.Rows[order.OrderDate.Month - 1]["Tổng tiền"] = Convert.ToDecimal(dt.Rows[order.OrderDate.Month - 1]["Tổng tiền"].ToString()) + total ;
             });
 
             return dt;

@@ -146,5 +146,15 @@ namespace UI_Winform
                 inf.Show();
             }
         }
+
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                ManageAccountBLL mab = new ManageAccountBLL();
+                mab.UpdatePassword("123", mab.GetAccountByID(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()).UserName);
+                MessageBox.Show("Cập nhật thành công!");
+            }
+        }
     }
 }

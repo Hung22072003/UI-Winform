@@ -60,14 +60,11 @@ namespace UI_Winform.View
                 Dgv_Statistic.DataSource = mrb.getOrderToDRV(startDate, endDate);
 
                 ChildPanel.Controls.Clear();
-                if (Dgv_Statistic.Rows.Count > 1)
+                if (Dgv_Statistic.Rows.Count > 0)
                 {
                     Chart chartRevenue = new Chart();
                     chartRevenue.ChartAreas.Add(new ChartArea("Doanh thu trong năm " + CbbYear.Text));
                    
-                    /*chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.IntervalType = DateTimeIntervalType.Number;
-                    chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.Minimum = 1;
-                    chartRevenue.ChartAreas["Doanh thu trong năm " + CbbYear.Text].AxisX.Maximum = 12;*/
                     Series seri = new Series();
                     seri.Name = "Năm";
                     seri.ChartType = SeriesChartType.Column;
@@ -120,6 +117,24 @@ namespace UI_Winform.View
 
                 FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
                 f.ShowDialog();
+            }
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            ManageRevenueBLL mrb = new ManageRevenueBLL();
+            Dgv_Statistic.DataSource = mrb.getOrderBySearch(Txb_Search.Text);
+            if (Dgv_Statistic.Rows.Count > 0)
+            {
+                Lb_TotalOrders.Visible = true;
+                Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
+                Lb_TotalRevenue.Visible = true;
+                decimal? total = 0;
+                foreach (DataGridViewRow i in Dgv_Statistic.Rows)
+                {
+                    total += Convert.ToDecimal(i.Cells["Tổng tiền"].Value);
+                }
+                Txb_TotalRevenue.Text = total.ToString();
             }
         }
     }

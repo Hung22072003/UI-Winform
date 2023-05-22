@@ -12,6 +12,7 @@ using UI_Winform.BLL;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
 using UI_Winform.View;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskBand;
 
 namespace UI_Winform
 {
@@ -20,6 +21,8 @@ namespace UI_Winform
         public RevenueTimeForm()
         {
             InitializeComponent();
+            Lb_TotalOrders.Visible = true;
+            Lb_TotalRevenue.Visible = true;
         }
 
 
@@ -76,9 +79,9 @@ namespace UI_Winform
                     chartRevenue.Location = new System.Drawing.Point(12, 0);
                     PanelChart.Controls.Add(chartRevenue);
 
-                    Lb_TotalOrders.Visible = true;
+                    
                     Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
-                    Lb_TotalRevenue.Visible = true;
+                    
                     decimal? total = 0;
                     foreach (DataGridViewRow i in Dgv_Statistic.Rows)
                     {
@@ -106,9 +109,24 @@ namespace UI_Winform
                 ManageCustomerBLL mcb = new ManageCustomerBLL();
                 Customer customer = mcb.GetCustomerByID(o.ID_Customer);
 
+
                 FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
                 f.ShowDialog();
             }
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            ManageRevenueBLL mrb = new ManageRevenueBLL();
+            Dgv_Statistic.DataSource = mrb.getOrderBySearch(Txb_Search.Text);
+            Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
+
+            decimal? total = 0;
+            foreach (DataGridViewRow i in Dgv_Statistic.Rows)
+            {
+                total += Convert.ToDecimal(i.Cells["Tổng tiền"].Value);
+            }
+            Txb_TotalRevenue.Text = total.ToString();
         }
     }
 }

@@ -9,26 +9,33 @@ namespace UI_Winform.BLL
 {
     internal class ManageAccountBLL
     {
-        public string getTypeAccount(string UserName, string PassWord)
+        public string getTypeAccount(string UserName)
         {
             ManageRoleBLL mrb = new ManageRoleBLL();
             ManageAccountDAL mad = new ManageAccountDAL();
             foreach (Account i in mad.getAllAccounts())
             {
-                if (i.UserName == UserName && i.PassWord == PassWord)
-                {
+                if (i.UserName == UserName) 
                     return mrb.getNameRoleByIDRole(i.ID_Role);
-                }
             }
             return null;
         }
 
+        public bool CheckPassword(string UserName, string PassWord)
+        {
+            ManageAccountDAL mad = new ManageAccountDAL();
+            foreach (Account i in mad.getAllAccounts())
+            {
+                if (i.UserName == UserName && BCrypt.Net.BCrypt.Verify(PassWord, i.PassWord)) return true;
+            }
+            return false;
+        }
         public string getIDUserByAccount(string UserName, string PassWord)
         {
             ManageAccountDAL mad = new ManageAccountDAL();
             foreach (Account i in mad.getAllAccounts())
             {
-                if (i.UserName == UserName && i.PassWord == PassWord)
+                if (i.UserName == UserName && BCrypt.Net.BCrypt.Verify(PassWord, i.PassWord))
                 {
                     return i.ID_Staff;
                 }
@@ -46,16 +53,14 @@ namespace UI_Winform.BLL
         {
             ManageAccountDAL mad = new ManageAccountDAL();
             mad.DeleteAccountById_StaffDAL(id);
-
         }
 
-        public void UpdateAccountBLL(string ID_Staff, string UserName, string Password, int idrole)
+        public void UpdateAccountBLL(string ID_Staff, string UserName, int idrole)
         {
             Account temp = new Account();
 
             temp.ID_Staff = ID_Staff;
             temp.UserName = UserName;
-            temp.PassWord = Password;
             temp.ID_Role = idrole;
 
             ManageAccountDAL mad = new ManageAccountDAL();
@@ -68,12 +73,25 @@ namespace UI_Winform.BLL
 
             temp.ID_Staff = ID_Staff;
             temp.UserName = UserName;
-            temp.PassWord = Password;
+            temp.PassWord = EncryptPassword(Password);
             temp.DisplayName = DisplayName;
             temp.ID_Role = idrole;
 
             ManageAccountDAL mad = new ManageAccountDAL();
             mad.AddAccountDAL(temp);
+        }
+
+        //Chuyển từ PassWord sang HashPassWord
+        public string EncryptPassword(string Password)
+        {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            return BCrypt.Net.BCrypt.HashPassword(Password, salt);
+        }
+
+        public void UpdatePassword(string Password, string Username)
+        {
+            ManageAccountDAL mad = new ManageAccountDAL();
+            mad.UpdatePassword(EncryptPassword(Password), Username);
         }
     }
 }

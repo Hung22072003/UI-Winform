@@ -17,12 +17,12 @@ namespace UI_Winform.BLL
         {
             ManageStaffDAL msd = new ManageStaffDAL();
             string ID_Staff;
-            if (msd.GetAllStaffDAL().Count < 9)
+            if (msd.GetAllStaff().Count < 9)
             {
-                ID_Staff = "NV0" + (msd.GetAllStaffDAL().Count + 1);
+                ID_Staff = "NV0" + (msd.GetAllStaff().Count + 1);
             }else
             {
-                ID_Staff = "NV" + (msd.GetAllStaffDAL().Count + 1);
+                ID_Staff = "NV" + (msd.GetAllStaff().Count + 1);
             }
              
             return ID_Staff;

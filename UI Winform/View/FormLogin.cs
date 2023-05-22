@@ -57,25 +57,30 @@ namespace UI_Winform
             } else
             {
                 ManageAccountBLL mab = new ManageAccountBLL();
-                string result = mab.getTypeAccount(Txb_UserName.Text.Replace(" ", ""), Txb_PassWord.Text);
-                if (result == null)
+                
+                if (mab.CheckPassword(Txb_UserName.Text, Txb_PassWord.Text))
+                {
+                    string result = mab.getTypeAccount(Txb_UserName.Text);
+                    if (result == "Quản lý")
+                    {
+                        AdminForm af = new AdminForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
+                        this.Hide();
+                        af.ShowDialog();
+                        this.Show();
+                    }
+                    else if (result == "Nhân viên")
+                    {
+                        UserForm uf = new UserForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
+                        this.Hide();
+                        uf.ShowDialog();
+                        this.Show();
+                    }
+                }
+                else
                 {
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
                 }
-                if (result == "Quản lý")
-                {
-                    AdminForm af = new AdminForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
-                    af.ShowDialog();
-                }
-                if (result == "Nhân viên")
-                {
-                    UserForm uf = new UserForm(mab.getIDUserByAccount(Txb_UserName.Text, Txb_PassWord.Text), result);
-                    this.Hide();
-                    uf.ShowDialog();
-                    this.Show();
-                }
             }
-            
         }
 
         private void Panel_Lock_MouseDown(object sender, MouseEventArgs e)

@@ -39,12 +39,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_Search);
+            this.MainPanel.Controls.Add(this.Txb_Search);
             this.MainPanel.Controls.Add(this.Btn_View);
             this.MainPanel.Controls.Add(this.Txb_TotalRevenue);
             this.MainPanel.Controls.Add(this.Lb_TotalRevenue);
@@ -175,6 +179,29 @@
             this.ChildPanel.Size = new System.Drawing.Size(1076, 391);
             this.ChildPanel.TabIndex = 1;
             // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Search.Location = new System.Drawing.Point(739, 14);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
+            this.Btn_Search.TabIndex = 59;
+            this.Btn_Search.Text = "Tìm";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // Txb_Search
+            // 
+            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_Search.Location = new System.Drawing.Point(863, 16);
+            this.Txb_Search.Name = "Txb_Search";
+            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
+            this.Txb_Search.TabIndex = 58;
+            // 
             // RevenueYearForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -207,5 +234,7 @@
         private System.Windows.Forms.TextBox Txb_TotalOrders;
         private System.Windows.Forms.Label Lb_TotalOrders;
         private System.Windows.Forms.Button Btn_View;
+        private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.TextBox Txb_Search;
     }
 }

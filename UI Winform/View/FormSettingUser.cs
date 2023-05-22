@@ -15,8 +15,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UI_Winform.View
 {
+    
     public partial class FormSettingUser : Form
     {
+        private Form activeForm;
         private string ID_User;
         private List<CheckBoxShift> li;
         public FormSettingUser(string iD_User)
@@ -32,7 +34,7 @@ namespace UI_Winform.View
 
         private void LoadTheme()
         {
-            foreach (Control btns in this.Controls)
+            foreach (Control btns in MainPanel.Controls)
             {
                 if (btns.GetType() == typeof(System.Windows.Forms.Button))
                 {
@@ -44,6 +46,20 @@ namespace UI_Winform.View
                 }
             }
             Lb_Title.ForeColor = ThemeColor.SecondaryColor;
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.ChildPanel.Controls.Add(childForm);
+            this.ChildPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
         public void SetGroupBoxShift()
         {
@@ -100,7 +116,6 @@ namespace UI_Winform.View
                 txb_PhoneNumber.Text = s.PhoneNumber;
                 txb_Salary.Text = s.Salary.ToString();
                 txb_Account.Text = a.UserName;
-                txb_PassWord.Text = a.PassWord;
                 dtp_DateOfBirth.Text = Convert.ToString(s.DateOfBirth);
                 txb_TypeAccount.Text = mrb.getNameRoleByIDRole(a.ID_Role);
 
@@ -131,18 +146,6 @@ namespace UI_Winform.View
             msb.UpdateStaffBLL(this.ID_User, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
                    txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
 
-            //Update Staff_Shift
-
-            mssb.DeleteByID_StaffBLL(ID_User, li);
-
-            GetCheckBoxShiftFromUI(); //Cập nhật lại li
-
-
-            mssb.AddStaffByID_StaffBLL(ID_User, li);
-            
-            ManageRoleBLL mrb = new ManageRoleBLL();
-            mab.UpdateAccountBLL(txb_IDStaff.Text, txb_Account.Text, txb_PassWord.Text, mrb.getIDRoleByNameRole(txb_TypeAccount.Text));
-
             MessageBox.Show("Cập nhật thành công!");
         }
 
@@ -162,9 +165,9 @@ namespace UI_Winform.View
             
         }
 
-        private void txb_PhoneNumber_TextChanged(object sender, EventArgs e)
+        private void Btn_ChangePassword_Click(object sender, EventArgs e)
         {
-            txb_Account.Text = txb_PhoneNumber.Text;
+            OpenChildForm(new FormChangePassword(txb_Account.Text), sender);
         }
     }
 }

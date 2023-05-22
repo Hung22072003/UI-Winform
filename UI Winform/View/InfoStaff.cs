@@ -71,7 +71,6 @@ namespace UI_Winform
             txb_PhoneNumber.Enabled = false;
 
             txb_Account.Enabled = false;
-            txb_PassWord.Enabled = false;
 
             foreach (CheckBox i in grb_Shift.Controls)
             {
@@ -152,7 +151,6 @@ namespace UI_Winform
             //Load thong tin vao trong muc account
 
             txb_Account.Text = a.UserName;
-            txb_PassWord.Text = a.PassWord;
 
             ManageRoleBLL mrb = new ManageRoleBLL();
             cbb_TypeAccount.Text = mrb.getNameRoleByIDRole(a.ID_Role);
@@ -169,7 +167,6 @@ namespace UI_Winform
             pt_Staff.Image = null;
 
             txb_Account.Text = "";
-            txb_PassWord.Text = "";
             cbb_TypeAccount.Text = "";
         }
 
@@ -188,7 +185,7 @@ namespace UI_Winform
             ManageAccountBLL mab = new ManageAccountBLL();
             ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
             if (txb_IDStaff.Text != "" && txb_Name.Text != "" && txb_PhoneNumber.Text != "" && txb_Address.Text != ""
-                && txb_Salary.Text != "" && txb_Email.Text != "" && txb_Account.Text != "" && txb_PassWord.Text != "" 
+                && txb_Salary.Text != "" && txb_Email.Text != "" && txb_Account.Text != ""  
                 && CheckCbbTypeAccount(cbb_TypeAccount.Text) && IsEmail(txb_Email.Text))
             {
                 if (FormStaff.check == 1)
@@ -204,7 +201,7 @@ namespace UI_Winform
 
                  mssb.AddStaffByID_StaffBLL(id, li);
 
-                 mab.UpdateAccountBLL(this.id, txb_Account.Text, txb_PassWord.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
+                 mab.UpdateAccountBLL(this.id, txb_Account.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
                    
                 }
                 else if (FormStaff.check == 0)
@@ -216,7 +213,7 @@ namespace UI_Winform
 
                  mssb.AddStaffByID_StaffBLL(txb_IDStaff.Text, li);
 
-                 mab.AddAccountBLL(txb_IDStaff.Text, txb_Name.Text, txb_Account.Text, txb_PassWord.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
+                 mab.AddAccountBLL(txb_IDStaff.Text, txb_Name.Text, txb_Account.Text, "123", ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
 
                 }
                 this.Close();
@@ -226,8 +223,6 @@ namespace UI_Winform
             }
                 
         }
-
-
         public void SetGroupBoxShift()
         {
             int x = 12, y = 38;
@@ -264,7 +259,7 @@ namespace UI_Winform
         {
             try
             {
-                ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";
+                ofd_OpenFile.Filter = "JPEG files (*.jpeg)|*.jpeg|All files (*.*)|*.*";
                 ofd_OpenFile.ShowDialog();
                 string file = ofd_OpenFile.FileName; //lấy đường dẫn đến file mà mình đã chọn
                 Image image = Image.FromFile(file); //Tạo ra một đối tượng image thông qua đường dẫn
@@ -272,6 +267,7 @@ namespace UI_Winform
             }
             catch (Exception ex)
             {
+
             }
             
         }

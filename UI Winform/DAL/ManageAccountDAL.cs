@@ -56,7 +56,6 @@ namespace UI_Winform.DAL
                 var a = db.Accounts.Find(temp.UserName);
                 a.ID_Staff = temp.ID_Staff;
                 a.UserName = temp.UserName;
-                a.PassWord = temp.PassWord;
                 a.ID_Role = temp.ID_Role;
 
                 db.SaveChanges();
@@ -72,6 +71,15 @@ namespace UI_Winform.DAL
                 db.SaveChanges();
             }
 
+        }
+
+        public void UpdatePassword(string hashPassword, string Username) {
+            using (DBPM db = new DBPM())
+            {
+                var a = db.Accounts.Find(Username);
+                a.PassWord = hashPassword;
+                db.SaveChanges();
+            }
         }
 
     }

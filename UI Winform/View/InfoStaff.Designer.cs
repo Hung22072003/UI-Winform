@@ -33,10 +33,8 @@
             this.grb_Shift = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbb_TypeAccount = new System.Windows.Forms.ComboBox();
-            this.txb_PassWord = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txb_Account = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.btn_AddImage = new System.Windows.Forms.Button();
             this.pt_Staff = new System.Windows.Forms.PictureBox();
@@ -94,14 +92,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbb_TypeAccount);
-            this.groupBox1.Controls.Add(this.txb_PassWord);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txb_Account);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(28, 342);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(753, 112);
+            this.groupBox1.Size = new System.Drawing.Size(753, 77);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tài Khoản";
@@ -110,19 +106,10 @@
             // 
             this.cbb_TypeAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_TypeAccount.FormattingEnabled = true;
-            this.cbb_TypeAccount.Location = new System.Drawing.Point(149, 69);
+            this.cbb_TypeAccount.Location = new System.Drawing.Point(531, 29);
             this.cbb_TypeAccount.Name = "cbb_TypeAccount";
             this.cbb_TypeAccount.Size = new System.Drawing.Size(215, 28);
             this.cbb_TypeAccount.TabIndex = 19;
-            // 
-            // txb_PassWord
-            // 
-            this.txb_PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_PassWord.Location = new System.Drawing.Point(531, 31);
-            this.txb_PassWord.Name = "txb_PassWord";
-            this.txb_PassWord.Size = new System.Drawing.Size(215, 27);
-            this.txb_PassWord.TabIndex = 17;
             // 
             // label10
             // 
@@ -144,21 +131,11 @@
             this.txb_Account.Size = new System.Drawing.Size(215, 27);
             this.txb_Account.TabIndex = 15;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(414, 37);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 20);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Mật khẩu:";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(2, 72);
+            this.label11.Location = new System.Drawing.Point(384, 32);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 20);
             this.label11.TabIndex = 18;
@@ -178,9 +155,9 @@
             // 
             // pt_Staff
             // 
-            this.pt_Staff.Location = new System.Drawing.Point(945, 62);
+            this.pt_Staff.Location = new System.Drawing.Point(945, 24);
             this.pt_Staff.Name = "pt_Staff";
-            this.pt_Staff.Size = new System.Drawing.Size(178, 137);
+            this.pt_Staff.Size = new System.Drawing.Size(178, 175);
             this.pt_Staff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pt_Staff.TabIndex = 52;
             this.pt_Staff.TabStop = false;
@@ -226,7 +203,7 @@
             // 
             this.btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Reset.Location = new System.Drawing.Point(559, 472);
+            this.btn_Reset.Location = new System.Drawing.Point(559, 444);
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(106, 31);
             this.btn_Reset.TabIndex = 47;
@@ -238,7 +215,7 @@
             // 
             this.btn_Ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Ok.Location = new System.Drawing.Point(171, 472);
+            this.btn_Ok.Location = new System.Drawing.Point(177, 444);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(106, 31);
             this.btn_Ok.TabIndex = 46;
@@ -404,10 +381,8 @@
         private System.Windows.Forms.TextBox txb_IDStaff;
         private System.Windows.Forms.GroupBox grb_Shift;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txb_PassWord;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txb_Account;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_AddImage;
         private System.Windows.Forms.PictureBox pt_Staff;

@@ -22,6 +22,18 @@ namespace UI_Winform.DAL
 
         }
 
+
+        public dynamic GetAllStaff()
+        {
+
+            using (DBPM db = new DBPM())
+            {
+
+                var d = db.Staffs.Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture });
+                return d.ToList();
+            }
+
+        }
         public dynamic GetAllStaffByNameDAL(string name)
         {
 

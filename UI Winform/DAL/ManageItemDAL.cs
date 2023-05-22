@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 using UI_Winform.DTO;
 
 namespace UI_Winform.DAL
 {
     public class ManageItemDAL
     {
-        public List<Item> getAllItems() {
+        public List<Item> getAllItems()
+        {
             DBPM db = new DBPM();
             var s = db.Items.Where(p => p.Deleted == false).Select(p => p).ToList();
             return s;
         }
 
+        public List<string> getListIDItem()
+        {
+            List<string> list = new List<string>(); 
+            DBPM db = new DBPM();
+            db.Items.Select(p => new {p.IDItem}).ToList().ForEach(p =>
+            {
+                list.Add(p.IDItem);
+            });
+            return list;
+        }
         public Item getItemByID(string ID_Item)
         {
             DBPM db = new DBPM();
@@ -52,8 +64,20 @@ namespace UI_Winform.DAL
         {
             using(DBPM db = new DBPM())
             {
-                db.Items.Add(item);
-                db.SaveChanges();
+                int result = 0;
+                db.Items.Select(p => p).ToList().ForEach(i =>
+                {
+                    if (i.IDItem == item.IDItem)
+                    {
+                        result = 1;
+                    }
+                });
+
+                if (result == 0) {
+                    db.Items.Add(item);
+                    db.SaveChanges();
+                }
+
             }
         }
 

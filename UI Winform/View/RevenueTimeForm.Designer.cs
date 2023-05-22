@@ -41,12 +41,16 @@
             this.DtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
             this.PanelChart = new System.Windows.Forms.Panel();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_Search);
+            this.MainPanel.Controls.Add(this.Txb_Search);
             this.MainPanel.Controls.Add(this.Btn_View);
             this.MainPanel.Controls.Add(this.Txb_TotalRevenue);
             this.MainPanel.Controls.Add(this.Lb_TotalRevenue);
@@ -120,7 +124,7 @@
             // 
             this.Btn_Statistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Statistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Statistic.Location = new System.Drawing.Point(603, 16);
+            this.Btn_Statistic.Location = new System.Drawing.Point(569, 16);
             this.Btn_Statistic.Name = "Btn_Statistic";
             this.Btn_Statistic.Size = new System.Drawing.Size(106, 34);
             this.Btn_Statistic.TabIndex = 37;
@@ -189,6 +193,29 @@
             this.PanelChart.Size = new System.Drawing.Size(1098, 370);
             this.PanelChart.TabIndex = 34;
             // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Search.Location = new System.Drawing.Point(764, 16);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
+            this.Btn_Search.TabIndex = 57;
+            this.Btn_Search.Text = "Tìm";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // Txb_Search
+            // 
+            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_Search.Location = new System.Drawing.Point(888, 18);
+            this.Txb_Search.Name = "Txb_Search";
+            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
+            this.Txb_Search.TabIndex = 56;
+            // 
             // RevenueTimeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -221,5 +248,7 @@
         private System.Windows.Forms.Label Lb_TotalOrders;
         private System.Windows.Forms.Panel PanelChart;
         private System.Windows.Forms.Button Btn_View;
+        private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.TextBox Txb_Search;
     }
 }

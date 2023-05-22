@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.cbb_AscDesc = new System.Windows.Forms.ComboBox();
             this.Btn_View = new System.Windows.Forms.Button();
             this.cbb_Sort = new System.Windows.Forms.ComboBox();
             this.Btn_Sort = new System.Windows.Forms.Button();
@@ -40,13 +41,14 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
-            this.cbb_AscDesc = new System.Windows.Forms.ComboBox();
+            this.Btn_Reset = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_Reset);
             this.MainPanel.Controls.Add(this.cbb_AscDesc);
             this.MainPanel.Controls.Add(this.Btn_View);
             this.MainPanel.Controls.Add(this.cbb_Sort);
@@ -61,8 +63,20 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1082, 380);
+            this.MainPanel.Size = new System.Drawing.Size(1309, 380);
             this.MainPanel.TabIndex = 0;
+            // 
+            // cbb_AscDesc
+            // 
+            this.cbb_AscDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_AscDesc.FormattingEnabled = true;
+            this.cbb_AscDesc.Items.AddRange(new object[] {
+            "Tăng dần",
+            "Giảm dần"});
+            this.cbb_AscDesc.Location = new System.Drawing.Point(732, 325);
+            this.cbb_AscDesc.Name = "cbb_AscDesc";
+            this.cbb_AscDesc.Size = new System.Drawing.Size(121, 28);
+            this.cbb_AscDesc.TabIndex = 21;
             // 
             // Btn_View
             // 
@@ -174,7 +188,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1047, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(1254, 198);
             this.dataGridView1.TabIndex = 10;
             // 
             // ChildPanel
@@ -182,26 +196,26 @@
             this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildPanel.Location = new System.Drawing.Point(0, 380);
             this.ChildPanel.Name = "ChildPanel";
-            this.ChildPanel.Size = new System.Drawing.Size(1082, 253);
+            this.ChildPanel.Size = new System.Drawing.Size(1309, 253);
             this.ChildPanel.TabIndex = 1;
             // 
-            // cbb_AscDesc
+            // Btn_Reset
             // 
-            this.cbb_AscDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_AscDesc.FormattingEnabled = true;
-            this.cbb_AscDesc.Items.AddRange(new object[] {
-            "Tăng dần",
-            "Giảm dần"});
-            this.cbb_AscDesc.Location = new System.Drawing.Point(732, 325);
-            this.cbb_AscDesc.Name = "cbb_AscDesc";
-            this.cbb_AscDesc.Size = new System.Drawing.Size(121, 28);
-            this.cbb_AscDesc.TabIndex = 21;
+            this.Btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reset.Location = new System.Drawing.Point(1099, 322);
+            this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Size = new System.Drawing.Size(178, 31);
+            this.Btn_Reset.TabIndex = 22;
+            this.Btn_Reset.Text = "Cấp lại mật khẩu ";
+            this.Btn_Reset.UseVisualStyleBackColor = true;
+            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
             // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 633);
+            this.ClientSize = new System.Drawing.Size(1309, 633);
             this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Name = "FormStaff";
@@ -229,5 +243,6 @@
         private System.Windows.Forms.Panel ChildPanel;
         private System.Windows.Forms.Button Btn_View;
         private System.Windows.Forms.ComboBox cbb_AscDesc;
+        private System.Windows.Forms.Button Btn_Reset;
     }
 }

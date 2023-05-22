@@ -170,9 +170,9 @@
             this.Txb_ID.Location = new System.Drawing.Point(167, 62);
             this.Txb_ID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txb_ID.Name = "Txb_ID";
+            this.Txb_ID.ReadOnly = true;
             this.Txb_ID.Size = new System.Drawing.Size(215, 27);
             this.Txb_ID.TabIndex = 26;
-            this.Txb_ID.TextChanged += new System.EventHandler(this.Txb_ID_TextChanged);
             // 
             // label2
             // 

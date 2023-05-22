@@ -73,6 +73,11 @@
             this.cbb_Brand = new System.Windows.Forms.ComboBox();
             this.cbb_Category = new System.Windows.Forms.ComboBox();
             this.dgv_item = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.PanelTime.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -247,6 +252,7 @@
             this.txb_IDOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_IDOrder.Location = new System.Drawing.Point(165, 36);
             this.txb_IDOrder.Name = "txb_IDOrder";
+            this.txb_IDOrder.ReadOnly = true;
             this.txb_IDOrder.Size = new System.Drawing.Size(215, 27);
             this.txb_IDOrder.TabIndex = 39;
             // 
@@ -268,6 +274,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.btn_Print);
             this.groupBox2.Controls.Add(this.btn_CancelOrder);
@@ -277,7 +288,7 @@
             this.groupBox2.Controls.Add(this.dgv_order);
             this.groupBox2.Location = new System.Drawing.Point(10, 580);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1330, 310);
+            this.groupBox2.Size = new System.Drawing.Size(1330, 373);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin hóa đơn";
@@ -286,7 +297,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(49, 177);
+            this.label19.Location = new System.Drawing.Point(9, 183);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(410, 16);
             this.label19.TabIndex = 93;
@@ -296,7 +307,7 @@
             // 
             this.btn_Print.AutoSize = true;
             this.btn_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Print.Location = new System.Drawing.Point(621, 219);
+            this.btn_Print.Location = new System.Drawing.Point(628, 289);
             this.btn_Print.Name = "btn_Print";
             this.btn_Print.Size = new System.Drawing.Size(106, 31);
             this.btn_Print.TabIndex = 77;
@@ -308,7 +319,7 @@
             // 
             this.btn_CancelOrder.AutoSize = true;
             this.btn_CancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CancelOrder.Location = new System.Drawing.Point(435, 219);
+            this.btn_CancelOrder.Location = new System.Drawing.Point(442, 289);
             this.btn_CancelOrder.Name = "btn_CancelOrder";
             this.btn_CancelOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_CancelOrder.TabIndex = 76;
@@ -320,7 +331,7 @@
             // 
             this.btn_SaveOrder.AutoSize = true;
             this.btn_SaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveOrder.Location = new System.Drawing.Point(255, 219);
+            this.btn_SaveOrder.Location = new System.Drawing.Point(262, 289);
             this.btn_SaveOrder.Name = "btn_SaveOrder";
             this.btn_SaveOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_SaveOrder.TabIndex = 75;
@@ -333,7 +344,7 @@
             this.txb_Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_Total.Enabled = false;
             this.txb_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Total.Location = new System.Drawing.Point(886, 177);
+            this.txb_Total.Location = new System.Drawing.Point(788, 235);
             this.txb_Total.Name = "txb_Total";
             this.txb_Total.Size = new System.Drawing.Size(215, 27);
             this.txb_Total.TabIndex = 73;
@@ -342,7 +353,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(766, 184);
+            this.label15.Location = new System.Drawing.Point(672, 237);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 20);
             this.label15.TabIndex = 72;
@@ -560,12 +571,65 @@
             this.dgv_item.TabIndex = 79;
             this.dgv_item.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_item_CellClick);
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 235);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(148, 27);
+            this.textBox1.TabIndex = 94;
+            this.textBox1.Text = "Nhập điểm tích lũy";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(234, 235);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(148, 27);
+            this.textBox2.TabIndex = 95;
+            this.textBox2.Text = "Nhập mã voucher";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Enabled = false;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(479, 235);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(148, 27);
+            this.textBox3.TabIndex = 96;
+            this.textBox3.Text = "Giảm giá";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(954, 289);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(215, 27);
+            this.textBox4.TabIndex = 98;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(766, 293);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 20);
+            this.label1.TabIndex = 97;
+            this.label1.Text = "Tổng tiền sau khi giảm:";
+            // 
             // FormOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1393, 825);
+            this.ClientSize = new System.Drawing.Size(1393, 965);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -632,5 +696,10 @@
         private System.Windows.Forms.Label Lb_Time;
         private System.Windows.Forms.Label Lb_Name;
         private System.Windows.Forms.TextBox txb_IDCustomer;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

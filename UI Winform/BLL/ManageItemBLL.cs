@@ -44,6 +44,19 @@ namespace UI_Winform.BLL
             return dt;
         }
 
+        public string setNewIDItem()
+        {
+            ManageItemDAL mid = new ManageItemDAL();
+            Random rand = new Random();
+            int index;
+            while (true)
+            {
+                index = rand.Next(100000, 1000000);
+                if (!mid.getListIDItem().Contains(index.ToString())) break;
+            }
+            return index.ToString();
+        }
+
         public Item getItemByID(string ID_Item) {
             ManageItemDAL mid = new ManageItemDAL();
             return mid.getItemByID(ID_Item);
@@ -87,6 +100,7 @@ namespace UI_Winform.BLL
             }
             else
             {
+                item.Deleted = false;
                 mid.AddItem(item);
             }   
         }
@@ -160,7 +174,7 @@ namespace UI_Winform.BLL
         public DataTable SortBy(List<string> li, string s1, string s2)
         {
             dt.Rows.Clear();
-            List<Item> data = GetListItem(li);
+            /*List<Item> data = GetListItem(li);
             if (s1 == "Số lượng" && s2 == "Tăng dần")
             {
                 SortAscending(ref data, Item.CompareQuantity);
@@ -176,12 +190,12 @@ namespace UI_Winform.BLL
             else if (s1 == "Mã sản phẩm" && s2 == "Giảm dần")
             {
                 SortDescending(ref data, Item.CompareID);
-            }
+            }*/
 
-            data.ForEach(i =>
+            /*data.ForEach(i =>
             {
                 dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, i.SellPrice, i.InitialPrice, i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
-            });
+            });*/
             return dt;
         }
     }

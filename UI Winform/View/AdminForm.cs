@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using UI_Winform.View;
+using UI_Winform.DTO;
 
 namespace UI_Winform
 {
@@ -33,10 +34,6 @@ namespace UI_Winform
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
@@ -75,7 +72,7 @@ namespace UI_Winform
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
-            if (activeForm != null)
+            if (activeForm != null) 
                 activeForm.Close();
             ActivateButton(btnSender);
             activeForm = childForm;
@@ -139,12 +136,6 @@ namespace UI_Winform
             currentButton = null;
         }
 
-        private void panelTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void Btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -164,11 +155,6 @@ namespace UI_Winform
         private void Btn_Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -59,12 +59,16 @@ namespace UI_Winform
             Cbb_Category.Items.AddRange(mcb.getCBBCategory().ToArray());
         }
 
+        public void SetTxbIDItem()
+        {
+            ManageItemBLL mib = new ManageItemBLL();
+            Txb_ID.Text = mib.setNewIDItem();
+        }
         public void SetGUI()
         {
             if (this.ID_Item != "")
             {
                 Txb_ID.Enabled = false;
-                Txb_ID.TextChanged -= Txb_ID_TextChanged;
                 Lb_Quantity.Visible = true;
                 Txb_Quantity.Visible = true;
                 ManageItemBLL mib = new ManageItemBLL();
@@ -89,6 +93,7 @@ namespace UI_Winform
                 }
             }else
             {
+                SetTxbIDItem();
                 Txb_Quantity.Text = "0";
             }
             
@@ -158,11 +163,6 @@ namespace UI_Winform
             {
 
             }
-        }
-
-        private void Txb_ID_TextChanged(object sender, EventArgs e)
-        {
-            d(Txb_ID.Text, "", "");
         }
     }
 }

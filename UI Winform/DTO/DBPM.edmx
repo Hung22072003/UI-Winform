@@ -10,7 +10,7 @@
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Staff" Type="varchar" MaxLength="50" />
           <Property Name="ID_Role" Type="int" />
@@ -46,7 +46,7 @@
           <Property Name="IDItem" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="InitialPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InitialPrice" Type="money" />
           <Property Name="Discount" Type="float" Nullable="false" />
           <Property Name="ItemDetail" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Picture" Type="image" />
@@ -324,7 +324,7 @@
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_Staff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ID_Role" Type="Int32" />
@@ -365,7 +365,7 @@
           <Property Name="IDItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="InitialPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InitialPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Discount" Type="Double" Nullable="false" />
           <Property Name="ItemDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.Btn_Setting = new System.Windows.Forms.Button();
             this.Btn_TradeHistory = new System.Windows.Forms.Button();
             this.Btn_Storage = new System.Windows.Forms.Button();
             this.Btn_Staff = new System.Windows.Forms.Button();
@@ -49,7 +48,6 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
-            this.panelMenu.Controls.Add(this.Btn_Setting);
             this.panelMenu.Controls.Add(this.Btn_TradeHistory);
             this.panelMenu.Controls.Add(this.Btn_Storage);
             this.panelMenu.Controls.Add(this.Btn_Staff);
@@ -61,26 +59,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 680);
             this.panelMenu.TabIndex = 0;
-            // 
-            // Btn_Setting
-            // 
-            this.Btn_Setting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Btn_Setting.FlatAppearance.BorderSize = 0;
-            this.Btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Setting.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Setting.Image")));
-            this.Btn_Setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Setting.Location = new System.Drawing.Point(0, 320);
-            this.Btn_Setting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Setting.Name = "Btn_Setting";
-            this.Btn_Setting.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.Btn_Setting.Size = new System.Drawing.Size(220, 60);
-            this.Btn_Setting.TabIndex = 5;
-            this.Btn_Setting.Text = "  Cài đặt";
-            this.Btn_Setting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_Setting.UseVisualStyleBackColor = true;
-            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
             // 
             // Btn_TradeHistory
             // 
@@ -188,7 +166,6 @@
             this.panelTitle.Name = "panelTitle";
             this.panelTitle.Size = new System.Drawing.Size(880, 80);
             this.panelTitle.TabIndex = 1;
-            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
             // 
             // Btn_Maximize
             // 
@@ -301,7 +278,6 @@
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.Button Btn_Revenue;
-        private System.Windows.Forms.Button Btn_Setting;
         private System.Windows.Forms.Button Btn_TradeHistory;
         private System.Windows.Forms.Button Btn_Storage;
         private System.Windows.Forms.Button Btn_Staff;
