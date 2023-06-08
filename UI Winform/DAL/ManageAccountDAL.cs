@@ -54,10 +54,7 @@ namespace UI_Winform.DAL
             using (DBPM db = new DBPM())
             {
                 var a = db.Accounts.Find(temp.UserName);
-                a.ID_Staff = temp.ID_Staff;
-                a.UserName = temp.UserName;
                 a.ID_Role = temp.ID_Role;
-
                 db.SaveChanges();
             }
         }
@@ -81,6 +78,5 @@ namespace UI_Winform.DAL
                 db.SaveChanges();
             }
         }
-
     }
 }

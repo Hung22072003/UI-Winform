@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using UI_Winform.DTO;
 namespace UI_Winform.DAL
 {
@@ -22,5 +23,6 @@ namespace UI_Winform.DAL
                 db.SaveChanges();
             }
         }
+        
     }
 }

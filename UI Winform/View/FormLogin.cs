@@ -43,21 +43,9 @@ namespace UI_Winform
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            if (Txb_UserName.Text == "" && Txb_PassWord.Text == "")
+            ManageAccountBLL mab = new ManageAccountBLL();
+            if (mab.CheckValidInfo(Txb_UserName.Text, Txb_PassWord.Text))
             {
-                MessageBox.Show("Vui lòng nhập tài khoản và mật khẩu");
-            } 
-            else if (Txb_UserName.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập tài khoản");
-            }
-            else if (Txb_PassWord.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu");
-            } else
-            {
-                ManageAccountBLL mab = new ManageAccountBLL();
-                
                 if (mab.CheckPassword(Txb_UserName.Text, Txb_PassWord.Text))
                 {
                     string result = mab.getTypeAccount(Txb_UserName.Text);
@@ -75,8 +63,7 @@ namespace UI_Winform
                         uf.ShowDialog();
                         this.Show();
                     }
-                }
-                else
+                }else
                 {
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
                 }

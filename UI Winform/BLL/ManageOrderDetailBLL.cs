@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UI_Winform.DTO;
 using UI_Winform.DAL;
+using System.Globalization;
+
 namespace UI_Winform.BLL
 {
     public class ManageOrderDetailBLL
@@ -25,8 +27,8 @@ namespace UI_Winform.BLL
                     ID_Item = p.ID_Item,
                     NameItem = p.Item.ItemName,
                     Quantity = p.Quantity,
-                    UnitPrice = p.UnitPrice,
-                    AmountPrice = p.AmountPrice
+                    UnitPrice = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.UnitPrice),
+                    AmountPrice = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.AmountPrice),
                 };
                 list.Add(viewOrderDetail);
             });

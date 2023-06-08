@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,8 @@ namespace UI_Winform.View
                 Lb_NameItem.Text = Lb_NameItem.Text + i.ItemName;
                 Lb_Category.Text = Lb_Category.Text + i.Category.NameCategory;
                 Lb_Brand.Text = Lb_Brand.Text + i.Brand.BrandName;
-                Lb_InitialPrice.Text = Lb_InitialPrice.Text + i.InitialPrice.ToString();
-                Lb_SellPrice.Text = Lb_SellPrice.Text + i.SellPrice.ToString();
+                Lb_InitialPrice.Text = Lb_InitialPrice.Text + string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.InitialPrice);
+                Lb_SellPrice.Text = Lb_SellPrice.Text + string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.SellPrice);
                 Lb_Warranty.Text = Lb_Warranty.Text + i.Warranty.ToString();
                 Lb_Quantity.Text = Lb_Quantity.Text + i.Quantity.ToString();
                 Lb_Detail.Text = Lb_Detail.Text + i.ItemDetail;

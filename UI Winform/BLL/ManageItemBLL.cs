@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,8 +26,8 @@ namespace UI_Winform.BLL
                 new DataColumn {ColumnName = "Mã sản phẩm", DataType = typeof(string)},
                 new DataColumn {ColumnName = "Tên sản phẩm", DataType = typeof(string)},
                 new DataColumn {ColumnName = "Số lượng", DataType = typeof(int)},
-                new DataColumn {ColumnName = "Giá bán", DataType = typeof(decimal)},
-                new DataColumn {ColumnName = "Giá gốc", DataType = typeof(decimal)},
+                new DataColumn {ColumnName = "Giá bán", DataType = typeof(string)},
+                new DataColumn {ColumnName = "Giá gốc", DataType = typeof(string)},
                 new DataColumn {ColumnName = "Khuyến mãi", DataType = typeof(float)},
                 new DataColumn {ColumnName = "Thời hạn bảo hành", DataType = typeof(int)},
                 new DataColumn {ColumnName = "Loại sản phẩm", DataType = typeof(string)},
@@ -39,7 +41,7 @@ namespace UI_Winform.BLL
             ManageItemDAL mid = new ManageItemDAL();
             mid.getAllItems().ForEach(i =>
             {
-                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, i.SellPrice, i.InitialPrice, i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
+                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.SellPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.InitialPrice), i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
             });
             return dt;
         }
@@ -67,7 +69,7 @@ namespace UI_Winform.BLL
             ManageItemDAL mid = new ManageItemDAL();
             mid.getItemsBySearch(searchName, searchBrand, searchCategory).ForEach(i =>
             {
-                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, i.SellPrice, i.InitialPrice, i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
+                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.SellPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.InitialPrice), i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
             });
             return dt;
         }
@@ -174,7 +176,7 @@ namespace UI_Winform.BLL
         public DataTable SortBy(List<string> li, string s1, string s2)
         {
             dt.Rows.Clear();
-            /*List<Item> data = GetListItem(li);
+            List<Item> data = GetListItem(li);
             if (s1 == "Số lượng" && s2 == "Tăng dần")
             {
                 SortAscending(ref data, Item.CompareQuantity);
@@ -190,13 +192,47 @@ namespace UI_Winform.BLL
             else if (s1 == "Mã sản phẩm" && s2 == "Giảm dần")
             {
                 SortDescending(ref data, Item.CompareID);
-            }*/
+            }
 
-            /*data.ForEach(i =>
+            data.ForEach(i =>
             {
-                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, i.SellPrice, i.InitialPrice, i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
-            });*/
+                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0.00}", i.SellPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0.00}", i.InitialPrice), i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
+            });
             return dt;
+        }
+
+        public bool CheckCbbCategory(string text)
+        {
+            ManageCategoryBLL mcb = new ManageCategoryBLL();
+            for (int i = 0; i < mcb.getCBBCategory().Count; i++)
+            {
+                if (mcb.getCBBCategory()[i].Text == text) return true;
+            }
+            return false;
+        }
+
+        public bool CheckCbbBrand(string text)
+        {
+            ManageBrandBLL mbb = new ManageBrandBLL();
+            for (int i = 0; i < mbb.getCBBBrand().Count; i++)
+            {
+                if (mbb.getCBBBrand()[i].Text == text) return true;
+            }
+            return false;
+        }
+
+        public bool CheckValidInfo(string ID_Item, string ItemName, string Detail, string IniPrice, string Quantity, string SellPrice, string Warranty, string Brand, string Category)
+        {
+            if (ID_Item != "" && ItemName != "" && Detail != "" && IniPrice != ""
+                && Quantity != "" && SellPrice != "" && Warranty != ""
+                && CheckCbbBrand(Brand) && CheckCbbCategory(Category))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

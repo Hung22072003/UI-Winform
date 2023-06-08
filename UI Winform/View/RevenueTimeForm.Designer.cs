@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.Btn_View = new System.Windows.Forms.Button();
             this.Txb_TotalRevenue = new System.Windows.Forms.TextBox();
             this.Lb_TotalRevenue = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.DtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
             this.PanelChart = new System.Windows.Forms.Panel();
-            this.Btn_Search = new System.Windows.Forms.Button();
-            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +68,29 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1098, 392);
             this.MainPanel.TabIndex = 33;
+            // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Search.Location = new System.Drawing.Point(764, 16);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
+            this.Btn_Search.TabIndex = 57;
+            this.Btn_Search.Text = "Tìm";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // Txb_Search
+            // 
+            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_Search.Location = new System.Drawing.Point(888, 18);
+            this.Txb_Search.Name = "Txb_Search";
+            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
+            this.Txb_Search.TabIndex = 56;
             // 
             // Btn_View
             // 
@@ -181,7 +204,7 @@
             this.Dgv_Statistic.Name = "Dgv_Statistic";
             this.Dgv_Statistic.ReadOnly = true;
             this.Dgv_Statistic.RowHeadersWidth = 51;
-            this.Dgv_Statistic.RowTemplate.Height = 24;
+            this.Dgv_Statistic.RowTemplate.Height = 30;
             this.Dgv_Statistic.Size = new System.Drawing.Size(1074, 270);
             this.Dgv_Statistic.TabIndex = 32;
             // 
@@ -192,29 +215,6 @@
             this.PanelChart.Name = "PanelChart";
             this.PanelChart.Size = new System.Drawing.Size(1098, 370);
             this.PanelChart.TabIndex = 34;
-            // 
-            // Btn_Search
-            // 
-            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search.Location = new System.Drawing.Point(764, 16);
-            this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
-            this.Btn_Search.TabIndex = 57;
-            this.Btn_Search.Text = "Tìm";
-            this.Btn_Search.UseVisualStyleBackColor = true;
-            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
-            // 
-            // Txb_Search
-            // 
-            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txb_Search.Location = new System.Drawing.Point(888, 18);
-            this.Txb_Search.Name = "Txb_Search";
-            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
-            this.Txb_Search.TabIndex = 56;
             // 
             // RevenueTimeForm
             // 

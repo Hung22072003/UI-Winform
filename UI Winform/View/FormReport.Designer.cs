@@ -37,14 +37,14 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "ReportViewer";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1155, 644);
+            this.reportViewer1.Size = new System.Drawing.Size(1155, 841);
             this.reportViewer1.TabIndex = 0;
             // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 644);
+            this.ClientSize = new System.Drawing.Size(1155, 841);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FormReport";
             this.Text = "Báo cáo";

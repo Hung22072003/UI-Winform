@@ -48,15 +48,6 @@ namespace UI_Winform
         private void FormStaff_Load(object sender, EventArgs e)
         {
             LoadTheme();
-            dataGridView1.Columns[0].HeaderText = "Mã Nhân viên";
-            dataGridView1.Columns[1].HeaderText = "Tên nhân viên";
-            dataGridView1.Columns[2].HeaderText = "Số điện thoại";
-            dataGridView1.Columns[3].HeaderText = "Ngày Sinh";
-            dataGridView1.Columns[4].HeaderText = "Địa chỉ";
-            dataGridView1.Columns[5].HeaderText = "Lương";
-            dataGridView1.Columns[6].HeaderText = "Email";
-            dataGridView1.Columns[7].HeaderText = "Ảnh";
-            dataGridView1.Columns[7].Visible = false;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -108,10 +99,10 @@ namespace UI_Winform
 
                 foreach (DataGridViewRow i in dataGridView1.SelectedRows)
                 {
-                    mssb.DeleteByID_StaffBLL(i.Cells["ID_Staff"].Value.ToString(), li);
+                    mssb.DeleteByID_StaffBLL(i.Cells[0].Value.ToString(), li);
 
-                    mab.DeleteAccountById_StaffBLL(i.Cells["ID_Staff"].Value.ToString());
-                    mnb.DeleteStaffByIDBLL(i.Cells["ID_Staff"].Value.ToString());
+                    mab.DeleteAccountById_StaffBLL(i.Cells[0].Value.ToString());
+                    mnb.DeleteStaffByIDBLL(i.Cells[0].Value.ToString());
                 }
                 LoadInfor();
             }
@@ -133,7 +124,7 @@ namespace UI_Winform
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 check = 1;
-                OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()), sender);
+                OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), sender);
             }
         }
 
@@ -142,7 +133,7 @@ namespace UI_Winform
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 check = 2;
-                InfoStaff inf = new InfoStaff(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString());
+                InfoStaff inf = new InfoStaff(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 inf.Show();
             }
         }
@@ -152,7 +143,7 @@ namespace UI_Winform
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 ManageAccountBLL mab = new ManageAccountBLL();
-                mab.UpdatePassword("123", mab.GetAccountByID(dataGridView1.SelectedRows[0].Cells["ID_Staff"].Value.ToString()).UserName);
+                mab.UpdatePassword("123", mab.GetAccountByID(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()).UserName);
                 MessageBox.Show("Cập nhật thành công!");
             }
         }

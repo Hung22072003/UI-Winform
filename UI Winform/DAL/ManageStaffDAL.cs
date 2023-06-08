@@ -10,14 +10,13 @@ namespace UI_Winform.DAL
 {
     public class ManageStaffDAL
     {
-        public dynamic GetAllStaffDAL()
+        public List<Staff> GetAllStaffDAL()
         {
 
             using (DBPM db = new DBPM())
             {
-
-                var d = db.Staffs.Where(p => p.Deleted == false).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture });
-                return d.ToList();
+                var s = db.Staffs.Where(p => p.Deleted == false).Select(p => p).ToList();
+                return s;
             }
 
         }
@@ -25,21 +24,18 @@ namespace UI_Winform.DAL
 
         public dynamic GetAllStaff()
         {
-
             using (DBPM db = new DBPM())
             {
-
                 var d = db.Staffs.Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture });
                 return d.ToList();
             }
-
         }
-        public dynamic GetAllStaffByNameDAL(string name)
+        public List<Staff> GetAllStaffByNameDAL(string name)
         {
 
             using (DBPM db = new DBPM())
             {
-                var s = db.Staffs.Where(p => p.Name.Contains(name) && p.Deleted == false).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                var s = db.Staffs.Where(p => p.Name.Contains(name) && p.Deleted == false).Select(p => p).ToList();
                 return s;
             }
 
@@ -57,39 +53,39 @@ namespace UI_Winform.DAL
 
         }
 
-        public dynamic SortStaffDAL(string KeyWord, string ascdesc)
+        public List<Staff> SortStaffDAL(string KeyWord, string ascdesc)
         {
             using (DBPM db = new DBPM())
             {
 
                 if (KeyWord == "Tên" && ascdesc == "Tăng dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.Name).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.Name).Select(p => p).ToList();
                     return s;
                 }
                 else if (KeyWord == "Lương" && ascdesc == "Tăng dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.Salary).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.Salary).Select(p => p).ToList();
                     return s;
                 }
                 else if (KeyWord == "Ngày Sinh" && ascdesc == "Tăng dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.DateOfBirth).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderBy(p => p.DateOfBirth).Select(p => p).ToList();
                     return s;
                 }
                 else if (KeyWord == "Tên" && ascdesc == "Giảm dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.Name).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.Name).Select(p => p).ToList();
                     return s;
                 }
                 else if (KeyWord == "Ngày Sinh" && ascdesc == "Giảm dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.DateOfBirth).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.DateOfBirth).Select(p => p).ToList();
                     return s;
                 }
                 else if (KeyWord == "Lương" && ascdesc == "Giảm dần")
                 {
-                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.Salary).Select(p => new { p.ID_Staff, p.Name, p.PhoneNumber, p.DateOfBirth, p.Address, p.Salary, p.Email, p.Picture }).ToList();
+                    var s = db.Staffs.Where(p => p.Deleted == false).OrderByDescending(p => p.Salary).Select(p => p).ToList();
                     return s;
                 }
                 return null;
@@ -105,7 +101,7 @@ namespace UI_Winform.DAL
                 return s;
             }
         }
-        public void UpdateStaffDAL(Staff temp)
+        public void UpdateStaffDAL(Staff temp)  
         {
 
             using (DBPM db = new DBPM())

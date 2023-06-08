@@ -21,8 +21,13 @@ namespace UI_Winform.View
         string PhoneNumber;
         string Address;
         string NameStaff;
+        string WordTotal;
+        string TotalDiscount;
+        String FinalTotal;
         DateTime Date;
-        public FormReport(List<ViewOrderDetail> li, string total, string NameCustomer, string PhoneNumber, string Address, string nameStaff, DateTime date, string ID_Order)
+
+        /*sua lai form report --> toàn bộ chỗ nào có sử dụng đến form report đều sử lại ở chỗ gọi hàm, m nhớ sửa lại*/
+        public FormReport(List<ViewOrderDetail> li, string total, string NameCustomer, string PhoneNumber, string Address, string nameStaff, string TotalDiscount, string FinalTotal, DateTime date, string ID_Order)
         {
             InitializeComponent();
 
@@ -32,6 +37,9 @@ namespace UI_Winform.View
             this.PhoneNumber = PhoneNumber;
             this.Address = Address;
             this.NameStaff = nameStaff;
+            this.WordTotal = Utils.NumberToText(Convert.ToDouble(FinalTotal.Replace(".","")));
+            this.TotalDiscount = TotalDiscount;
+            this.FinalTotal = FinalTotal;
             Date = date;
             this.ID_Order = ID_Order;
 
@@ -49,6 +57,9 @@ namespace UI_Winform.View
             Microsoft.Reporting.WinForms.ReportParameter para5 = new Microsoft.Reporting.WinForms.ReportParameter("pAddress", Address);
             Microsoft.Reporting.WinForms.ReportParameter para6 = new Microsoft.Reporting.WinForms.ReportParameter("pNameStaff", NameStaff);
             Microsoft.Reporting.WinForms.ReportParameter para7 = new Microsoft.Reporting.WinForms.ReportParameter("pID_Order", ID_Order);
+            Microsoft.Reporting.WinForms.ReportParameter para8 = new Microsoft.Reporting.WinForms.ReportParameter("pWordTotal", WordTotal);
+            Microsoft.Reporting.WinForms.ReportParameter para9 = new Microsoft.Reporting.WinForms.ReportParameter("pDiscount", TotalDiscount);
+            Microsoft.Reporting.WinForms.ReportParameter para10 = new Microsoft.Reporting.WinForms.ReportParameter("pFinalTotal", FinalTotal);
 
             reportViewer1.LocalReport.SetParameters(para1);
             reportViewer1.LocalReport.SetParameters(para2);
@@ -57,6 +68,9 @@ namespace UI_Winform.View
             reportViewer1.LocalReport.SetParameters(para5);
             reportViewer1.LocalReport.SetParameters(para6);
             reportViewer1.LocalReport.SetParameters(para7);
+            reportViewer1.LocalReport.SetParameters(para8);
+            reportViewer1.LocalReport.SetParameters(para9);
+            reportViewer1.LocalReport.SetParameters(para10);
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(source);
 

@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.Btn_View = new System.Windows.Forms.Button();
             this.Txb_TotalRevenue = new System.Windows.Forms.TextBox();
             this.Lb_TotalRevenue = new System.Windows.Forms.Label();
@@ -37,16 +42,14 @@
             this.Btn_Statistic = new System.Windows.Forms.Button();
             this.CbbYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
             this.ChildPanel = new System.Windows.Forms.Panel();
-            this.Btn_Search = new System.Windows.Forms.Button();
-            this.Txb_Search = new System.Windows.Forms.TextBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Dgv_Statistic);
             this.MainPanel.Controls.Add(this.Btn_Search);
             this.MainPanel.Controls.Add(this.Txb_Search);
             this.MainPanel.Controls.Add(this.Btn_View);
@@ -57,20 +60,73 @@
             this.MainPanel.Controls.Add(this.Btn_Statistic);
             this.MainPanel.Controls.Add(this.CbbYear);
             this.MainPanel.Controls.Add(this.label1);
-            this.MainPanel.Controls.Add(this.Dgv_Statistic);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(4);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1076, 410);
+            this.MainPanel.Size = new System.Drawing.Size(1108, 410);
             this.MainPanel.TabIndex = 0;
+            // 
+            // Dgv_Statistic
+            // 
+            this.Dgv_Statistic.AllowUserToAddRows = false;
+            this.Dgv_Statistic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Statistic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_Statistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dgv_Statistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Statistic.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Dgv_Statistic.Location = new System.Drawing.Point(16, 70);
+            this.Dgv_Statistic.Name = "Dgv_Statistic";
+            this.Dgv_Statistic.ReadOnly = true;
+            this.Dgv_Statistic.RowHeadersWidth = 51;
+            this.Dgv_Statistic.RowTemplate.Height = 30;
+            this.Dgv_Statistic.Size = new System.Drawing.Size(1080, 270);
+            this.Dgv_Statistic.TabIndex = 60;
+            // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Search.Location = new System.Drawing.Point(771, 14);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
+            this.Btn_Search.TabIndex = 59;
+            this.Btn_Search.Text = "Tìm";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // Txb_Search
+            // 
+            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_Search.Location = new System.Drawing.Point(895, 16);
+            this.Txb_Search.Name = "Txb_Search";
+            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
+            this.Txb_Search.TabIndex = 58;
             // 
             // Btn_View
             // 
             this.Btn_View.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_View.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_View.Location = new System.Drawing.Point(923, 361);
+            this.Btn_View.Location = new System.Drawing.Point(955, 361);
             this.Btn_View.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_View.Name = "Btn_View";
             this.Btn_View.Size = new System.Drawing.Size(138, 34);
@@ -154,60 +210,21 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Năm:";
             // 
-            // Dgv_Statistic
-            // 
-            this.Dgv_Statistic.AllowUserToAddRows = false;
-            this.Dgv_Statistic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dgv_Statistic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dgv_Statistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Statistic.Location = new System.Drawing.Point(16, 75);
-            this.Dgv_Statistic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Dgv_Statistic.Name = "Dgv_Statistic";
-            this.Dgv_Statistic.ReadOnly = true;
-            this.Dgv_Statistic.RowHeadersWidth = 51;
-            this.Dgv_Statistic.RowTemplate.Height = 24;
-            this.Dgv_Statistic.Size = new System.Drawing.Size(1045, 277);
-            this.Dgv_Statistic.TabIndex = 39;
-            // 
             // ChildPanel
             // 
             this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildPanel.Location = new System.Drawing.Point(0, 410);
             this.ChildPanel.Margin = new System.Windows.Forms.Padding(4);
             this.ChildPanel.Name = "ChildPanel";
-            this.ChildPanel.Size = new System.Drawing.Size(1076, 391);
+            this.ChildPanel.Size = new System.Drawing.Size(1108, 391);
             this.ChildPanel.TabIndex = 1;
-            // 
-            // Btn_Search
-            // 
-            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search.Location = new System.Drawing.Point(739, 14);
-            this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
-            this.Btn_Search.TabIndex = 59;
-            this.Btn_Search.Text = "Tìm";
-            this.Btn_Search.UseVisualStyleBackColor = true;
-            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
-            // 
-            // Txb_Search
-            // 
-            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txb_Search.Location = new System.Drawing.Point(863, 16);
-            this.Txb_Search.Name = "Txb_Search";
-            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
-            this.Txb_Search.TabIndex = 58;
             // 
             // RevenueYearForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1076, 801);
+            this.ClientSize = new System.Drawing.Size(1108, 801);
             this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -228,7 +245,6 @@
         private System.Windows.Forms.ComboBox CbbYear;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel ChildPanel;
-        private System.Windows.Forms.DataGridView Dgv_Statistic;
         private System.Windows.Forms.TextBox Txb_TotalRevenue;
         private System.Windows.Forms.Label Lb_TotalRevenue;
         private System.Windows.Forms.TextBox Txb_TotalOrders;
@@ -236,5 +252,6 @@
         private System.Windows.Forms.Button Btn_View;
         private System.Windows.Forms.Button Btn_Search;
         private System.Windows.Forms.TextBox Txb_Search;
+        private System.Windows.Forms.DataGridView Dgv_Statistic;
     }
 }

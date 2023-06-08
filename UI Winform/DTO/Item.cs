@@ -40,5 +40,15 @@ namespace UI_Winform.DTO
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage> Storages { get; set; }
+
+        public static bool CompareQuantity(object o1, object o2)
+        {
+            return ((Item)o1).Quantity > ((Item)o2).Quantity;
+        }
+
+        public static bool CompareID(object o1, object o2)
+        {
+            return Convert.ToInt32(((Item)o1).IDItem) > Convert.ToInt32(((Item)o2).IDItem);
+        }
     }
 }

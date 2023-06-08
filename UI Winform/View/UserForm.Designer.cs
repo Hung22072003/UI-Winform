@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.panelTitle = new System.Windows.Forms.Panel();
             this.Btn_Maximize = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -41,7 +40,6 @@
             this.Btn_Storage = new System.Windows.Forms.Button();
             this.Btn_Order = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.Timer = new System.Windows.Forms.Timer(this.components);
             this.panelDesktopPane = new System.Windows.Forms.Panel();
             this.panelTitle.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -241,11 +239,6 @@
             this.panelLogo.TabIndex = 1;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
             // 
-            // Timer
-            // 
-            this.Timer.Enabled = true;
-            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
-            // 
             // panelDesktopPane
             // 
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -266,7 +259,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UserForm";
+            this.Text = "Nhân viên";
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panelMenu.ResumeLayout(false);
@@ -287,7 +280,6 @@
         private System.Windows.Forms.Button Btn_Setting;
         private System.Windows.Forms.Button Btn_TradeHistory;
         private System.Windows.Forms.Button Btn_Order;
-        private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Panel panelDesktopPane;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,85 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
+using System.Diagnostics;
 
 namespace UI_Winform.BLL
 {
     internal class ManageRevenueBLL
     {
-        public DataTable getOrderToDRV(DateTime startDate, DateTime endDate)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn {ColumnName = "Mã hóa đơn", DataType = typeof(string)},
-                new DataColumn {ColumnName = "Tên nhân viên", DataType = typeof(string)},
-                new DataColumn {ColumnName = "Ngày tạo hóa đơn", DataType = typeof(DateTime)},
-                new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
-            });
-            List<OrderDGV> listOrder = new List<OrderDGV>();
-            ManageOrderDAL mod = new ManageOrderDAL();
-            List<Order> orders = mod.getAllOrder(startDate, endDate);
-            foreach (Order order in orders)
-            {
-                decimal? total = 0;
-                order.OrderDetails.Select(p => new { p.AmountPrice }).ToList().ForEach(p =>
-                {
-                    total += p.AmountPrice;
-                });
-                OrderDGV orderDGV = new OrderDGV
-                {
-                    ID_Order = order.OrderID,
-                    NameStaff = order.Staff.Name,
-                    OrderDate = order.OrderDate,
-                    Total = total
-                };
-                listOrder.Add(orderDGV);    
-            }
-            listOrder.ForEach(p =>
-            {
-                dt.Rows.Add(p.ID_Order, p.NameStaff, p.OrderDate, p.Total);
-            });
-            return dt;
-        }
-
-        public DataTable getOrderBySearch(string search)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn {ColumnName = "Mã hóa đơn", DataType = typeof(string)},
-                new DataColumn {ColumnName = "Tên nhân viên", DataType = typeof(string)},
-                new DataColumn {ColumnName = "Ngày tạo hóa đơn", DataType = typeof(DateTime)},
-                new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
-            });
-            List<OrderDGV> listOrder = new List<OrderDGV>();
-            ManageOrderDAL mod = new ManageOrderDAL();
-            List<Order> orders = mod.getAllOrder();
-            foreach (Order order in orders)
-            {
-                if (order.Staff.Name ==  search)
-                {
-                    decimal? total = 0;
-                    order.OrderDetails.Select(p => new { p.AmountPrice }).ToList().ForEach(p =>
-                    {
-                        total += p.AmountPrice;
-                    });
-                    OrderDGV orderDGV = new OrderDGV
-                    {
-                        ID_Order = order.OrderID,
-                        NameStaff = order.Staff.Name,
-                        OrderDate = order.OrderDate,
-                        Total = total
-                    };
-                    listOrder.Add(orderDGV);
-                }
-            }
-            listOrder.ForEach(p =>
-            {
-                dt.Rows.Add(p.ID_Order, p.NameStaff, p.OrderDate, p.Total);
-            });
-            return dt;
-        }
         public DataTable getRevenueOfCategory(DateTime startDate, DateTime endDate)
         {
             DataTable dt = new DataTable();
@@ -119,7 +47,6 @@ namespace UI_Winform.BLL
                         dt.Rows.Add(RevenueCategory.NameCategory, RevenueCategory.AmountPrice);
                     }
                 });
-                
             });
             return dt;
         }

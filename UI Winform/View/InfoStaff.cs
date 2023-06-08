@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
@@ -27,7 +28,7 @@ namespace UI_Winform
             li = msb.SetCheckBoxShiftBLL();
             SetGroupBoxShift();
             SetCbbTypeAccount();
-            SetTextBoxIDStaff();
+            SetTextBoxIDStaffAndUserName();
         }
 
         public InfoStaff(string id)
@@ -48,10 +49,10 @@ namespace UI_Winform
                 btn_AddImage.Visible = false;
             }
         }
-        public void SetTextBoxIDStaff()
+        public void SetTextBoxIDStaffAndUserName()
         {
             ManageStaffBLL msb = new ManageStaffBLL();
-            txb_IDStaff.Text = msb.setIDStaff();
+            txb_Account.Text = txb_IDStaff.Text = msb.setIDStaff();
         }
 
         public void SetCbbTypeAccount()
@@ -124,7 +125,7 @@ namespace UI_Winform
             txb_Name.Text = Convert.ToString(s.Name);
             txb_Address.Text = Convert.ToString(s.Address);
             txb_Email.Text = Convert.ToString(s.Email);
-            txb_Salary.Text = Convert.ToString(s.Salary);
+            txb_Salary.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.Salary);
             dtp_DateOfBirth.Text = Convert.ToString(s.DateOfBirth);
             txb_PhoneNumber.Text = Convert.ToString(s.PhoneNumber);
 
@@ -170,28 +171,18 @@ namespace UI_Winform
             cbb_TypeAccount.Text = "";
         }
 
-        public bool CheckCbbTypeAccount(string text)
-        {
-            for (int i = 0; i < cbb_TypeAccount.Items.Count; i++)
-            {
-                if (cbb_TypeAccount.Items[i].ToString() == text) return true;
-            }
-            return false;
-        }
         private void btn_Ok_Click(object sender, EventArgs e)
         {
 
             ManageStaffBLL msb = new ManageStaffBLL();
             ManageAccountBLL mab = new ManageAccountBLL();
             ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
-            if (txb_IDStaff.Text != "" && txb_Name.Text != "" && txb_PhoneNumber.Text != "" && txb_Address.Text != ""
-                && txb_Salary.Text != "" && txb_Email.Text != "" && txb_Account.Text != ""  
-                && CheckCbbTypeAccount(cbb_TypeAccount.Text) && IsEmail(txb_Email.Text))
+            if (msb.CheckValidInfo(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, txb_Address.Text, txb_Salary.Text, txb_Email.Text, cbb_TypeAccount.Text))
             {
                 if (FormStaff.check == 1)
                 {
                  msb.UpdateStaffBLL(this.id, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
-                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
+                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text.Replace(".", "")), txb_Email.Text, pt_Staff.Image);
 
                         //Update Staff_Shift
 
@@ -207,7 +198,7 @@ namespace UI_Winform
                 else if (FormStaff.check == 0)
                 {
                  msb.AddStaffBLL(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
-                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
+                 txb_Address.Text, Convert.ToDecimal(txb_Salary.Text.Replace(".", "")), txb_Email.Text, pt_Staff.Image);
 
                  GetCheckBoxShiftFromUI();
 
@@ -217,9 +208,6 @@ namespace UI_Winform
 
                 }
                 this.Close();
-            } else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
             }
                 
         }
@@ -268,26 +256,6 @@ namespace UI_Winform
             catch (Exception ex)
             {
 
-            }
-            
-        }
-
-        private void txb_PhoneNumber_TextChanged(object sender, EventArgs e)
-        {
-            txb_Account.Text = txb_PhoneNumber.Text;
-        }
-
-        // Kiểm tra định dạng email
-        public bool IsEmail(string email)
-        {
-            try
-            {
-                MailAddress m = new MailAddress(email);
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
             }
         }
     }

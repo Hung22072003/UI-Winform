@@ -11,8 +11,8 @@ namespace UI_Winform.DTO
         public string ID_Item { get; set; }
         public string NameItem { get; set; }
         public int Quantity { get; set; }
-        public decimal? UnitPrice { get; set; }
-        public decimal? AmountPrice { get; set; }
+        public string UnitPrice { get; set; }
+        public string AmountPrice { get; set; }
 
     }
 }

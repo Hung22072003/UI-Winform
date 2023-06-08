@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,8 +80,8 @@ namespace UI_Winform
                     Txb_ID.Text = item.IDItem;
                     Txb_Name.Text = item.ItemName;
                     Txb_Detail.Text = item.ItemDetail;
-                    Txb_InitialPrice.Text = item.InitialPrice.ToString();
-                    Txb_SellPrice.Text = item.SellPrice.ToString();
+                    Txb_InitialPrice.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item.InitialPrice);
+                    Txb_SellPrice.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", item.SellPrice);
                     Txb_Waranty.Text = item.Warranty.ToString();
                     Cbb_Brand.Text = item.Brand.BrandName;
                     Cbb_Category.Text = item.Category.NameCategory;
@@ -98,33 +100,13 @@ namespace UI_Winform
             }
             
         }
-
-        public bool CheckCbbCategory(string text)
-        {
-            for (int i = 0; i < Cbb_Category.Items.Count; i++)
-            {
-                if (Cbb_Category.Items[i].ToString() == text) return true;
-            }
-            return false;
-        }
-
-        public bool CheckCbbBrand(string text)
-        {
-            for (int i = 0; i < Cbb_Brand.Items.Count; i++)
-            {
-                if (Cbb_Brand.Items[i].ToString() == text) return true;
-            }
-            return false;
-        }
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            if (Txb_ID.Text != "" && Txb_Name.Text != "" && Txb_Detail.Text != "" && Txb_InitialPrice.Text != "" 
-                && Txb_Quantity.Text != "" && Txb_SellPrice.Text != "" && Txb_Waranty.Text != "" 
-                && CheckCbbBrand(Cbb_Brand.Text) && CheckCbbCategory(Cbb_Category.Text))
+            ManageItemBLL mib = new ManageItemBLL();
+            if (mib.CheckValidInfo(Txb_ID.Text, Txb_Name.Text, Txb_Detail.Text, Txb_InitialPrice.Text, Txb_Quantity.Text, Txb_SellPrice.Text, Txb_Waranty.Text, Cbb_Brand.Text, Cbb_Category.Text))
             {
-                ManageItemBLL mib = new ManageItemBLL();
-                decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text) / Convert.ToDecimal(Txb_InitialPrice.Text))), 2);
-                mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text), Convert.ToDecimal(Txb_InitialPrice.Text), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));
+                decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text.Replace(".", "")) / Convert.ToDecimal(Txb_InitialPrice.Text.Replace(".", "")))), 2);
+                mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text.Replace(".","")), Convert.ToDecimal(Txb_InitialPrice.Text.Replace(".", "")), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));
                 d("", "", "");
                 this.Close();
             }

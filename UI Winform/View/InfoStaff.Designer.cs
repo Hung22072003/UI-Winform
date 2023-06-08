@@ -127,7 +127,6 @@
             this.txb_Account.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Account.Location = new System.Drawing.Point(149, 30);
             this.txb_Account.Name = "txb_Account";
-            this.txb_Account.ReadOnly = true;
             this.txb_Account.Size = new System.Drawing.Size(215, 27);
             this.txb_Account.TabIndex = 15;
             // 
@@ -260,7 +259,6 @@
             this.txb_PhoneNumber.Name = "txb_PhoneNumber";
             this.txb_PhoneNumber.Size = new System.Drawing.Size(215, 27);
             this.txb_PhoneNumber.TabIndex = 42;
-            this.txb_PhoneNumber.TextChanged += new System.EventHandler(this.txb_PhoneNumber_TextChanged);
             // 
             // label5
             // 

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,7 +59,8 @@ namespace UI_Winform
             else
             {
                 ManageRevenueBLL mrb = new ManageRevenueBLL();
-                Dgv_Statistic.DataSource = mrb.getOrderToDRV(startDate, endDate);
+                ManageOrderBLL mob = new ManageOrderBLL();
+                Dgv_Statistic.DataSource = mob.getAllOrderByTime(startDate, endDate);
                 if (Dgv_Statistic.Rows.Count > 0)
                 {
                     PanelChart.Controls.Clear();
@@ -81,13 +85,13 @@ namespace UI_Winform
 
                     
                     Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
-                    
-                    decimal? total = 0;
+
+                    List<string> list = new List<string>();
                     foreach (DataGridViewRow i in Dgv_Statistic.Rows)
                     {
-                        total += Convert.ToDecimal(i.Cells["Tổng tiền"].Value);
+                        list.Add(i.Cells["Mã hóa đơn"].Value.ToString());
                     }
-                    Txb_TotalRevenue.Text = total.ToString();
+                    Txb_TotalRevenue.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", mob.getTotalPriceOfOrders(list));
                 }
             }
         }
@@ -101,7 +105,7 @@ namespace UI_Winform
                 decimal? total = 0;
                 list.ForEach(p =>
                 {
-                    total += p.AmountPrice;
+                    total += Convert.ToDecimal(p.AmountPrice.Replace(".", ""));
                 });
 
                 ManageOrderBLL mob = new ManageOrderBLL();
@@ -110,23 +114,23 @@ namespace UI_Winform
                 Customer customer = mcb.GetCustomerByID(o.ID_Customer);
 
 
-                FormReport f = new FormReport(list, total.ToString(), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.OrderDate, o.OrderID);
+                FormReport f = new FormReport(list, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.TotalDiscount.ToString(), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", o.FinalTotal), o.OrderDate, o.OrderID);
                 f.ShowDialog();
             }
         }
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            ManageRevenueBLL mrb = new ManageRevenueBLL();
-            Dgv_Statistic.DataSource = mrb.getOrderBySearch(Txb_Search.Text);
+            ManageOrderBLL mob = new ManageOrderBLL();
+            Dgv_Statistic.DataSource = mob.getAllOrderBySearch(Txb_Search.Text);
             Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
 
-            decimal? total = 0;
+            List<string> list = new List<string>();
             foreach (DataGridViewRow i in Dgv_Statistic.Rows)
             {
-                total += Convert.ToDecimal(i.Cells["Tổng tiền"].Value);
+                list.Add(i.Cells["Mã hóa đơn"].Value.ToString());
             }
-            Txb_TotalRevenue.Text = total.ToString();
+            Txb_TotalRevenue.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", mob.getTotalPriceOfOrders(list));
         }
     }
 }

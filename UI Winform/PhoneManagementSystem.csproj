@@ -96,6 +96,7 @@
     <Compile Include="BLL\ManageShiftBLL.cs" />
     <Compile Include="BLL\ManageStaffBLL.cs" />
     <Compile Include="BLL\ManageStaff_ShiftBLL.cs" />
+    <Compile Include="BLL\ManageVoucherBLL.cs" />
     <Compile Include="DAL\ManageBrandDAL.cs" />
     <Compile Include="DAL\ManageCategoryDAL.cs" />
     <Compile Include="DAL\ManageCustomerDAL.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="DAL\ManageShiftDAL.cs" />
     <Compile Include="DAL\ManageStaffDAL.cs" />
     <Compile Include="DAL\ManageStaff_ShiftDAL.cs" />
+    <Compile Include="DAL\ManageVoucherDAL.cs" />
     <Compile Include="DTO\Account.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
@@ -160,8 +162,12 @@
     <Compile Include="DTO\Storage.cs">
       <DependentUpon>DBPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Utils.cs" />
     <Compile Include="DTO\ViewOrderDetail.cs" />
     <Compile Include="DTO\OrderDGV.cs" />
+    <Compile Include="DTO\Voucher.cs">
+      <DependentUpon>DBPM.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="View\AdminForm.cs">
       <SubType>Form</SubType>
@@ -174,6 +180,12 @@
     </Compile>
     <Compile Include="View\FormChangePassword.Designer.cs">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDiscount.Designer.cs">
+      <DependentUpon>FormDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormImport.cs">
       <SubType>Form</SubType>
@@ -280,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormChangePassword.resx">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDiscount.resx">
+      <DependentUpon>FormDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormImport.resx">
       <DependentUpon>FormImport.cs</DependentUpon>

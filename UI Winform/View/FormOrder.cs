@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -126,9 +127,9 @@ namespace UI_Winform.View
         {
             try
             {
-                txb_Amount.Text = Convert.ToString(
-                    Convert.ToDouble(txb_Price.Text)
-                    * Convert.ToInt32(txb_Quantity.Text));
+                txb_Amount.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (
+                    Convert.ToDouble(txb_Price.Text.Replace(".", ""))
+                    * Convert.ToInt32(txb_Quantity.Text)));
                 lb_Note.Text = "*Note: Thõa mãn yêu cầu";
             }
             catch (System.FormatException)
@@ -141,7 +142,8 @@ namespace UI_Winform.View
 
         private void btn_AddItem_Click(object sender, EventArgs e)
         {
-            if (CheckEmptyInfor())
+            ManageOrderBLL mob = new ManageOrderBLL();
+            if (mob.CheckEmptyInfor(txb_IDOrder.Text, txb_NameCus.Text, txb_Address.Text, txb_Phone.Text, txb_Quantity.Text))
             {
                 ViewOrderDetail temp = new ViewOrderDetail();
                 if (dgv_item.SelectedRows.Count == 1)
@@ -153,10 +155,10 @@ namespace UI_Winform.View
                         temp.ID_Item = i.Cells["Mã sản phẩm"].Value.ToString();
                         temp.Quantity = Convert.ToInt32(txb_Quantity.Text);
                         temp.NameItem = txb_NameItem.Text;
-                        temp.UnitPrice = Convert.ToDecimal(i.Cells["Giá bán"].Value.ToString());
-                        temp.AmountPrice = Convert.ToDecimal(txb_Amount.Text);
+                        temp.UnitPrice = txb_Price.Text;
+                        temp.AmountPrice = txb_Amount.Text;
 
-                        total += Convert.ToDecimal(temp.AmountPrice);
+                        total += Convert.ToDecimal(temp.AmountPrice.Replace(".",""));
                         li.Add(temp);
                     }
                     else
@@ -169,7 +171,8 @@ namespace UI_Winform.View
                 dgv_order.DataSource = null;
                 dgv_order.DataSource = li;
                 SetHeaderText();
-                txb_Total.Text = Convert.ToString(total);
+                txb_Total.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total);
+                txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total);
             }
         }
         public bool CheckQuantityItem(int quantity)
@@ -182,33 +185,6 @@ namespace UI_Winform.View
             {
                 return true;
             }
-        }
-        public bool CheckEmptyInfor()
-        {
-            if (txb_IDOrder.Text == ""
-                || txb_NameCus.Text == ""
-                || txb_Address.Text == ""
-                || txb_Phone.Text == ""
-                || txb_Quantity.Text == ""
-                )
-            {
-                MessageBox.Show("Vui Lòng nhập đầy đủ thông tin");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public void AddColumnOrderDetail()
-        {
-            dgv_order.Columns.Add("Mã sản phẩm", "Mã sản phẩm");
-            dgv_order.Columns.Add("Tên sản phẩm", "Tên sản phẩm");
-            dgv_order.Columns.Add("Số lượng", "Số lượng");
-            dgv_order.Columns.Add("Đơn giá", "Đơn giá");
-            dgv_order.Columns.Add("Thành Tiền", "Thành Tiền");
-            dgv_order.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void cbb_Category_TextChanged(object sender, EventArgs e)
@@ -237,9 +213,12 @@ namespace UI_Winform.View
                 {
                     //Lưu thông tin khách hàng
                     ManageCustomerBLL mcb = new ManageCustomerBLL();
+                    ManageVoucherBLL mvb = new ManageVoucherBLL();
                     if (mcb.CheckOldCustomerBLL(txb_IDCustomer.Text))
                     {
-
+                        //cap nhat lai diem tich luy trong khach hang
+                        mcb.UpdateBonusPointCustomerBLL(txb_Total.Text, Convert.ToInt32(txb_IDCustomer.Text));
+                        mcb.UpdateBonusPointCustomerBLL(mvb.CheckBonusPointBLL(txb_BonusPoint.Text), Convert.ToInt32(txb_IDCustomer.Text));
                     }
                     else
                     {
@@ -248,12 +227,17 @@ namespace UI_Winform.View
                         temp.Address = txb_Address.Text;
                         temp.Phone = txb_Phone.Text;
                         temp.DateOfBirth = Convert.ToDateTime(dtp_Birth.Text);
+                        temp.BonusPoint = 0;
+
                         mcb.AddCustomerBLL(temp);
+                        mcb.UpdateBonusPointCustomerBLL(txb_Total.Text, mcb.GetCustomerByPhoneBLL(txb_Phone.Text).ID_Customer);
+
                     }
 
 
                     //Tạo hóa đơn
                     ManageOrderBLL mob = new ManageOrderBLL();
+
 
                     Customer temp2 = new Customer();
                     temp2 = mcb.GetCustomerByPhoneBLL(txb_Phone.Text);
@@ -263,6 +247,12 @@ namespace UI_Winform.View
                     or.ID_Staff = ID_User;
                     or.ID_Customer = temp2.ID_Customer;
                     or.OrderDate = DateTime.Now;
+                    or.BonusPoint = mob.CheckBonusPointBLL(txb_BonusPoint.Text);
+                    or.ID_Voucher = mob.CheckIDVoucher(txb_IdVoucher.Text);
+                    mvb.SetVoucherBeingUsedBLL(txb_IdVoucher.Text);
+                    or.TotalDiscount = mob.CheckTotalDiscountBLL(txb_TotalDiscount.Text);
+                    or.TotalPrice = Convert.ToDecimal(txb_Total.Text.Replace(".", ""));
+                    or.FinalTotal = Convert.ToDecimal(txb_FinalTotal.Text.Replace(".", ""));
                     mob.AddOrder(or);
 
                     //Tạo chi tiết hóa đơn và cập nhật lại số lượng máy trong item
@@ -278,7 +268,7 @@ namespace UI_Winform.View
                         //cập nhật lại số lượng máy trong csdl
                         mib.UpdateQuantityItem(i.Cells[0].Value.ToString(), -Convert.ToInt32(i.Cells[2].Value.ToString()));
 
-                        detail.UnitPrice = Convert.ToDecimal(i.Cells[3].Value.ToString());
+                        detail.UnitPrice = Convert.ToDecimal(i.Cells[3].Value.ToString().Replace(".", ""));
                         modb.AddOrderDetailBLL(detail);
                     }
                     MessageBox.Show("Lưu thành công");
@@ -309,8 +299,12 @@ namespace UI_Winform.View
             {
                 DataGridViewRow i = dgv_order.SelectedRows[0];
                 ViewOrderDetail temp = li.Find(p => p.ID_Item == i.Cells["ID_Item"].Value.ToString());
-                total -= temp.AmountPrice;
-                txb_Total.Text = Convert.ToString(total);
+                total -= Convert.ToDecimal(temp.AmountPrice.Replace(".", ""));
+                txb_Total.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total);
+                txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total);
+                txb_IdVoucher.Text = "";
+                txb_BonusPoint.Text = "";
+                txb_TotalDiscount.Text = "";
                 li.Remove(temp);
                 dgv_order.DataSource = null;
                 dgv_order.DataSource = li;
@@ -328,6 +322,11 @@ namespace UI_Winform.View
             txb_Address.Text = "";
             txb_Total.Text = "";
             txb_Quantity.Text = "";
+            txb_Discount.Text = "";
+            txb_IdVoucher.Text = "";
+            txb_BonusPoint.Text = "";
+            txb_FinalTotal.Text = "";
+            txb_TotalDiscount.Text = "";
             total = 0;
         }
 
@@ -336,28 +335,16 @@ namespace UI_Winform.View
             ResetAll();
         }
 
-        public void ResetTextBox(List<TextBox> li)
-        {
-            foreach (TextBox t in li)
-            {
-                t.Text = "";
-            }
-        }
-
-        public void ResetCombobox(List<ComboBox> li)
-        {
-            foreach (ComboBox i in li)
-            {
-                i.Text = "";
-            }
-        }
-
         private void btn_Print_Click(object sender, EventArgs e)
         {
-            ManageStaffBLL msb = new ManageStaffBLL();
-            Staff s = msb.GetStaffByID(ID_User);
-            FormReport fr = new FormReport(li, txb_Total.Text, txb_NameCus.Text, txb_Phone.Text, txb_Address.Text, s.Name, DateTime.Now, txb_IDOrder.Text);
-            fr.Show();
+            ManageOrderBLL mob = new ManageOrderBLL();
+            if (mob.CheckEmptyInfor(txb_IDOrder.Text, txb_NameCus.Text, txb_Address.Text, txb_Phone.Text, txb_Quantity.Text))
+            {
+                ManageStaffBLL msb = new ManageStaffBLL();
+                Staff s = msb.GetStaffByID(ID_User);
+                FormReport fr = new FormReport(li, txb_Total.Text, txb_NameCus.Text, txb_Phone.Text, txb_Address.Text, s.Name, txb_TotalDiscount.Text, txb_FinalTotal.Text, DateTime.Now, txb_IDOrder.Text);
+                fr.Show();
+            }
         }
 
         private void txb_Phone_TextChanged(object sender, EventArgs e)
@@ -372,15 +359,156 @@ namespace UI_Winform.View
                 txb_Address.Text = temp.Address;
                 dtp_Birth.Text = Convert.ToString(temp.DateOfBirth);
             }
-            else
+        }
+
+        private void btn_ApplyDiscount_Click(object sender, EventArgs e)
+        {
+            ManageCustomerBLL mcb = new ManageCustomerBLL();
+            ManageVoucherBLL mvb = new ManageVoucherBLL();
+            ManageOrderBLL mob = new ManageOrderBLL();
+            if (mob.CheckEmptyInfor(txb_IDOrder.Text, txb_NameCus.Text, txb_Address.Text, txb_Phone.Text, txb_Quantity.Text))
             {
 
+                if (mcb.CheckOldCustomerBLL(txb_IDCustomer.Text))
+                {
+                    Customer cus = mcb.GetCustomerByID(Convert.ToInt32(txb_IDCustomer.Text));
+
+                    if (txb_BonusPoint.Text != "")
+                    {
+                        if (cus.BonusPoint < Convert.ToInt32(txb_BonusPoint.Text))
+                        {
+                            MessageBox.Show("Điểm của khách hàng không đủ");
+                            txb_BonusPoint.Text = "0";
+                        }
+                        if (Convert.ToInt32(txb_BonusPoint.Text) > CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))))
+                        {
+                            MessageBox.Show("Chỉ được áp dụng tối đa " + CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))).ToString() + " điểm đối với hóa đơn hiện tại");
+                            txb_BonusPoint.Text = "0";
+                        };
+                    }
+                }
+                else
+                {
+                    txb_BonusPoint.Text = "";
+                    txb_BonusPoint.Enabled = false;
+                }
+
+
+                if (txb_IdVoucher.Text != "")
+                {
+                    Voucher vc = mvb.GetVoucherByID(txb_IdVoucher.Text, Convert.ToDecimal(txb_Total.Text.Replace(".", "")));
+                    if (vc == null)
+                    {
+                        txb_TotalDiscount.Text = CheckDiscount_Voucher(0);
+                        txb_IdVoucher.Text = "";
+                    }
+                    else
+                    {
+                        if (mvb.CheckStatusVoucherBLL(vc.ID_Voucher))
+                        {
+                            double total = Convert.ToDouble(txb_Total.Text.Replace(".", ""));
+                            if (CheckMaxDiscount((double)(total * vc.Discount), vc.ID_Voucher) == false)
+                            {
+                                txb_TotalDiscount.Text = CheckDiscount_Voucher(Convert.ToDouble(vc.Discount));
+                                txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 - Convert.ToDouble(txb_TotalDiscount.Text))));
+                            }
+                            else
+                            {
+                                txb_TotalDiscount.Text = CheckDiscount_Voucher(Convert.ToDouble(vc.Discount));
+
+                                txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 + Convert.ToDouble(mvb.CheckBonusPointBLL(txb_BonusPoint.Text)) / 1000000000) - vc.MaxDiscount));
+                                MessageBox.Show("Voucher được giảm tối đa " + vc.MaxDiscount.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Voucher đã có người sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txb_IdVoucher.Text = "";
+                        }
+
+                    }
+                }
+                else
+                {
+                    txb_TotalDiscount.Text = CheckDiscount_Voucher(0);
+                    txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 + Convert.ToDouble(mvb.CheckBonusPointBLL(txb_BonusPoint.Text)) / 1000000000)));
+                }
             }
         }
 
-        private void cbb_Brand_TextChanged(object sender, EventArgs e)
+        public int CheckLimitBonusPoint(Decimal Total)
         {
 
+            if (Total <= 20000000)
+            {
+                return 1000;
+            }
+            else if (Total <= 40000000)
+            {
+                return 800;
+            }
+            else
+            {
+                return 500;
+            }
+
+        }
+
+        /*Them ham de tinh ra tong giam gia*/
+        public double TotalDiscount(int BonusPoint, Double DiscountVC)
+        {
+
+            double temp = Convert.ToDouble(BonusPoint) / 10000;
+
+            return (double)(temp + DiscountVC);
+        }
+
+        /*Them ham kiem tra thong tin trong cua diem tich luy va voucher tra ve String*/
+        public String CheckDiscount_Voucher(Double DiscountVC)
+        {
+            if (txb_BonusPoint.Text != "" && txb_IdVoucher.Text != "")
+            {
+                return TotalDiscount(Convert.ToInt32(txb_BonusPoint.Text), DiscountVC).ToString();
+            }
+            if (txb_BonusPoint.Text == "" && txb_IdVoucher.Text != "")
+            {
+                return TotalDiscount(0, DiscountVC).ToString();
+            }
+            if (txb_BonusPoint.Text != "" && txb_IdVoucher.Text == "")
+            {
+                return TotalDiscount(Convert.ToInt32(txb_BonusPoint.Text), 0).ToString();
+            }
+            else
+            {
+                return "0";
+            }
+
+        }
+
+        /*Them ham de kiem tra giam gia toi da*/
+
+        public bool CheckMaxDiscount(double DiscountVC, string ID_Voucher)
+        {
+            ManageVoucherBLL mvb = new ManageVoucherBLL();
+            Voucher v = mvb.GetVoucherByID(ID_Voucher);
+            if (DiscountVC >= v.MaxDiscount && v.MaxDiscount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void txb_BonusPoint_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b') // Kiểm tra nếu kí tự không phải là số
+            {
+                e.Handled = true; // Hủy bỏ kí tự đó
+            }
         }
     }
 }

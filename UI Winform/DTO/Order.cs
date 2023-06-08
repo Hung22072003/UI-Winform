@@ -24,9 +24,15 @@ namespace UI_Winform.DTO
         public System.DateTime OrderDate { get; set; }
         public string ID_Staff { get; set; }
         public int ID_Customer { get; set; }
+        public Nullable<int> BonusPoint { get; set; }
+        public Nullable<double> TotalDiscount { get; set; }
+        public Nullable<decimal> TotalPrice { get; set; }
+        public Nullable<decimal> FinalTotal { get; set; }
+        public string ID_Voucher { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Staff Staff { get; set; }
+        public virtual Voucher Voucher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

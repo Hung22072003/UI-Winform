@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,24 +63,27 @@ namespace UI_Winform.View
         }
         private void Txb_TextChanged(object sender, EventArgs e)
         {
-            if (Txb_Price.Text != "" && Txb_Quantity.Text != "" && IsNumber(Txb_Price.Text) && IsNumber(Txb_Quantity.Text))
+            ManageExpenditureBLL meb = new ManageExpenditureBLL();
+            if (meb.CheckValidInfo(Txb_Price.Text, Txb_Quantity.Text)) 
             {
-                Txb_Total.Text = (Convert.ToDecimal(Txb_Price.Text) * Convert.ToInt32(Txb_Quantity.Text)).ToString();
+                Txb_Total.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDecimal(Txb_Price.Text) * Convert.ToInt32(Txb_Quantity.Text)));
             }
         }
 
         private void Btn_OK_Click(object sender, EventArgs e)
         {
-            if (Txb_Price.Text != "" && Txb_Quantity.Text != "" && IsNumber(Txb_Price.Text) && IsNumber(Txb_Quantity.Text))
+            ManageExpenditureBLL meb = new ManageExpenditureBLL();
+            if (meb.CheckValidInfo(Txb_Price.Text, Txb_Quantity.Text))
             {
                 ManageItemBLL mib = new ManageItemBLL();
                 mib.UpdateQuantityItem(ID_Item, Convert.ToInt32(Txb_Quantity.Text));
-
-                ManageExpenditureBLL meb = new ManageExpenditureBLL();
-                meb.AddSpendingBill(ID_Item, dtpImportDate.Value, Convert.ToInt32(Txb_Quantity.Text), Convert.ToDecimal(Txb_Price.Text), Convert.ToDecimal(Txb_Total.Text));
+                
+                meb.AddSpendingBill(ID_Item, dtpImportDate.Value, Convert.ToInt32(Txb_Quantity.Text), Convert.ToDecimal(Txb_Price.Text), Convert.ToDecimal(Txb_Total.Text.Replace(".", "")));
 
                 MessageBox.Show("Thêm thành công!");
                 this.Close();
+            } else {
+                MessageBox.Show("Vui lòng kiểm tra lại thông tin!");
             }
         }
 

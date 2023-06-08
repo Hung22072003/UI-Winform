@@ -160,13 +160,5 @@ namespace UI_Winform.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            /*ManageStaffBLL msb=  new ManageStaffBLL();
-            Lb_Name.Text = "Tên nhân viên: " + msb.GetStaffByID(ID_User).Name;
-            Lb_Time.Text = "Thời gian: " + DateTime.Now.ToLongTimeString();
-            Lb_Date.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");   */
-        }
     }
 }

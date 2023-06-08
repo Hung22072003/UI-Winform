@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.Btn_Discount = new System.Windows.Forms.Button();
             this.Btn_TradeHistory = new System.Windows.Forms.Button();
             this.Btn_Storage = new System.Windows.Forms.Button();
             this.Btn_Staff = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelMenu.Controls.Add(this.Btn_Discount);
             this.panelMenu.Controls.Add(this.Btn_TradeHistory);
             this.panelMenu.Controls.Add(this.Btn_Storage);
             this.panelMenu.Controls.Add(this.Btn_Staff);
@@ -59,6 +61,26 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 680);
             this.panelMenu.TabIndex = 0;
+            // 
+            // Btn_Discount
+            // 
+            this.Btn_Discount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Discount.FlatAppearance.BorderSize = 0;
+            this.Btn_Discount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Discount.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Discount.Image")));
+            this.Btn_Discount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Discount.Location = new System.Drawing.Point(0, 320);
+            this.Btn_Discount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Discount.Name = "Btn_Discount";
+            this.Btn_Discount.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Btn_Discount.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Discount.TabIndex = 5;
+            this.Btn_Discount.Text = "   Khuyến mãi";
+            this.Btn_Discount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Discount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Discount.UseVisualStyleBackColor = true;
+            this.Btn_Discount.Click += new System.EventHandler(this.Btn_Discount_Click);
             // 
             // Btn_TradeHistory
             // 
@@ -263,7 +285,7 @@
             this.MinimumSize = new System.Drawing.Size(1100, 679);
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminForm";
+            this.Text = "Quản lý";
             this.panelMenu.ResumeLayout(false);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
@@ -285,6 +307,7 @@
         private Guna.UI2.WinForms.Guna2CircleButton Btn_Maximize;
         private Guna.UI2.WinForms.Guna2CircleButton Btn_Close;
         private Guna.UI2.WinForms.Guna2CircleButton Btn_Minimize;
+        private System.Windows.Forms.Button Btn_Discount;
     }
 }
 

@@ -156,5 +156,10 @@ namespace UI_Winform
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void Btn_Discount_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDiscount(), sender);
+        }
     }
 }

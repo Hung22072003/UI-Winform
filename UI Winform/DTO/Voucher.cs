@@ -12,20 +12,21 @@ namespace UI_Winform.DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Voucher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Voucher()
         {
             this.Orders = new HashSet<Order>();
         }
     
-        public int ID_Customer { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
-        public Nullable<int> BonusPoint { get; set; }
+        public string ID_Voucher { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<decimal> MinTotal { get; set; }
+        public Nullable<bool> Tick { get; set; }
+        public Nullable<double> MaxDiscount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

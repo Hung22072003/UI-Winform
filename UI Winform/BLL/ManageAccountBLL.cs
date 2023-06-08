@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
 namespace UI_Winform.BLL
@@ -92,6 +93,29 @@ namespace UI_Winform.BLL
         {
             ManageAccountDAL mad = new ManageAccountDAL();
             mad.UpdatePassword(EncryptPassword(Password), Username);
+        }
+
+        public bool CheckValidInfo(string UserName, string PassWord)
+        {
+            if (UserName == "" && PassWord == "")
+            {
+                MessageBox.Show("Vui lòng nhập tài khoản và mật khẩu");
+                return false;
+            }
+            else if (UserName == "")
+            {
+                MessageBox.Show("Vui lòng nhập tài khoản");
+                return false;
+            }
+            else if (PassWord == "")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

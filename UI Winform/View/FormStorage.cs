@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using System.Windows.Media.Media3D;
 using UI_Winform.BLL;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
@@ -174,8 +175,11 @@ namespace UI_Winform
 
         private void Btn_View_Click(object sender, EventArgs e)
         {
-            ViewInfoItem f = new ViewInfoItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-            f.ShowDialog();
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                ViewInfoItem f = new ViewInfoItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                f.ShowDialog();
+            }
         }
     }
 }

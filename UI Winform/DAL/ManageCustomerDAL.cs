@@ -70,5 +70,14 @@ namespace UI_Winform.DAL
 
         }
 
+        public void UpdateBonusPointCustomerDAL(int BonusPoint, int id)
+        {
+            using (DBPM db = new DBPM())
+            {
+                Customer cus = db.Customers.Find(id);
+                cus.BonusPoint += BonusPoint;
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -114,7 +117,7 @@ namespace UI_Winform.View
                 txb_Address.Text = s.Address;
                 txb_Email.Text = s.Email;
                 txb_PhoneNumber.Text = s.PhoneNumber;
-                txb_Salary.Text = s.Salary.ToString();
+                txb_Salary.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.Salary);
                 txb_Account.Text = a.UserName;
                 dtp_DateOfBirth.Text = Convert.ToString(s.DateOfBirth);
                 txb_TypeAccount.Text = mrb.getNameRoleByIDRole(a.ID_Role);
@@ -143,10 +146,14 @@ namespace UI_Winform.View
             ManageStaffBLL msb = new ManageStaffBLL();
             ManageAccountBLL mab = new ManageAccountBLL();
             ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
-            msb.UpdateStaffBLL(this.ID_User, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
-                   txb_Address.Text, Convert.ToDecimal(txb_Salary.Text), txb_Email.Text, pt_Staff.Image);
 
-            MessageBox.Show("Cập nhật thành công!");
+            if (msb.CheckValidInfo(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, txb_Address.Text, txb_Salary.Text, txb_Email.Text, txb_TypeAccount.Text))
+            {
+                msb.UpdateStaffBLL(this.ID_User, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
+                   txb_Address.Text, Convert.ToDecimal(txb_Salary.Text.Replace(".","")), txb_Email.Text, pt_Staff.Image);
+
+                MessageBox.Show("Cập nhật thành công!");
+            }
         }
 
         private void btn_AddImage_Click(object sender, EventArgs e)

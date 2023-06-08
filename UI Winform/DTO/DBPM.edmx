@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyCuaHangDienThoaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ManagementPhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="UserName" />
@@ -38,6 +38,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="date" />
+          <Property Name="BonusPoint" Type="int" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -64,6 +65,11 @@
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="ID_Staff" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Customer" Type="int" Nullable="false" />
+          <Property Name="BonusPoint" Type="int" />
+          <Property Name="TotalDiscount" Type="float" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="FinalTotal" Type="money" />
+          <Property Name="ID_Voucher" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -104,6 +110,9 @@
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Picture" Type="image" />
           <Property Name="Deleted" Type="bit" />
+          <Property Name="BonusPoint" Type="int" />
+          <Property Name="BonusSalary" Type="money" />
+          <Property Name="TotalSalary" Type="money" />
         </EntityType>
         <EntityType Name="Staff_Shift">
           <Key>
@@ -123,6 +132,18 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="UnitPrice" Type="money" />
           <Property Name="TotalPrice" Type="money" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="ID_Voucher" />
+          </Key>
+          <Property Name="ID_Voucher" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="MinTotal" Type="money" />
+          <Property Name="Tick" Type="bit" />
+          <Property Name="MaxDiscount" Type="float" />
         </EntityType>
         <Association Name="FK_A_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -193,6 +214,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="ID_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="ID_Voucher" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID_Voucher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -256,7 +289,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuanLyCuaHangDienThoaiModelStoreContainer">
+        <EntityContainer Name="ManagementPhoneModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -269,6 +302,7 @@
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff_Shift" EntityType="Self.Staff_Shift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_A_Customer" Association="Self.FK_A_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
@@ -291,6 +325,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
             <End Role="Staff" EntitySet="Staff" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Voucher" Association="Self.FK_Order_Voucher">
+            <End Role="Voucher" EntitySet="Voucher" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Item" Association="Self.FK_OrderDetail_Item">
@@ -318,7 +356,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QuanLyCuaHangDienThoaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ManagementPhoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="UserName" />
@@ -356,6 +394,7 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="BonusPoint" Type="Int32" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_A_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="Item">
@@ -387,8 +426,14 @@
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ID_Staff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_Customer" Type="Int32" Nullable="false" />
+          <Property Name="BonusPoint" Type="Int32" />
+          <Property Name="TotalDiscount" Type="Double" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FinalTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ID_Voucher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_A_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Order_Staff" FromRole="Order" ToRole="Staff" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK_Order_Voucher" FromRole="Order" ToRole="Voucher" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -434,6 +479,9 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Deleted" Type="Boolean" />
+          <Property Name="BonusPoint" Type="Int32" />
+          <Property Name="BonusSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalSalary" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Staff" FromRole="Staff" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Staff" FromRole="Staff" ToRole="Order" />
           <NavigationProperty Name="Shifts" Relationship="Self.Staff_Shift" FromRole="Staff" ToRole="Shift" />
@@ -449,6 +497,19 @@
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Storage_Item" FromRole="Storage" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="ID_Voucher" />
+          </Key>
+          <Property Name="ID_Voucher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="MinTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tick" Type="Boolean" />
+          <Property Name="MaxDiscount" Type="Double" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Voucher" FromRole="Voucher" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Account_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
@@ -546,6 +607,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="ID_Voucher" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID_Voucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetail_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -574,6 +647,7 @@
           <EntitySet Name="Shifts" EntityType="Self.Shift" />
           <EntitySet Name="Staffs" EntityType="Self.Staff" />
           <EntitySet Name="Storages" EntityType="Self.Storage" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
           <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Account" EntitySet="Accounts" />
@@ -606,6 +680,10 @@
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Voucher" Association="Self.FK_Order_Voucher">
+            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
@@ -620,9 +698,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuanLyCuaHangDienThoaiModelStoreContainer" CdmEntityContainer="DBPM">
+        <EntityContainerMapping StorageEntityContainer="ManagementPhoneModelStoreContainer" CdmEntityContainer="DBPM">
           <EntitySetMapping Name="Accounts">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Account">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
@@ -633,7 +711,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Brands">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Brand">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
                 <ScalarProperty Name="BrandID" ColumnName="BrandID" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
@@ -641,7 +719,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Category">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
                 <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
@@ -649,18 +727,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Customer">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Item">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Item">
               <MappingFragment StoreEntitySet="Item">
                 <ScalarProperty Name="IDItem" ColumnName="IDItem" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
@@ -678,17 +757,22 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Order">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
                 <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="FinalTotal" ColumnName="FinalTotal" />
+                <ScalarProperty Name="ID_Voucher" ColumnName="ID_Voucher" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.OrderDetail">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
                 <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
@@ -699,7 +783,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Role">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
                 <ScalarProperty Name="NameRole" ColumnName="NameRole" />
@@ -707,7 +791,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shifts">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Shift">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Shift">
               <MappingFragment StoreEntitySet="Shift">
                 <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
                 <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
@@ -716,7 +800,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Staffs">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Staff">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
                 <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -727,11 +811,14 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
+                <ScalarProperty Name="BonusSalary" ColumnName="BonusSalary" />
+                <ScalarProperty Name="TotalSalary" ColumnName="TotalSalary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Storages">
-            <EntityTypeMapping TypeName="QuanLyCuaHangDienThoaiModel.Storage">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Storage">
               <MappingFragment StoreEntitySet="Storage">
                 <ScalarProperty Name="ID_Storage" ColumnName="ID_Storage" />
                 <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
@@ -742,7 +829,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Staff_Shift" TypeName="QuanLyCuaHangDienThoaiModel.Staff_Shift" StoreEntitySet="Staff_Shift">
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="ManagementPhoneModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="ID_Voucher" ColumnName="ID_Voucher" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="MinTotal" ColumnName="MinTotal" />
+                <ScalarProperty Name="Tick" ColumnName="Tick" />
+                <ScalarProperty Name="MaxDiscount" ColumnName="MaxDiscount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Staff_Shift" TypeName="ManagementPhoneModel.Staff_Shift" StoreEntitySet="Staff_Shift">
             <EndProperty Name="Shift">
               <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
             </EndProperty>

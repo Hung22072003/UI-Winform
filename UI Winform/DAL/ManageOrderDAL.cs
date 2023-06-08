@@ -35,58 +35,18 @@ namespace UI_Winform.DAL
             var s = db.Orders.Where(p => p.OrderDate.Year == Year).Select(p => p).ToList();
             return s;
         }
-        public dynamic getAllOrderOfStaff(DateTime startDate, DateTime endDate, string ID_Staff)
+        public List<Order> getAllOrderOfStaff(DateTime startDate, DateTime endDate, string ID_Staff)
         {
             DBPM db = new DBPM();
             var orders = db.Orders.Where(p => startDate < p.OrderDate && p.OrderDate < endDate && p.ID_Staff == ID_Staff).Select(p => p).ToList();
-            List<OrderDGV> list = new List<OrderDGV>();
-            orders.ForEach(order => {
-                decimal? total = 0;
-                order.OrderDetails.Select(p => new { p.AmountPrice }).ToList().ForEach(c =>
-                {
-                    total += c.AmountPrice;
-                });
-
-                OrderDGV orderDGV = new OrderDGV
-                {
-                    ID_Order = order.OrderID,
-                    NameStaff = order.Staff.Name,
-                    NameCustomer = order.Customer.Name,
-                    PhoneCustomer = order.Customer.Phone,
-                    OrderDate = order.OrderDate,
-                    Total = total,
-                };
-
-                list.Add(orderDGV);
-            });
-            return list;
+            return orders;
         }
 
-        public dynamic getAllOrderOfStaff(string ID_Staff)
+        public List<Order> getAllOrderOfStaff(string ID_Staff)
         {
             DBPM db = new DBPM();
             var orders = db.Orders.Where(p => p.ID_Staff == ID_Staff).Select(p => p).ToList();
-            List<OrderDGV> list = new List<OrderDGV>();
-            orders.ForEach(order => {
-                decimal? total = 0;
-                order.OrderDetails.Select(p => new { p.AmountPrice }).ToList().ForEach(c =>
-                {
-                    total += c.AmountPrice;
-                });
-
-                OrderDGV orderDGV = new OrderDGV
-                {
-                    ID_Order = order.OrderID,
-                    NameStaff = order.Staff.Name,
-                    NameCustomer = order.Customer.Name,
-                    PhoneCustomer = order.Customer.Phone,
-                    OrderDate = order.OrderDate,
-                    Total = total,
-                };
-
-                list.Add(orderDGV);
-            });
-            return list;
+            return orders;
         }
 
         public void AddOrder(Order temp)

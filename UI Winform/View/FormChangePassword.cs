@@ -68,6 +68,10 @@ namespace UI_Winform.View
         private void Txb_ConfPassword_TextChanged(object sender, EventArgs e)
         {
             if (Txb_ConfPassword.Text == Txb_NewPassword.Text) Lb_Note.Text = "Mật khẩu khớp";
+            else
+            {
+                Lb_Note.Text = "";
+            }
         }
     }
 }

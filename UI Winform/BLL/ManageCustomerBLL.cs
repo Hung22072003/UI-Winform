@@ -67,5 +67,10 @@ namespace UI_Winform.BLL
             mcd.AddCustomerDAL(temp);
         }
 
+        public void UpdateBonusPointCustomerBLL(String Total, int id)
+        {
+            ManageCustomerDAl mcd = new ManageCustomerDAl();
+            mcd.UpdateBonusPointCustomerDAL(Convert.ToInt32(Total.Replace(".", "")) / 100000, id);
+        }
     }
 }

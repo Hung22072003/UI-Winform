@@ -73,11 +73,15 @@
             this.cbb_Brand = new System.Windows.Forms.ComboBox();
             this.cbb_Category = new System.Windows.Forms.ComboBox();
             this.dgv_item = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txb_TotalDiscount = new System.Windows.Forms.TextBox();
+            this.txb_IdVoucher = new System.Windows.Forms.TextBox();
+            this.txb_BonusPoint = new System.Windows.Forms.TextBox();
+            this.txb_FinalTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_ApplyDiscount = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.PanelTime.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -274,11 +278,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.btn_ApplyDiscount);
+            this.groupBox2.Controls.Add(this.txb_FinalTotal);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txb_TotalDiscount);
+            this.groupBox2.Controls.Add(this.txb_IdVoucher);
+            this.groupBox2.Controls.Add(this.txb_BonusPoint);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.btn_Print);
             this.groupBox2.Controls.Add(this.btn_CancelOrder);
@@ -307,7 +315,7 @@
             // 
             this.btn_Print.AutoSize = true;
             this.btn_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Print.Location = new System.Drawing.Point(628, 289);
+            this.btn_Print.Location = new System.Drawing.Point(378, 298);
             this.btn_Print.Name = "btn_Print";
             this.btn_Print.Size = new System.Drawing.Size(106, 31);
             this.btn_Print.TabIndex = 77;
@@ -319,7 +327,7 @@
             // 
             this.btn_CancelOrder.AutoSize = true;
             this.btn_CancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CancelOrder.Location = new System.Drawing.Point(442, 289);
+            this.btn_CancelOrder.Location = new System.Drawing.Point(192, 298);
             this.btn_CancelOrder.Name = "btn_CancelOrder";
             this.btn_CancelOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_CancelOrder.TabIndex = 76;
@@ -331,7 +339,7 @@
             // 
             this.btn_SaveOrder.AutoSize = true;
             this.btn_SaveOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveOrder.Location = new System.Drawing.Point(262, 289);
+            this.btn_SaveOrder.Location = new System.Drawing.Point(12, 298);
             this.btn_SaveOrder.Name = "btn_SaveOrder";
             this.btn_SaveOrder.Size = new System.Drawing.Size(106, 31);
             this.btn_SaveOrder.TabIndex = 75;
@@ -344,7 +352,7 @@
             this.txb_Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_Total.Enabled = false;
             this.txb_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Total.Location = new System.Drawing.Point(788, 235);
+            this.txb_Total.Location = new System.Drawing.Point(1095, 230);
             this.txb_Total.Name = "txb_Total";
             this.txb_Total.Size = new System.Drawing.Size(215, 27);
             this.txb_Total.TabIndex = 73;
@@ -353,7 +361,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(672, 237);
+            this.label15.Location = new System.Drawing.Point(979, 232);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 20);
             this.label15.TabIndex = 72;
@@ -365,6 +373,7 @@
             this.dgv_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_order.Location = new System.Drawing.Point(12, 21);
             this.dgv_order.Name = "dgv_order";
+            this.dgv_order.ReadOnly = true;
             this.dgv_order.RowHeadersWidth = 51;
             this.dgv_order.RowTemplate.Height = 24;
             this.dgv_order.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -564,6 +573,7 @@
             this.dgv_item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_item.Location = new System.Drawing.Point(12, 149);
             this.dgv_item.Name = "dgv_item";
+            this.dgv_item.ReadOnly = true;
             this.dgv_item.RowHeadersWidth = 51;
             this.dgv_item.RowTemplate.Height = 24;
             this.dgv_item.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -571,58 +581,98 @@
             this.dgv_item.TabIndex = 79;
             this.dgv_item.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_item_CellClick);
             // 
-            // textBox1
+            // label18
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 235);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 27);
-            this.textBox1.TabIndex = 94;
-            this.textBox1.Text = "Nhập điểm tích lũy";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(11, 232);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 20);
+            this.label18.TabIndex = 108;
+            this.label18.Text = "Điểm tích lũy:";
             // 
-            // textBox2
+            // label11
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(234, 235);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 27);
-            this.textBox2.TabIndex = 95;
-            this.textBox2.Text = "Nhập mã voucher";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(321, 232);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(104, 20);
+            this.label11.TabIndex = 107;
+            this.label11.Text = "Mã Voucher:";
             // 
-            // textBox3
+            // label3
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(479, 235);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 27);
-            this.textBox3.TabIndex = 96;
-            this.textBox3.Text = "Giảm giá";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(634, 232);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 20);
+            this.label3.TabIndex = 106;
+            this.label3.Text = "Tổng giảm:";
             // 
-            // textBox4
+            // txb_TotalDiscount
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(954, 289);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(215, 27);
-            this.textBox4.TabIndex = 98;
+            this.txb_TotalDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_TotalDiscount.Enabled = false;
+            this.txb_TotalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_TotalDiscount.Location = new System.Drawing.Point(749, 230);
+            this.txb_TotalDiscount.Name = "txb_TotalDiscount";
+            this.txb_TotalDiscount.Size = new System.Drawing.Size(148, 27);
+            this.txb_TotalDiscount.TabIndex = 105;
+            this.txb_TotalDiscount.Text = "0";
+            // 
+            // txb_IdVoucher
+            // 
+            this.txb_IdVoucher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_IdVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_IdVoucher.Location = new System.Drawing.Point(439, 230);
+            this.txb_IdVoucher.Name = "txb_IdVoucher";
+            this.txb_IdVoucher.Size = new System.Drawing.Size(148, 27);
+            this.txb_IdVoucher.TabIndex = 104;
+            // 
+            // txb_BonusPoint
+            // 
+            this.txb_BonusPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_BonusPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_BonusPoint.Location = new System.Drawing.Point(139, 230);
+            this.txb_BonusPoint.Name = "txb_BonusPoint";
+            this.txb_BonusPoint.Size = new System.Drawing.Size(148, 27);
+            this.txb_BonusPoint.TabIndex = 103;
+            this.txb_BonusPoint.Text = "0";
+            this.txb_BonusPoint.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_BonusPoint_KeyPress);
+            // 
+            // txb_FinalTotal
+            // 
+            this.txb_FinalTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_FinalTotal.Enabled = false;
+            this.txb_FinalTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_FinalTotal.Location = new System.Drawing.Point(1095, 298);
+            this.txb_FinalTotal.Name = "txb_FinalTotal";
+            this.txb_FinalTotal.Size = new System.Drawing.Size(215, 27);
+            this.txb_FinalTotal.TabIndex = 110;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(766, 293);
+            this.label1.Location = new System.Drawing.Point(895, 305);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 20);
-            this.label1.TabIndex = 97;
+            this.label1.TabIndex = 109;
             this.label1.Text = "Tổng tiền sau khi giảm:";
+            // 
+            // btn_ApplyDiscount
+            // 
+            this.btn_ApplyDiscount.AutoSize = true;
+            this.btn_ApplyDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ApplyDiscount.Location = new System.Drawing.Point(567, 298);
+            this.btn_ApplyDiscount.Name = "btn_ApplyDiscount";
+            this.btn_ApplyDiscount.Size = new System.Drawing.Size(124, 31);
+            this.btn_ApplyDiscount.TabIndex = 111;
+            this.btn_ApplyDiscount.Text = "Áp dụng giảm giá";
+            this.btn_ApplyDiscount.UseVisualStyleBackColor = true;
+            this.btn_ApplyDiscount.Click += new System.EventHandler(this.btn_ApplyDiscount_Click);
             // 
             // FormOrder
             // 
@@ -696,10 +746,14 @@
         private System.Windows.Forms.Label Lb_Time;
         private System.Windows.Forms.Label Lb_Name;
         private System.Windows.Forms.TextBox txb_IDCustomer;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btn_ApplyDiscount;
+        private System.Windows.Forms.TextBox txb_FinalTotal;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txb_TotalDiscount;
+        private System.Windows.Forms.TextBox txb_IdVoucher;
+        private System.Windows.Forms.TextBox txb_BonusPoint;
     }
 }
