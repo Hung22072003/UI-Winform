@@ -110,10 +110,6 @@ namespace UI_Winform
                 d("", "", "");
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
-            }
         }
 
         public void Reset()
@@ -138,8 +134,8 @@ namespace UI_Winform
             {
                 ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";
                 ofd_OpenFile.ShowDialog();
-                string file = ofd_OpenFile.FileName; //lấy đường dẫn đến file mà mình đã chọn
-                Image image = Image.FromFile(file); //Tạo ra một đối tượng image thông qua đường dẫn
+                string file = ofd_OpenFile.FileName; 
+                Image image = Image.FromFile(file);
                 Picture.Image = image;
             } catch (Exception ex)
             {
