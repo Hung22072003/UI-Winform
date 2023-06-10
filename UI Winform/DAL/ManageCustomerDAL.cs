@@ -11,7 +11,13 @@ namespace UI_Winform.DAL
 {
     public class ManageCustomerDAl
     {
-
+        public List<Customer> GetCustomersBySearch(string search)
+        {
+            using (DBPM db = new DBPM())
+            {
+                return db.Customers.Where(p => p.Name.Contains(search) || p.Phone.Contains(search)).Select(p => p).ToList();
+            }
+        }
         public Customer GetCustomerByID(int id)
         {
             Customer temp = new Customer();
@@ -68,6 +74,19 @@ namespace UI_Winform.DAL
                 db.SaveChanges();
             }
 
+        }
+
+        public void UpdateCustomerDAL(Customer temp)
+        {
+            using (DBPM db = new DBPM())
+            {
+                Customer c = db.Customers.Find(temp.ID_Customer);
+                c.Name = temp.Name;
+                c.Phone = temp.Phone;
+                c.Address = temp.Address;
+                c.BonusPoint = temp.BonusPoint;
+                db.SaveChanges();
+            }
         }
 
         public void UpdateBonusPointCustomerDAL(int BonusPoint, int id)
