@@ -139,6 +139,28 @@
         3y/kwzj96wAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="Btn_Customer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAA6JJREFUWEfNlmnIjlkYxx8Ukv2LpRSyZBnZsoVk/UBZRwzKF0V2xvhCGKNkso2l
+        iPDZB6WUpBhLhow1W0zKyG7s21h/v+e5z+N+nrf39bzve6v3X7/uc5/7LNe5znWuc6cqsqpDNdgN/8A7
+        uA/7YQr47bvqMoyDH6AZVIUGMBz2wnXoComrLXSB+um34jUC7kGn9FtCqgQnYVT67aumwrxMMUfj4RzY
+        LxH1hrOQP+ASOA9V0m+5sn2fTLH8mg4bwYk6WBFJAz7CFsg3bh3MzhTLr7nggD/BJ1gPreHXqPwn/AXD
+        wIBUf8CsTLH86ge6dB9Mg9/gEvwPTlIZJsNheAp7wK1JbAuawmt4D41hKDyLnir+3gQ+gO1bQCK6Ae6z
+        +22iMQcY6T5V/N284DZtBXNCItKANfAGGllRgvTQW1gLV61IQrpyMbivP1qBxoCTKZ+TMsXUWLgAi6C5
+        FUnKdGvEe+RWwX/wJGI1WH8EbBc0ANwOU/gLMDb06E4YBKWSecBIX5B+y6hu9FTW+912reAgXATzQXvw
+        IqsDbaK6K3AMbFuQXOEQ8Phtg3bgoD63g/WuqjvcgRlgzHhsPcYvQS+cAXOIOWMmPIK+UKJ0q240sLTa
+        CYxyA87nXTgKN6M6DTEeHoNJqRvUgJqggRvAa9z7ZSA8hGI98TtcAxsqg84bbzQ4qAGpQQ3hELgqJ/8X
+        4qlbt+uVIG/MWzAS7OMC8lN66hc4BfG9Vj3hBOjW4+AKXbX7qoGuKFzJZsqJYEwcgIVgTKiO8ADcDrNr
+        WGRa/nD40exWiHbAHFgBujjII+oRXhkjGKC86LzYvNodIytd72CFyvgwGzqZHgpaCk5QnGx7GuzrVmfl
+        EeqcKRYkg68eGOketyA9YHLS9TIB4ntdG7zEfL6yIsiBjNpCZWdjJd8AJ3PS4H4X5tUeZFsN8GlMZeWl
+        Eiw1er91v+s+o97fsV5WFKP8LbGtW2BfgziruAF2sGNJ2gXzYTlssiKSAwf3S74HNoPj/wwmtKxKa0B/
+        8CiZ/cxuIX4MLl1vAvOsO3kY1z/tcAxdvWNkVVoDbOtl5VaZnG5DPIitjyciv9nGX3mPr31zVFoDVEsw
+        xZqUNMKE5Dn3qBnQtcA9d4tcuVlwMNjOvjkqiwGqB/jzYuo1PXvx/A2ejudReRnodleuIf76F1FZDVD2
+        dc+NCTOcmS94wJgwWL3cvL6LrDzIQPqcAN6IBpg/riYry0Z7TsBVIKVSXwClT/BSDS+J6QAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <data name="Btn_TradeHistory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6

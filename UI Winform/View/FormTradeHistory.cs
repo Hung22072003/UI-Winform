@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,10 +17,46 @@ namespace UI_Winform.View
     public partial class FormTradeHistory : Form
     {
         private string ID_User;
+        private int ID_Customer;
         public FormTradeHistory(string id_user)
         {
             InitializeComponent();
             ID_User = id_user;
+            Btn_Close.Visible = false;
+        }
+
+        public FormTradeHistory(int id_customer)
+        {
+            InitializeComponent();
+            this.ID_Customer = id_customer;
+            SetGUI();
+        }
+
+        public void SetGUI()
+        {
+            if (this.ID_Customer != null)
+            {
+                MainPanel.Visible = false;
+                LoadDGVForCustomer();
+            }
+        }
+
+        public void LoadDGVForCustomer()
+        {
+            ManageOrderBLL mob = new ManageOrderBLL();
+            Dgv_Statistic.DataSource = mob.getAllOrderOfCustomer(ID_Customer);
+            if (Dgv_Statistic.Rows.Count > 0)
+            {
+                Lb_TotalOrders.Visible = true;
+                Txb_TotalOrders.Text = Dgv_Statistic.RowCount.ToString();
+                Lb_TotalRevenue.Visible = true;
+                List<string> list = new List<string>();
+                foreach (DataGridViewRow i in Dgv_Statistic.Rows)
+                {
+                    list.Add(i.Cells["Mã hóa đơn"].Value.ToString());
+                }
+                Txb_TotalRevenue.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", mob.getTotalPriceOfOrders(list));
+            }
         }
         private void LoadTheme()
         {
@@ -105,6 +142,11 @@ namespace UI_Winform.View
                 FormReport f = new FormReport(list, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total), customer.Name, customer.Phone, customer.Address, Dgv_Statistic.SelectedRows[0].Cells["Tên nhân viên"].Value.ToString(), o.TotalDiscount.ToString(), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", o.FinalTotal), o.OrderDate, o.OrderID);
                 f.ShowDialog();
             }
+        }
+
+        private void Btn_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

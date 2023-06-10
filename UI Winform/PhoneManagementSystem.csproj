@@ -181,6 +181,12 @@
     <Compile Include="View\FormChangePassword.Designer.cs">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCustomer.Designer.cs">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,12 @@
     </Compile>
     <Compile Include="View\FormTradeHistory.Designer.cs">
       <DependentUpon>FormTradeHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InfoCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InfoCustomer.Designer.cs">
+      <DependentUpon>InfoCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RevenueTimeForm.cs">
       <SubType>Form</SubType>
@@ -293,6 +305,9 @@
     <EmbeddedResource Include="View\FormChangePassword.resx">
       <DependentUpon>FormChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCustomer.resx">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormDiscount.resx">
       <DependentUpon>FormDiscount.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormTradeHistory.resx">
       <DependentUpon>FormTradeHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InfoCustomer.resx">
+      <DependentUpon>InfoCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RevenueTimeForm.resx">
       <DependentUpon>RevenueTimeForm.cs</DependentUpon>

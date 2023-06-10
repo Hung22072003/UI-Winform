@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Btn_Statistic = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,12 +37,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.Dgv_Statistic = new System.Windows.Forms.DataGridView();
+            this.Txb_Search = new System.Windows.Forms.TextBox();
+            this.Btn_Search = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Statistic)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Txb_Search);
+            this.MainPanel.Controls.Add(this.Btn_Search);
             this.MainPanel.Controls.Add(this.Btn_Statistic);
             this.MainPanel.Controls.Add(this.label2);
             this.MainPanel.Controls.Add(this.DtpDateEnd);
@@ -59,7 +63,7 @@
             // 
             this.Btn_Statistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Statistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Statistic.Location = new System.Drawing.Point(601, 12);
+            this.Btn_Statistic.Location = new System.Drawing.Point(540, 12);
             this.Btn_Statistic.Name = "Btn_Statistic";
             this.Btn_Statistic.Size = new System.Drawing.Size(106, 34);
             this.Btn_Statistic.TabIndex = 43;
@@ -81,7 +85,7 @@
             // 
             this.DtpDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpDateEnd.Location = new System.Drawing.Point(384, 14);
+            this.DtpDateEnd.Location = new System.Drawing.Point(368, 14);
             this.DtpDateEnd.Name = "DtpDateEnd";
             this.DtpDateEnd.Size = new System.Drawing.Size(142, 27);
             this.DtpDateEnd.TabIndex = 41;
@@ -110,23 +114,23 @@
             this.Dgv_Statistic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_Statistic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dgv_Statistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_Statistic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Statistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Statistic.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Statistic.DefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_Statistic.Location = new System.Drawing.Point(15, 64);
             this.Dgv_Statistic.Name = "Dgv_Statistic";
             this.Dgv_Statistic.ReadOnly = true;
@@ -134,6 +138,29 @@
             this.Dgv_Statistic.RowTemplate.Height = 30;
             this.Dgv_Statistic.Size = new System.Drawing.Size(1055, 270);
             this.Dgv_Statistic.TabIndex = 38;
+            // 
+            // Txb_Search
+            // 
+            this.Txb_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txb_Search.Location = new System.Drawing.Point(872, 17);
+            this.Txb_Search.Name = "Txb_Search";
+            this.Txb_Search.Size = new System.Drawing.Size(198, 27);
+            this.Txb_Search.TabIndex = 56;
+            // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Search.Location = new System.Drawing.Point(748, 12);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(106, 34);
+            this.Btn_Search.TabIndex = 57;
+            this.Btn_Search.Text = "Tìm";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // Btn_Report
             // 
@@ -160,5 +187,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker DtpDateStart;
         private System.Windows.Forms.DataGridView Dgv_Statistic;
+        private System.Windows.Forms.TextBox Txb_Search;
+        private System.Windows.Forms.Button Btn_Search;
     }
 }

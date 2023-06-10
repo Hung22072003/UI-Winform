@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Services.Description;
+using System.Windows.Forms;
 using UI_Winform.DAL;
 using UI_Winform.DTO;
 
@@ -196,7 +197,7 @@ namespace UI_Winform.BLL
 
             data.ForEach(i =>
             {
-                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0.00}", i.SellPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0.00}", i.InitialPrice), i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
+                dt.Rows.Add(i.IDItem, i.ItemName, i.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.SellPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", i.InitialPrice), i.Discount, i.Warranty, i.Category.NameCategory, i.Brand.BrandName);
             });
             return dt;
         }
@@ -221,16 +222,40 @@ namespace UI_Winform.BLL
             return false;
         }
 
+        public bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
+
         public bool CheckValidInfo(string ID_Item, string ItemName, string Detail, string IniPrice, string Quantity, string SellPrice, string Warranty, string Brand, string Category)
         {
             if (ID_Item != "" && ItemName != "" && Detail != "" && IniPrice != ""
-                && Quantity != "" && SellPrice != "" && Warranty != ""
-                && CheckCbbBrand(Brand) && CheckCbbCategory(Category))
+                && Quantity != "" && SellPrice != "" && Warranty != "")
             {
-                return true;
+                if (IsNumber(IniPrice) && IsNumber(SellPrice))
+                {
+                    if (CheckCbbBrand(Brand) && CheckCbbCategory(Category))
+                    {
+                        return true;
+                    } else
+                    {
+                        MessageBox.Show("Vui lòng lựa chọn đúng hãng và loại sản phẩm!");
+                        return false;
+                    }
+                }else
+                {
+                    MessageBox.Show("Vui lòng nhập đúng định dạng số!");
+                    return false;
+                }
             }
             else
             {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return false;
             }
         }

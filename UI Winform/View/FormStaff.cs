@@ -140,7 +140,6 @@ namespace UI_Winform
 
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
-            // addd
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 ManageAccountBLL mab = new ManageAccountBLL();

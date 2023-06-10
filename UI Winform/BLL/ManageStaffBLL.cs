@@ -164,6 +164,16 @@ namespace UI_Winform.BLL
                 return false;
             }
         }
+
+        public bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         public bool CheckValidInfo(string ID_Staff, string Name, string Phone, string Address, string Salary, string Email, string Account)
         {
             if (ID_Staff != "" && Name != "" && Phone != "" && Address != ""
@@ -173,7 +183,21 @@ namespace UI_Winform.BLL
                 {
                     if (CheckCbbTypeAccount(Account))
                     {
-                        return true;
+                        if (IsNumber(Salary))
+                        {
+                            if (IsNumber(Phone))
+                            {
+                                return true;
+                            }else
+                            {
+                                MessageBox.Show("Vui lòng lựa nhập đúng định dạng số điện thoại");
+                                return false;
+                            }
+                        } else
+                        {
+                            MessageBox.Show("Vui lòng lựa nhập đúng định dạng lương");
+                            return false;
+                        }
                     }
                     else
                     {

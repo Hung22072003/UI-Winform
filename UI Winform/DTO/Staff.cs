@@ -31,9 +31,6 @@ namespace UI_Winform.DTO
         public string Email { get; set; }
         public byte[] Picture { get; set; }
         public Nullable<bool> Deleted { get; set; }
-        public Nullable<int> BonusPoint { get; set; }
-        public Nullable<decimal> BonusSalary { get; set; }
-        public Nullable<decimal> TotalSalary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }

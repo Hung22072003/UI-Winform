@@ -32,8 +32,7 @@ namespace UI_Winform.View
             SetTxbIdOrder();
             ManageStaffBLL msb = new ManageStaffBLL();
             Lb_Name.Text = "Tên nhân viên: " + msb.GetStaffByID(ID_User).Name;
-
-            LoadTheme();
+            
         }
 
         
@@ -62,14 +61,14 @@ namespace UI_Winform.View
 
         private void Order_Load(object sender, EventArgs e)
         {
+            LoadTheme();
             ManageItemBLL mib = new ManageItemBLL();
             dgv_item.DataSource = mib.getAllItemDGV();
-            
         }
 
         private void LoadTheme()
         {
-            foreach (Control btns in this.Controls)
+            foreach(Control btns in this.Controls)
             {
                 if (btns.GetType() == typeof(System.Windows.Forms.Button))
                 {
@@ -226,7 +225,6 @@ namespace UI_Winform.View
                         temp.Name = txb_NameCus.Text;
                         temp.Address = txb_Address.Text;
                         temp.Phone = txb_Phone.Text;
-                        temp.DateOfBirth = Convert.ToDateTime(dtp_Birth.Text);
                         temp.BonusPoint = 0;
 
                         mcb.AddCustomerBLL(temp);
@@ -327,6 +325,7 @@ namespace UI_Winform.View
             txb_BonusPoint.Text = "";
             txb_FinalTotal.Text = "";
             txb_TotalDiscount.Text = "";
+            txb_Point.Text = "";
             total = 0;
         }
 
@@ -357,7 +356,7 @@ namespace UI_Winform.View
                 txb_NameCus.Text = temp.Name;
                 txb_IDCustomer.Text = Convert.ToString(temp.ID_Customer);
                 txb_Address.Text = temp.Address;
-                dtp_Birth.Text = Convert.ToString(temp.DateOfBirth);
+                txb_Point.Text = temp.BonusPoint.ToString();
             }
         }
 

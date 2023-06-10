@@ -205,16 +205,24 @@ namespace UI_Winform.BLL
             return dt;
         }
 
-        public bool CheckEmptyInfor(string a, string b, string c, string d)
+        public bool CheckEmptyInfor(string Quantity, string MaxDiscount, string MinTotal, string Discount)
         {
-            if (a == "" || b == "" || c == "" || d == "")
+            if (Quantity == "" || MaxDiscount == "" || MinTotal == "" || Discount == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo");
                 return false;
             }
             else
             {
-                return true;
+                if (0 < Convert.ToDouble(Discount) && Convert.ToDouble(Discount) <= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng kiểm tra lại khuyến mãi", "Thông báo");
+                    return false;
+                }
             }
         }
     }

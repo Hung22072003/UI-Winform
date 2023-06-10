@@ -24,7 +24,6 @@ namespace UI_Winform.DTO
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<int> BonusPoint { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

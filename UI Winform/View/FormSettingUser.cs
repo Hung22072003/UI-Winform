@@ -147,7 +147,7 @@ namespace UI_Winform.View
             ManageAccountBLL mab = new ManageAccountBLL();
             ManageStaff_ShiftBLL mssb = new ManageStaff_ShiftBLL();
 
-            if (msb.CheckValidInfo(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, txb_Address.Text, txb_Salary.Text, txb_Email.Text, txb_TypeAccount.Text))
+            if (msb.CheckValidInfo(txb_IDStaff.Text, txb_Name.Text, txb_PhoneNumber.Text, txb_Address.Text, txb_Salary.Text.Replace(".", ""), txb_Email.Text, txb_TypeAccount.Text))
             {
                 msb.UpdateStaffBLL(this.ID_User, txb_Name.Text, txb_PhoneNumber.Text, Convert.ToDateTime(dtp_DateOfBirth.Text),
                    txb_Address.Text, Convert.ToDecimal(txb_Salary.Text.Replace(".","")), txb_Email.Text, pt_Staff.Image);

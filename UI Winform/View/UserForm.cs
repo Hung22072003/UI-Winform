@@ -160,5 +160,10 @@ namespace UI_Winform.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void Btn_Customer_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCustomer(), sender);
+        }
     }
 }

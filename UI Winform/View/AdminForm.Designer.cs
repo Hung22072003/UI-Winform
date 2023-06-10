@@ -42,6 +42,7 @@
             this.Btn_Close = new Guna.UI2.WinForms.Guna2CircleButton();
             this.Btn_Minimize = new Guna.UI2.WinForms.Guna2CircleButton();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.Btn_Customer = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +50,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelMenu.Controls.Add(this.Btn_Customer);
             this.panelMenu.Controls.Add(this.Btn_Discount);
             this.panelMenu.Controls.Add(this.Btn_TradeHistory);
             this.panelMenu.Controls.Add(this.Btn_Storage);
@@ -271,6 +273,26 @@
             this.panelDesktopPane.Size = new System.Drawing.Size(880, 600);
             this.panelDesktopPane.TabIndex = 2;
             // 
+            // Btn_Customer
+            // 
+            this.Btn_Customer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Customer.FlatAppearance.BorderSize = 0;
+            this.Btn_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Customer.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Customer.Image")));
+            this.Btn_Customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Customer.Location = new System.Drawing.Point(0, 380);
+            this.Btn_Customer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Customer.Name = "Btn_Customer";
+            this.Btn_Customer.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Btn_Customer.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Customer.TabIndex = 6;
+            this.Btn_Customer.Text = " Khách hàng";
+            this.Btn_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Customer.UseVisualStyleBackColor = true;
+            this.Btn_Customer.Click += new System.EventHandler(this.Btn_Customer_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -308,6 +330,7 @@
         private Guna.UI2.WinForms.Guna2CircleButton Btn_Close;
         private Guna.UI2.WinForms.Guna2CircleButton Btn_Minimize;
         private System.Windows.Forms.Button Btn_Discount;
+        private System.Windows.Forms.Button Btn_Customer;
     }
 }
 

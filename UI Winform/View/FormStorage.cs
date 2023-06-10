@@ -154,23 +154,28 @@ namespace UI_Winform
             {
                 FormImport f = new FormImport(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 OpenChildForm(f, sender);
+                f.d += new FormImport.MyDel(ShowDRV);
             }
         }
 
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
-            List<string> li = new List<string>();
-
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            if (Cbb_Sort.Text != "" && Cbb_Type.Text != "" && Cbb_Sort.Items.Contains(Cbb_Sort.Text) && Cbb_Type.Items.Contains(Cbb_Type.Text))
             {
-                if (dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value != null)
-                {
-                    li.Add(dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value.ToString());
-                }
-            }
+                List<string> li = new List<string>();
 
-            ManageItemBLL mib = new ManageItemBLL();
-            dataGridView1.DataSource = mib.SortBy(li, Cbb_Sort.Text, Cbb_Type.Text);
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value != null)
+                    {
+                        li.Add(dataGridView1.Rows[i].Cells["Mã sản phẩm"].Value.ToString());
+                    }
+                }
+
+                ManageItemBLL mib = new ManageItemBLL();
+                dataGridView1.DataSource = mib.SortBy(li, Cbb_Sort.Text, Cbb_Type.Text);
+            }
+            
         }
 
         private void Btn_View_Click(object sender, EventArgs e)

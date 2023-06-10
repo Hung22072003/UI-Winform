@@ -37,7 +37,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateOfBirth" Type="date" />
           <Property Name="BonusPoint" Type="int" />
         </EntityType>
         <EntityType Name="Item">
@@ -110,9 +109,6 @@
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Picture" Type="image" />
           <Property Name="Deleted" Type="bit" />
-          <Property Name="BonusPoint" Type="int" />
-          <Property Name="BonusSalary" Type="money" />
-          <Property Name="TotalSalary" Type="money" />
         </EntityType>
         <EntityType Name="Staff_Shift">
           <Key>
@@ -393,7 +389,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="BonusPoint" Type="Int32" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_A_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
@@ -479,9 +474,6 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Deleted" Type="Boolean" />
-          <Property Name="BonusPoint" Type="Int32" />
-          <Property Name="BonusSalary" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TotalSalary" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Staff" FromRole="Staff" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Staff" FromRole="Staff" ToRole="Order" />
           <NavigationProperty Name="Shifts" Relationship="Self.Staff_Shift" FromRole="Staff" ToRole="Shift" />
@@ -733,7 +725,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -811,9 +802,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
-                <ScalarProperty Name="BonusSalary" ColumnName="BonusSalary" />
-                <ScalarProperty Name="TotalSalary" ColumnName="TotalSalary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

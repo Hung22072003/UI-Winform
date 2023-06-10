@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -52,6 +53,12 @@ namespace UI_Winform
                 ManageExpenditureBLL meb = new ManageExpenditureBLL();
                 Dgv_Statistic.DataSource = meb.getItemsToDGV(startDate,endDate);
             }
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            ManageExpenditureBLL meb = new ManageExpenditureBLL();
+            Dgv_Statistic.DataSource = meb.getItemsBySearch(Txb_Search.Text);
         }
     }
 }

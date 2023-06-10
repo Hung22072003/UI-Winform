@@ -14,9 +14,10 @@ namespace UI_Winform.BLL
 {
     public class ManageExpenditureBLL
     {
-        public DataTable getItemsToDGV(DateTime startDate, DateTime endDate)
+        private DataTable dt;
+        public ManageExpenditureBLL()
         {
-            DataTable dt = new DataTable();
+            dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[]
             {
                 new DataColumn {ColumnName = "Mã hàng", DataType = typeof(string)},
@@ -27,9 +28,26 @@ namespace UI_Winform.BLL
                 new DataColumn {ColumnName = "Giá nhập", DataType = typeof(string)},
                 new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(string)},
             });
+        }
+        public DataTable getItemsToDGV(DateTime startDate, DateTime endDate)
+        {
+            dt.Rows.Clear();
 
             ManageExpenditureDAL med = new ManageExpenditureDAL();
             foreach(Storage s in med.getItems(startDate, endDate))
+            {
+                dt.Rows.Add(s.ID_Storage, s.ID_Item, s.Item.ItemName, s.ImportDate, s.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.UnitPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.TotalPrice));
+            }
+
+            return dt;
+        }
+
+        public DataTable getItemsBySearch(string search)
+        {
+            dt.Rows.Clear();
+
+            ManageExpenditureDAL med = new ManageExpenditureDAL();
+            foreach (Storage s in med.getItemsBySearch(search))
             {
                 dt.Rows.Add(s.ID_Storage, s.ID_Item, s.Item.ItemName, s.ImportDate, s.Quantity, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.UnitPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", s.TotalPrice));
             }

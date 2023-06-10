@@ -174,7 +174,7 @@
             // dtp_DateOfBirth
             // 
             this.dtp_DateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DateOfBirth.Location = new System.Drawing.Point(559, 67);
+            this.dtp_DateOfBirth.Location = new System.Drawing.Point(559, 62);
             this.dtp_DateOfBirth.Name = "dtp_DateOfBirth";
             this.dtp_DateOfBirth.Size = new System.Drawing.Size(215, 22);
             this.dtp_DateOfBirth.TabIndex = 50;
@@ -206,7 +206,7 @@
             this.btn_Reset.Name = "btn_Reset";
             this.btn_Reset.Size = new System.Drawing.Size(106, 31);
             this.btn_Reset.TabIndex = 47;
-            this.btn_Reset.Text = "Reset";
+            this.btn_Reset.Text = "Làm mới";
             this.btn_Reset.UseVisualStyleBackColor = true;
             this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
             // 
@@ -218,7 +218,7 @@
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(106, 31);
             this.btn_Ok.TabIndex = 46;
-            this.btn_Ok.Text = "OK";
+            this.btn_Ok.Text = "Xác nhận";
             this.btn_Ok.UseVisualStyleBackColor = true;
             this.btn_Ok.Click += new System.EventHandler(this.btn_Ok_Click);
             // 
@@ -255,7 +255,7 @@
             // 
             this.txb_PhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_PhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_PhoneNumber.Location = new System.Drawing.Point(559, 140);
+            this.txb_PhoneNumber.Location = new System.Drawing.Point(559, 133);
             this.txb_PhoneNumber.Name = "txb_PhoneNumber";
             this.txb_PhoneNumber.Size = new System.Drawing.Size(215, 27);
             this.txb_PhoneNumber.TabIndex = 42;

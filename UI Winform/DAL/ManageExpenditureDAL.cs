@@ -16,6 +16,12 @@ namespace UI_Winform.DAL
             return s;
         }
 
+        public List<Storage> getItemsBySearch(string search)
+        {
+            DBPM db = new DBPM();
+            var s = db.Storages.Where(p => p.Item.ItemName.Contains(search)).Select(p => p).ToList();
+            return s;
+        }
         public void AddSpendingBill(Storage s)
         {
             using(DBPM db = new DBPM()) { 

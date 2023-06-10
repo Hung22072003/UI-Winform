@@ -57,6 +57,21 @@ namespace UI_Winform.BLL
             return dt;
         }
 
+        public DataTable getAllOrderOfCustomer(int ID_Customer)
+        {
+            dt.Rows.Clear();
+            ManageOrderDAL mod = new ManageOrderDAL();
+            List<Order> orders = mod.getAllOrder();
+            orders.ForEach(p =>
+            {
+                if (p.ID_Customer ==  ID_Customer)
+                {
+                    dt.Rows.Add(p.OrderID, p.Staff.Name, p.Customer.Name, p.Customer.Phone, p.OrderDate, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.TotalPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.FinalTotal));
+                }
+            });
+            return dt;
+        }
+
         public DataTable getAllOrderBySearch(string search)
         {
             dt.Rows.Clear();
@@ -156,7 +171,6 @@ namespace UI_Winform.BLL
 
         }
 
-        /*Them ham nay*/
         public String CheckIDVoucher(String ID_Voucher)
         {
 
@@ -172,7 +186,6 @@ namespace UI_Winform.BLL
 
         }
 
-        /*Them ham nay*/
         public double CheckTotalDiscountBLL(String TotalDiscount)
         {
 
@@ -187,6 +200,15 @@ namespace UI_Winform.BLL
 
         }
 
+        public bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         public bool CheckEmptyInfor(string ID_Order, string NameCus, string Address, string Phone, string Quantity)
         {
             if (ID_Order == ""
@@ -201,7 +223,15 @@ namespace UI_Winform.BLL
             }
             else
             {
-                return true;
+                if (IsNumber(Phone) && IsNumber(Quantity))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập đúng định dạng số!");
+                    return false;
+                }
             }
         }
     }

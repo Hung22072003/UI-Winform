@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fc84db311c5a40b1b80dbf966b4eca89" Name="Diagram1">
+      <Diagram DiagramId="dbcef0d35937424a80c0431470f5c074" Name="Diagram1">
         <EntityTypeShape EntityType="ManagementPhoneModel.Account" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.Brand" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagementPhoneModel.Category" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementPhoneModel.Category" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.Customer" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.Item" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagementPhoneModel.Order" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementPhoneModel.Order" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.OrderDetail" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.Role" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagementPhoneModel.Shift" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagementPhoneModel.Staff" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementPhoneModel.Shift" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementPhoneModel.Staff" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagementPhoneModel.Storage" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagementPhoneModel.Voucher" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementPhoneModel.Voucher" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="ManagementPhoneModel.FK_Account_Role" ManuallyRouted="false" />
         <AssociationConnector Association="ManagementPhoneModel.FK_Account_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="ManagementPhoneModel.FK_Item_Brand" ManuallyRouted="false" />

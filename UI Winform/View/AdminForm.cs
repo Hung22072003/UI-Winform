@@ -161,5 +161,10 @@ namespace UI_Winform
         {
             OpenChildForm(new FormDiscount(), sender);
         }
+
+        private void Btn_Customer_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCustomer(), sender);
+        }
     }
 }

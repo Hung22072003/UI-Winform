@@ -130,7 +130,6 @@ namespace UI_Winform
 
         private void Btn_AddPicture_Click(object sender, EventArgs e)
         {
-            // Cập nhật tại đây
             try
             {
                 ofd_OpenFile.Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*";

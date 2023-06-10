@@ -57,7 +57,7 @@ namespace UI_Winform.BLL
             dt.Columns.AddRange(new DataColumn[]
             {
                 new DataColumn {ColumnName = "Tháng", DataType = typeof(string)},
-                new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(decimal)},
+                new DataColumn {ColumnName = "Tổng tiền", DataType = typeof(string)},
             });
             for(int i = 1; i <=12; i++)
             {
@@ -68,7 +68,7 @@ namespace UI_Winform.BLL
             List<Order> orders = mod.getAllOrder(year);
             orders.ForEach(order =>
             {
-                decimal? total = order.OrderDetails.Sum(p => p.AmountPrice);
+                decimal? total = order.FinalTotal;
                 dt.Rows[order.OrderDate.Month - 1]["Tổng tiền"] = Convert.ToDecimal(dt.Rows[order.OrderDate.Month - 1]["Tổng tiền"].ToString()) + total ;
             });
 
