@@ -225,5 +225,21 @@ namespace UI_Winform.BLL
                 }
             }
         }
+
+        /*Them ham de kiem tra giam gia toi da*/
+
+        public bool CheckMaxDiscount(double DiscountVC, string ID_Voucher)
+        {
+            ManageVoucherBLL mvb = new ManageVoucherBLL();
+            Voucher v = mvb.GetVoucherByID(ID_Voucher);
+            if (DiscountVC >= v.MaxDiscount && v.MaxDiscount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -234,5 +234,66 @@ namespace UI_Winform.BLL
                 }
             }
         }
+
+        public int CheckLimitBonusPoint(Decimal Total)
+        {
+
+            if (Total <= 20000000)
+            {
+                return 1000;
+            }
+            else if (Total <= 40000000)
+            {
+                return 800;
+            }
+            else
+            {
+                return 500;
+            }
+
+        }
+
+        /*Them ham kiem tra thong tin trong cua diem tich luy va voucher tra ve String*/
+        public String CheckDiscount_Voucher(Double DiscountVC, string BonusPoint, string IdVoucher)
+        {
+            if (BonusPoint != "" && IdVoucher != "")
+            {
+                return TotalDiscount(Convert.ToInt32(BonusPoint), DiscountVC).ToString();
+            }
+            if (BonusPoint == "" && IdVoucher != "")
+            {
+                return TotalDiscount(0, DiscountVC).ToString();
+            }
+            if (BonusPoint != "" && IdVoucher == "")
+            {
+                return TotalDiscount(Convert.ToInt32(BonusPoint), 0).ToString();
+            }
+            else
+            {
+                return "0";
+            }
+
+        }
+
+        /*Them ham de tinh ra tong giam gia*/
+        public double TotalDiscount(int BonusPoint, Double DiscountVC)
+        {
+
+            double temp = Convert.ToDouble(BonusPoint) / 10000;
+
+            return (double)(temp + DiscountVC);
+        }
+
+        public bool CheckQuantityItem(int quantity, string quant)
+        {
+            if (Convert.ToInt32(quant) > quantity)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

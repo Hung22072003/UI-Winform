@@ -149,7 +149,7 @@ namespace UI_Winform.View
                 {
 
                     DataGridViewRow i = dgv_item.SelectedRows[0];
-                    if (CheckQuantityItem(Convert.ToInt32(i.Cells["Số lượng"].Value.ToString())))
+                    if (mob.CheckQuantityItem(Convert.ToInt32(i.Cells["Số lượng"].Value.ToString()),txb_Quantity.Text))
                     {
                         temp.ID_Item = i.Cells["Mã sản phẩm"].Value.ToString();
                         temp.Quantity = Convert.ToInt32(txb_Quantity.Text);
@@ -174,17 +174,7 @@ namespace UI_Winform.View
                 txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", total);
             }
         }
-        public bool CheckQuantityItem(int quantity)
-        {
-            if (Convert.ToInt32(txb_Quantity.Text) > quantity)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+
 
         private void cbb_Category_TextChanged(object sender, EventArgs e)
         {
@@ -379,9 +369,9 @@ namespace UI_Winform.View
                             MessageBox.Show("Điểm của khách hàng không đủ");
                             txb_BonusPoint.Text = "0";
                         }
-                        if (Convert.ToInt32(txb_BonusPoint.Text) > CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))))
+                        if (Convert.ToInt32(txb_BonusPoint.Text) > mob.CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))))
                         {
-                            MessageBox.Show("Chỉ được áp dụng tối đa " + CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))).ToString() + " điểm đối với hóa đơn hiện tại");
+                            MessageBox.Show("Chỉ được áp dụng tối đa " + mob.CheckLimitBonusPoint(Convert.ToDecimal(txb_Total.Text.Replace(".", ""))).ToString() + " điểm đối với hóa đơn hiện tại");
                             txb_BonusPoint.Text = "0";
                         };
                     }
@@ -398,7 +388,7 @@ namespace UI_Winform.View
                     Voucher vc = mvb.GetVoucherByID(txb_IdVoucher.Text, Convert.ToDecimal(txb_Total.Text.Replace(".", "")));
                     if (vc == null)
                     {
-                        txb_TotalDiscount.Text = CheckDiscount_Voucher(0);
+                        txb_TotalDiscount.Text = mob.CheckDiscount_Voucher(0, txb_BonusPoint.Text, txb_IdVoucher.Text);
                         txb_IdVoucher.Text = "";
                     }
                     else
@@ -406,14 +396,14 @@ namespace UI_Winform.View
                         if (mvb.CheckStatusVoucherBLL(vc.ID_Voucher))
                         {
                             double total = Convert.ToDouble(txb_Total.Text.Replace(".", ""));
-                            if (CheckMaxDiscount((double)(total * vc.Discount), vc.ID_Voucher) == false)
+                            if (mvb.CheckMaxDiscount((double)(total * vc.Discount), vc.ID_Voucher) == false)
                             {
-                                txb_TotalDiscount.Text = CheckDiscount_Voucher(Convert.ToDouble(vc.Discount));
+                                txb_TotalDiscount.Text = mob.CheckDiscount_Voucher(Convert.ToDouble(vc.Discount), txb_BonusPoint.Text, txb_IdVoucher.Text);
                                 txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 - Convert.ToDouble(txb_TotalDiscount.Text))));
                             }
                             else
                             {
-                                txb_TotalDiscount.Text = CheckDiscount_Voucher(Convert.ToDouble(vc.Discount));
+                                txb_TotalDiscount.Text = mob.CheckDiscount_Voucher(Convert.ToDouble(vc.Discount), txb_BonusPoint.Text, txb_IdVoucher.Text);
 
                                 txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 + Convert.ToDouble(mvb.CheckBonusPointBLL(txb_BonusPoint.Text)) / 1000000000) - vc.MaxDiscount));
                                 MessageBox.Show("Voucher được giảm tối đa " + vc.MaxDiscount.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -431,76 +421,12 @@ namespace UI_Winform.View
                 }
                 else
                 {
-                    txb_TotalDiscount.Text = CheckDiscount_Voucher(0);
+                    txb_TotalDiscount.Text = mob.CheckDiscount_Voucher(0, txb_BonusPoint.Text, txb_IdVoucher.Text);
                     txb_FinalTotal.Text = string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", (Convert.ToDouble(txb_Total.Text.Replace(".", "")) * (1 + Convert.ToDouble(mvb.CheckBonusPointBLL(txb_BonusPoint.Text)) / 1000000000)));
                 }
             }
         }
 
-        public int CheckLimitBonusPoint(Decimal Total)
-        {
-
-            if (Total <= 20000000)
-            {
-                return 1000;
-            }
-            else if (Total <= 40000000)
-            {
-                return 800;
-            }
-            else
-            {
-                return 500;
-            }
-
-        }
-
-        /*Them ham de tinh ra tong giam gia*/
-        public double TotalDiscount(int BonusPoint, Double DiscountVC)
-        {
-
-            double temp = Convert.ToDouble(BonusPoint) / 10000;
-
-            return (double)(temp + DiscountVC);
-        }
-
-        /*Them ham kiem tra thong tin trong cua diem tich luy va voucher tra ve String*/
-        public String CheckDiscount_Voucher(Double DiscountVC)
-        {
-            if (txb_BonusPoint.Text != "" && txb_IdVoucher.Text != "")
-            {
-                return TotalDiscount(Convert.ToInt32(txb_BonusPoint.Text), DiscountVC).ToString();
-            }
-            if (txb_BonusPoint.Text == "" && txb_IdVoucher.Text != "")
-            {
-                return TotalDiscount(0, DiscountVC).ToString();
-            }
-            if (txb_BonusPoint.Text != "" && txb_IdVoucher.Text == "")
-            {
-                return TotalDiscount(Convert.ToInt32(txb_BonusPoint.Text), 0).ToString();
-            }
-            else
-            {
-                return "0";
-            }
-
-        }
-
-        /*Them ham de kiem tra giam gia toi da*/
-
-        public bool CheckMaxDiscount(double DiscountVC, string ID_Voucher)
-        {
-            ManageVoucherBLL mvb = new ManageVoucherBLL();
-            Voucher v = mvb.GetVoucherByID(ID_Voucher);
-            if (DiscountVC >= v.MaxDiscount && v.MaxDiscount > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         private void txb_BonusPoint_KeyPress(object sender, KeyPressEventArgs e)
         {
