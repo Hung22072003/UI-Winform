@@ -20,6 +20,9 @@ namespace UI_Winform
     {
         string id;
 
+        public delegate void MyDel();
+        public MyDel InfoStaffDel;
+
         private List<CheckBoxShift> li;
         public InfoStaff()
         {
@@ -193,7 +196,7 @@ namespace UI_Winform
                  mssb.AddStaffByID_StaffBLL(id, li);
 
                  mab.UpdateAccountBLL(this.id, txb_Account.Text, ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
-                   
+                    this.InfoStaffDel();  
                 }
                 else if (FormStaff.check == 0)
                 {
@@ -205,7 +208,7 @@ namespace UI_Winform
                  mssb.AddStaffByID_StaffBLL(txb_IDStaff.Text, li);
 
                  mab.AddAccountBLL(txb_IDStaff.Text, txb_Name.Text, txb_Account.Text, "123", ((CbbTypeAccount)(cbb_TypeAccount.SelectedItem)).value);
-
+                    this.InfoStaffDel();
                 }
                 this.Close();
             }

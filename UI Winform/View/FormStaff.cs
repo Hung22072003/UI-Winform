@@ -67,7 +67,9 @@ namespace UI_Winform
         private void Btn_Add_Click(object sender, EventArgs e)
         {
             check = 0;
-            OpenChildForm(new InfoStaff(), sender);
+            InfoStaff Inf = new InfoStaff();
+            Inf.InfoStaffDel += LoadInfor;
+            OpenChildForm(Inf, sender);
         }
 
         public void LoadInfor()
@@ -124,7 +126,9 @@ namespace UI_Winform
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 check = 1;
-                OpenChildForm(new InfoStaff(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), sender);
+                InfoStaff Inf = new InfoStaff(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                Inf.InfoStaffDel += LoadInfor;
+                OpenChildForm(Inf, sender);
             }
         }
 
