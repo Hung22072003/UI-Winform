@@ -66,6 +66,7 @@
             this.dgv_order = new System.Windows.Forms.DataGridView();
             this.btn_AddItem = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_ShowAllItem = new System.Windows.Forms.Button();
             this.lb_Note = new System.Windows.Forms.Label();
             this.txb_Price = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -491,6 +492,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_ShowAllItem);
             this.groupBox3.Controls.Add(this.lb_Note);
             this.groupBox3.Controls.Add(this.txb_Price);
             this.groupBox3.Controls.Add(this.label10);
@@ -514,6 +516,18 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin sản phẩm";
+            // 
+            // btn_ShowAllItem
+            // 
+            this.btn_ShowAllItem.AutoSize = true;
+            this.btn_ShowAllItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ShowAllItem.Location = new System.Drawing.Point(593, 316);
+            this.btn_ShowAllItem.Name = "btn_ShowAllItem";
+            this.btn_ShowAllItem.Size = new System.Drawing.Size(173, 31);
+            this.btn_ShowAllItem.TabIndex = 93;
+            this.btn_ShowAllItem.Text = "Hiển thị toàn bộ sản phẩm";
+            this.btn_ShowAllItem.UseVisualStyleBackColor = true;
+            this.btn_ShowAllItem.Click += new System.EventHandler(this.btn_ShowAllItem_Click);
             // 
             // lb_Note
             // 
@@ -758,5 +772,6 @@
         private System.Windows.Forms.TextBox txb_BonusPoint;
         private System.Windows.Forms.TextBox txb_Point;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_ShowAllItem;
     }
 }

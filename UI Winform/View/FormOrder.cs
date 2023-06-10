@@ -28,6 +28,7 @@ namespace UI_Winform.View
             InitializeComponent();
             LoadCBBBrand();
             LoadCBBCategory();
+            txb_TotalDiscount.Text = "0";
 
             SetTxbIdOrder();
             ManageStaffBLL msb = new ManageStaffBLL();
@@ -352,6 +353,8 @@ namespace UI_Winform.View
             {
                 txb_IDCustomer.Text = "";
                 txb_Point.Text = "";
+                txb_NameCus.Text = "";
+                txb_Address.Text = "";
             }
         }
 
@@ -439,6 +442,11 @@ namespace UI_Winform.View
             {
                 e.Handled = true; // Hủy bỏ kí tự đó
             }
+        }
+
+        private void btn_ShowAllItem_Click(object sender, EventArgs e)
+        {
+            LoadDGVItem();
         }
     }
 }
