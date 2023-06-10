@@ -112,7 +112,7 @@ namespace UI_Winform
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
             ManageStaffBLL mnb = new ManageStaffBLL();
-            if (cbb_Sort.Text != "" && cbb_AscDesc.Text != "")
+            if (cbb_Sort.Text != "" && cbb_AscDesc.Text != "" && cbb_Sort.Items.Contains(cbb_Sort.Text) && cbb_AscDesc.Items.Contains(cbb_AscDesc.Text))
             {
                 dataGridView1.DataSource = mnb.SortStaffBLL(cbb_Sort.Text, cbb_AscDesc.Text);
             }
@@ -140,6 +140,7 @@ namespace UI_Winform
 
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
+            // addd
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 ManageAccountBLL mab = new ManageAccountBLL();
