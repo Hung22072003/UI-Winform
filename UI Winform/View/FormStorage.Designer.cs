@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Btn_AddCate = new System.Windows.Forms.Button();
             this.Cbb_Type = new System.Windows.Forms.ComboBox();
             this.Cbb_Category = new System.Windows.Forms.ComboBox();
             this.Btn_Sort = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.Btn_AddCate);
             this.MainPanel.Controls.Add(this.Cbb_Type);
             this.MainPanel.Controls.Add(this.Cbb_Category);
             this.MainPanel.Controls.Add(this.Btn_Sort);
@@ -69,8 +71,20 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1179, 380);
+            this.MainPanel.Size = new System.Drawing.Size(1599, 380);
             this.MainPanel.TabIndex = 0;
+            // 
+            // Btn_AddCate
+            // 
+            this.Btn_AddCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_AddCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AddCate.Location = new System.Drawing.Point(1206, 335);
+            this.Btn_AddCate.Name = "Btn_AddCate";
+            this.Btn_AddCate.Size = new System.Drawing.Size(284, 31);
+            this.Btn_AddCate.TabIndex = 43;
+            this.Btn_AddCate.Text = "Thêm loại sản phẩm/hãng";
+            this.Btn_AddCate.UseVisualStyleBackColor = true;
+            this.Btn_AddCate.Click += new System.EventHandler(this.Btn_AddCate_Click);
             // 
             // Cbb_Type
             // 
@@ -246,7 +260,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(1151, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(1571, 198);
             this.dataGridView1.TabIndex = 29;
             // 
             // ChildPanel
@@ -254,7 +268,7 @@
             this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildPanel.Location = new System.Drawing.Point(0, 380);
             this.ChildPanel.Name = "ChildPanel";
-            this.ChildPanel.Size = new System.Drawing.Size(1179, 253);
+            this.ChildPanel.Size = new System.Drawing.Size(1599, 253);
             this.ChildPanel.TabIndex = 1;
             // 
             // FormStorage
@@ -262,7 +276,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1179, 633);
+            this.ClientSize = new System.Drawing.Size(1599, 633);
             this.Controls.Add(this.ChildPanel);
             this.Controls.Add(this.MainPanel);
             this.Name = "FormStorage";
@@ -293,5 +307,6 @@
         private System.Windows.Forms.ComboBox Cbb_Sort;
         private System.Windows.Forms.Button Btn_Sort;
         private System.Windows.Forms.ComboBox Cbb_Type;
+        private System.Windows.Forms.Button Btn_AddCate;
     }
 }

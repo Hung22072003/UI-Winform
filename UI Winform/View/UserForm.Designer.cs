@@ -35,13 +35,13 @@
             this.Btn_Close = new Guna.UI2.WinForms.Guna2CircleButton();
             this.Btn_Minimize = new Guna.UI2.WinForms.Guna2CircleButton();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.Btn_Setting = new System.Windows.Forms.Button();
+            this.Btn_Customer = new System.Windows.Forms.Button();
             this.Btn_TradeHistory = new System.Windows.Forms.Button();
             this.Btn_Storage = new System.Windows.Forms.Button();
             this.Btn_Order = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.Btn_Customer = new System.Windows.Forms.Button();
-            this.Btn_Setting = new System.Windows.Forms.Button();
             this.panelTitle.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -89,9 +89,9 @@
             this.Lb_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lb_Title.Location = new System.Drawing.Point(364, 30);
             this.Lb_Title.Name = "Lb_Title";
-            this.Lb_Title.Size = new System.Drawing.Size(63, 22);
+            this.Lb_Title.Size = new System.Drawing.Size(92, 22);
             this.Lb_Title.TabIndex = 0;
-            this.Lb_Title.Text = "HOME";
+            this.Lb_Title.Text = "Trang chủ";
             this.Lb_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Btn_Close
@@ -147,6 +147,46 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 633);
             this.panelMenu.TabIndex = 3;
+            // 
+            // Btn_Setting
+            // 
+            this.Btn_Setting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Setting.FlatAppearance.BorderSize = 0;
+            this.Btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Setting.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Setting.Image")));
+            this.Btn_Setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Setting.Location = new System.Drawing.Point(0, 320);
+            this.Btn_Setting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Setting.Name = "Btn_Setting";
+            this.Btn_Setting.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.Btn_Setting.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Setting.TabIndex = 9;
+            this.Btn_Setting.Text = " Cài đặt";
+            this.Btn_Setting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Setting.UseVisualStyleBackColor = true;
+            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
+            // 
+            // Btn_Customer
+            // 
+            this.Btn_Customer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Customer.FlatAppearance.BorderSize = 0;
+            this.Btn_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Customer.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Customer.Image")));
+            this.Btn_Customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Customer.Location = new System.Drawing.Point(0, 260);
+            this.Btn_Customer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Customer.Name = "Btn_Customer";
+            this.Btn_Customer.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Btn_Customer.Size = new System.Drawing.Size(220, 60);
+            this.Btn_Customer.TabIndex = 7;
+            this.Btn_Customer.Text = " Khách hàng";
+            this.Btn_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Customer.UseVisualStyleBackColor = true;
+            this.Btn_Customer.Click += new System.EventHandler(this.Btn_Customer_Click);
             // 
             // Btn_TradeHistory
             // 
@@ -228,46 +268,6 @@
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(862, 553);
             this.panelDesktopPane.TabIndex = 5;
-            // 
-            // Btn_Customer
-            // 
-            this.Btn_Customer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Btn_Customer.FlatAppearance.BorderSize = 0;
-            this.Btn_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Customer.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Customer.Image")));
-            this.Btn_Customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Customer.Location = new System.Drawing.Point(0, 260);
-            this.Btn_Customer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Customer.Name = "Btn_Customer";
-            this.Btn_Customer.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Btn_Customer.Size = new System.Drawing.Size(220, 60);
-            this.Btn_Customer.TabIndex = 7;
-            this.Btn_Customer.Text = " Khách hàng";
-            this.Btn_Customer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_Customer.UseVisualStyleBackColor = true;
-            this.Btn_Customer.Click += new System.EventHandler(this.Btn_Customer_Click);
-            // 
-            // Btn_Setting
-            // 
-            this.Btn_Setting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Btn_Setting.FlatAppearance.BorderSize = 0;
-            this.Btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Setting.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Setting.Image")));
-            this.Btn_Setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Setting.Location = new System.Drawing.Point(0, 320);
-            this.Btn_Setting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Setting.Name = "Btn_Setting";
-            this.Btn_Setting.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.Btn_Setting.Size = new System.Drawing.Size(220, 60);
-            this.Btn_Setting.TabIndex = 9;
-            this.Btn_Setting.Text = " Cài đặt";
-            this.Btn_Setting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_Setting.UseVisualStyleBackColor = true;
-            this.Btn_Setting.Click += new System.EventHandler(this.Btn_Setting_Click);
             // 
             // UserForm
             // 

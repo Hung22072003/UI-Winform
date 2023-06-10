@@ -186,5 +186,10 @@ namespace UI_Winform
                 f.ShowDialog();
             }
         }
+
+        private void Btn_AddCate_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCateBrand(), sender);
+        }
     }
 }

@@ -15,5 +15,18 @@ namespace UI_Winform.DAL
             var s = db.Categories.Select(p => p).ToList();
             return s;
         }
+
+        public List<string> getAllIDCategories()
+        {
+            DBPM db = new DBPM();
+            return db.Categories.Select(p => p.ID_Category).ToList();
+        }
+
+        public void AddCategory(Category c)
+        {
+            DBPM db = new DBPM();
+            db.Categories.Add(c);
+            db.SaveChanges();
+        }
     }
 }

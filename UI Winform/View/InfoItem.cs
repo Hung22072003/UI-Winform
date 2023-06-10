@@ -103,7 +103,7 @@ namespace UI_Winform
         private void Btn_OK_Click(object sender, EventArgs e)
         {
             ManageItemBLL mib = new ManageItemBLL();
-            if (mib.CheckValidInfo(Txb_ID.Text, Txb_Name.Text, Txb_Detail.Text, Txb_InitialPrice.Text, Txb_Quantity.Text, Txb_SellPrice.Text, Txb_Waranty.Text, Cbb_Brand.Text, Cbb_Category.Text))
+            if (mib.CheckValidInfo(Txb_ID.Text, Txb_Name.Text, Txb_Detail.Text, Txb_InitialPrice.Text.Replace(".", ""), Txb_Quantity.Text, Txb_SellPrice.Text.Replace(".", ""), Txb_Waranty.Text, Cbb_Brand.Text, Cbb_Category.Text))
             {
                 decimal discount = Math.Round((1 - (Convert.ToDecimal(Txb_SellPrice.Text.Replace(".", "")) / Convert.ToDecimal(Txb_InitialPrice.Text.Replace(".", "")))), 2);
                 mib.AddUpdateItem(Txb_ID.Text, Txb_Name.Text, Convert.ToDecimal(Txb_SellPrice.Text.Replace(".","")), Convert.ToDecimal(Txb_InitialPrice.Text.Replace(".", "")), float.Parse(discount.ToString()), Txb_Detail.Text, Picture.Image, Convert.ToInt32(Txb_Waranty.Text), ((CbbBrand)Cbb_Brand.SelectedItem).Value, ((CbbCategory)Cbb_Category.SelectedItem).Value, Convert.ToInt32(Txb_Quantity.Text));

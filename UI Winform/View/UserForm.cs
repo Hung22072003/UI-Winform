@@ -99,7 +99,7 @@ namespace UI_Winform.View
         private void Reset()
         {
             DisableButton(currentButton);
-            Lb_Title.Text = "HOME";
+            Lb_Title.Text = "Trang chủ";
             Lb_Title.BackColor = Color.FromArgb(23, 195, 178);
             panelTitle.BackColor = Color.FromArgb(23, 195, 178);
             panelLogo.BackColor = Color.FromArgb(23, 195, 178);

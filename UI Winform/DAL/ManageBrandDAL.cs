@@ -15,5 +15,18 @@ namespace UI_Winform.DAL
             var s = db.Brands.Select(p =>p).ToList();
             return s;
         }
+
+        public List<string> getAllIDBrands()
+        {
+            DBPM db = new DBPM();
+            return db.Brands.Select(p => p.BrandID).ToList();
+        }
+
+        public void AddBrand(Brand b)
+        {
+            DBPM db = new DBPM();
+            db.Brands.Add(b);
+            db.SaveChanges();
+        }
     }
 }

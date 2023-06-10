@@ -79,7 +79,7 @@ namespace UI_Winform.BLL
             List<Order> orders = mod.getAllOrder();
             orders.ForEach(p =>
             {
-                if (p.Staff.Name.Contains(search))
+                if (p.Staff.Name.Contains(search) || p.Customer.Phone.Contains(search))
                 {
                     dt.Rows.Add(p.OrderID, p.Staff.Name, p.Customer.Name, p.Customer.Phone, p.OrderDate, string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.TotalPrice), string.Format(new CultureInfo("vi-VN"), "{0:#,##0}", p.FinalTotal));
                 }
