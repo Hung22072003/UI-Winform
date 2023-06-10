@@ -348,6 +348,11 @@ namespace UI_Winform.View
                 txb_Address.Text = temp.Address;
                 txb_Point.Text = temp.BonusPoint.ToString();
             }
+            if(txb_Phone.Text == "")
+            {
+                txb_IDCustomer.Text = "";
+                txb_Point.Text = "";
+            }
         }
 
         private void btn_ApplyDiscount_Click(object sender, EventArgs e)
